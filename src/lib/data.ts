@@ -4,7 +4,7 @@
    brand, legalName, year, company) are language-neutral.
    In a component: const { lang } = useLanguage();  company.summary[lang]
    ============================================================================ */
-import type { Loc } from "./i18n";
+import type { Loc } from "./i18n-types";
 
 /* A flexible custom content block with its own heading + a grid of cards.
    Use for company-specific sections (product lines, AI agents, capabilities…). */

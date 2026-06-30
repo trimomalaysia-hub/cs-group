@@ -8,6 +8,10 @@ import {
   type ReactNode,
 } from "react";
 import { messages } from "./messages";
+import type { Lang, Loc } from "./i18n-types";
+
+// Re-export the types so existing imports from "@/lib/i18n" keep working.
+export type { Lang, Loc };
 
 /* ============================================================================
    Lightweight i18n — in-place language toggle (EN / 中), no URL change.
@@ -17,9 +21,6 @@ import { messages } from "./messages";
    In a component:  const { lang } = useLanguage();  value[lang]
    For UI strings:  const { t } = useLanguage();     t.nav.contact
    ========================================================================== */
-
-export type Lang = "en" | "zh";
-export type Loc<T = string> = { en: T; zh: T };
 
 const STORAGE_KEY = "cs-group-lang";
 
