@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
@@ -7,14 +8,23 @@ export default function Founder() {
   return (
     <Section id="founder">
       <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-        {/* Portrait — replace the monogram block with a real photo:
-            drop founder.jpg in /public and use next/image here. */}
+        {/* Portrait — uses /public/founder.jpg */}
         <div className="lg:col-span-5">
           <Reveal>
             <figure className="relative overflow-hidden rounded-2xl border border-line bg-surface">
-              <div className="vignette absolute inset-0" aria-hidden />
-              <div className="flex aspect-[4/5] items-center justify-center">
-                <span className="font-display text-7xl tracking-tight text-accent/80">KCS</span>
+              <div className="relative aspect-[4/5]">
+                <Image
+                  src="/founder.png"
+                  alt={`${site.founder}, Founder & Chairman of ${site.name}`}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover object-[center_15%]"
+                />
+                {/* gradient so the caption stays legible over the photo */}
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent"
+                  aria-hidden
+                />
               </div>
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between border-t border-line bg-bg/40 px-6 py-5 backdrop-blur-sm">
                 <div>
