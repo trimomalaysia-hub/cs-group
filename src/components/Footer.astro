@@ -1,0 +1,60 @@
+---
+/* Site footer: company blurb, navigation, contact + social links.
+   Pulls everything from src/data/site.ts. */
+import { site } from "../data/site";
+
+const year = new Date().getFullYear();
+const socials = Object.entries(site.social) as [string, string][];
+---
+
+<footer class="border-t border-slate-200 bg-subtle">
+  <div class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      <!-- Brand + blurb -->
+      <div class="lg:col-span-2">
+        <a href="/" class="flex items-center gap-2 font-display text-lg font-bold text-ink">
+          <span class="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 text-white">N</span>
+          {site.name}
+        </a>
+        <p class="mt-4 max-w-sm text-sm leading-relaxed text-muted">
+          {site.description}
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="text-sm font-semibold text-ink">Company</h3>
+        <ul class="mt-4 space-y-3">
+          {site.nav.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-muted transition-colors hover:text-brand-700">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h3 class="text-sm font-semibold text-ink">Get in touch</h3>
+        <ul class="mt-4 space-y-3 text-sm text-muted">
+          <li><a href={`mailto:${site.email}`} class="transition-colors hover:text-brand-700">{site.email}</a></li>
+          <li><a href={`tel:${site.phone.replace(/\s/g, "")}`} class="transition-colors hover:text-brand-700">{site.phone}</a></li>
+          <li>{site.address}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-slate-200 pt-8 sm:flex-row">
+      <p class="text-sm text-muted">© {year} {site.name}. All rights reserved.</p>
+      <div class="flex gap-4">
+        {socials.map(([name, url]) => (
+          <a href={url} target="_blank" rel="noopener noreferrer" class="text-muted capitalize transition-colors hover:text-brand-700 text-sm">
+            {name}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</footer>

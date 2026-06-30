@@ -1,0 +1,70 @@
+---
+/* CONTACT PAGE
+   The form below is ready to use once you connect a form service.
+   Easiest option: Formspree (free) — https://formspree.io
+     1. Create a form, copy your form ID.
+     2. Replace YOUR_FORM_ID in the <form action="..."> line below.
+   Until then, visitors can still email you via the address shown. */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+import { site } from "../data/site";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+---
+
+<BaseLayout title="Contact" description={`Get in touch with ${site.name}. We reply within one business day.`}>
+  <Section>
+    <div class="grid gap-12 lg:grid-cols-2">
+      <!-- Left: intro + details -->
+      <div>
+        <p class="text-sm font-semibold uppercase tracking-wide text-brand-600">Contact</p>
+        <h1 class="mt-3 text-4xl font-bold sm:text-5xl">Let's talk</h1>
+        <p class="mt-6 text-lg text-muted">
+          Have a project in mind or just a question? Send us a message and we'll
+          get back to you within one business day.
+        </p>
+
+        <dl class="mt-10 space-y-5 text-sm">
+          <div>
+            <dt class="font-semibold text-ink">Email</dt>
+            <dd class="mt-1"><a href={`mailto:${site.email}`} class="text-brand-700 hover:underline">{site.email}</a></dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-ink">Phone</dt>
+            <dd class="mt-1 text-muted">{site.phone}</dd>
+          </div>
+          <div>
+            <dt class="font-semibold text-ink">Office</dt>
+            <dd class="mt-1 text-muted">{site.address}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- Right: form -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+        <form action={FORMSPREE_ENDPOINT} method="POST" class="space-y-5">
+          <div>
+            <label for="name" class="block text-sm font-medium text-ink">Name</label>
+            <input id="name" name="name" type="text" required
+              class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
+          </div>
+          <div>
+            <label for="email" class="block text-sm font-medium text-ink">Email</label>
+            <input id="email" name="email" type="email" required
+              class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20" />
+          </div>
+          <div>
+            <label for="message" class="block text-sm font-medium text-ink">Message</label>
+            <textarea id="message" name="message" rows="4" required
+              class="mt-1.5 w-full rounded-lg border border-slate-300 px-3.5 py-2.5 text-sm outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20"></textarea>
+          </div>
+          <Button class="w-full" size="lg">Send message</Button>
+          <p class="text-center text-xs text-muted">
+            Prefer email? Write to <a href={`mailto:${site.email}`} class="text-brand-700 hover:underline">{site.email}</a>.
+          </p>
+        </form>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

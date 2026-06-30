@@ -1,0 +1,48 @@
+---
+/* ABOUT PAGE */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Section from "../components/Section.astro";
+import CTA from "../components/CTA.astro";
+import { site } from "../data/site";
+
+const values = [
+  { title: "Clarity", text: "We explain technology in plain language and keep you in the loop at every step." },
+  { title: "Craft", text: "We sweat the details — clean code, thoughtful design, dependable delivery." },
+  { title: "Partnership", text: "We act like part of your team and stay invested in your long-term success." },
+];
+---
+
+<BaseLayout title="About" description={`Learn about ${site.name} — our mission, values and the team behind the work.`}>
+  <Section>
+    <div class="mx-auto max-w-3xl">
+      <p class="text-sm font-semibold uppercase tracking-wide text-brand-600">About us</p>
+      <h1 class="mt-3 text-4xl font-bold sm:text-5xl">We help businesses thrive with technology</h1>
+      <p class="mt-6 text-lg leading-relaxed text-muted">
+        {site.name} is a technology company helping organisations of every size design,
+        build and run great software. We pair deep technical expertise with a genuine
+        focus on your goals — so the technology we deliver actually moves the needle.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-muted">
+        From startups finding their footing to established companies modernising their
+        systems, we bring the same commitment to quality, reliability and clear communication.
+      </p>
+    </div>
+  </Section>
+
+  <Section muted>
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-bold sm:text-4xl">What we value</h2>
+      <p class="mt-4 text-muted">The principles that guide how we work.</p>
+    </div>
+    <div class="mt-12 grid gap-6 sm:grid-cols-3">
+      {values.map((v) => (
+        <div class="rounded-2xl border border-slate-200 bg-white p-7">
+          <h3 class="text-lg font-semibold">{v.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-muted">{v.text}</p>
+        </div>
+      ))}
+    </div>
+  </Section>
+
+  <CTA title="Let's work together" text="Tell us about your goals and we'll show you what's possible." />
+</BaseLayout>
