@@ -84,14 +84,18 @@ export const companies: Company[] = [
       },
       overview: {
         en: [
-          "TRIMO — reimagining human connection in the digital era. It is a next-generation one-to-one social interaction platform designed to foster authentic relationships through real-time communication and engaging digital experiences.",
-          "The platform integrates messaging, video communication and a dynamic virtual economy — enabling users to connect, interact and express themselves in more meaningful ways.",
-          "By combining social networking, entertainment and digital monetization, TRIMO delivers an immersive environment where users build genuine connections while taking part in a vibrant online community.",
+          "Nexxatech Global Sdn. Bhd. is a digital entertainment and social technology company built on a single mission — to make human connection in the digital era feel genuine again. As the creator of TRIMO, it is reimagining how people meet, talk and build relationships online.",
+          "TRIMO is a next-generation one-to-one social interaction platform designed to foster authentic relationships through real-time communication and genuinely engaging digital experiences.",
+          "At its heart, the platform brings together instant messaging, face-to-face video communication and a dynamic virtual economy — letting users connect, interact and express themselves in more personal and meaningful ways.",
+          "Virtual gifting and a built-in Diamond economy turn everyday interactions into moments worth sharing, while powering premium, personalized experiences across the community.",
+          "By weaving social networking, entertainment and digital monetization into one seamless ecosystem, TRIMO creates an immersive environment where people build real connections and belong to a vibrant, growing community — the foundation of the group's long-term ambition in social technology.",
         ],
         zh: [
-          "TRIMO —— 重新想象数字时代的人际连接。它是新一代的一对一社交互动平台，通过实时沟通与引人入胜的数字体验，培育真实的人际关系。",
-          "平台融合即时通讯、视频沟通与充满活力的虚拟经济 —— 让用户以更有意义的方式连接、互动并表达自我。",
-          "通过将社交、娱乐与数字变现相结合，TRIMO 打造出沉浸式的环境，让用户在融入活跃线上社区的同时，建立真诚的连接。",
+          "Nexxatech Global Sdn. Bhd. 是一家数字娱乐与社交科技公司，怀着一个单纯的使命 —— 让数字时代的人际连接重新变得真实。作为 TRIMO 的缔造者，它正在重新想象人们在线上相遇、交流与建立关系的方式。",
+          "TRIMO 是新一代的一对一社交互动平台，通过实时沟通与真正引人入胜的数字体验，培育真实的人际关系。",
+          "平台的核心，融合了即时通讯、面对面的视频沟通与充满活力的虚拟经济 —— 让用户以更私人、更有意义的方式连接、互动并表达自我。",
+          "虚拟礼物与内置的钻石经济，把日常的互动化为值得分享的时刻，同时为社区中的高级、个性化体验提供动力。",
+          "通过将社交、娱乐与数字变现交织成一个无缝的生态，TRIMO 打造出沉浸式的环境，让人们建立真实的连接、归属于一个充满活力、不断成长的社区 —— 这也是集团在社交科技领域长期抱负的基石。",
         ],
       },
       quickFacts: {
@@ -174,11 +178,15 @@ export const companies: Company[] = [
           "We don't just provide AI tools. We help companies build their own AI Brain, AI Workforce and AI Operating System — making AI the core engine of growth, execution and decision-making.",
           "We guide enterprises through the full upgrade: Traditional → Digital → AI-Assisted → AI-Driven → AI-Native. Tomorrow's biggest competitive advantage isn't owning systems — it's owning AI that continuously learns, executes, analyses in real time and keeps optimising.",
           "Most companies don't lack systems — they already run ERP, CRM, HRMS, Excel, Workspace, Notion, Slack and Power BI. What they lack is real intelligence: information stays siloed, knowledge isn't retained, KPIs lack closed-loop management, tasks go unfollowed and decisions are slow. NEXJARVIS upgrades the human organization into Human Workforce + AI Workforce.",
+          "Rather than adding yet another tool, NEXJARVIS gives every company an AI Brain that remembers, an AI Workforce that executes, and an AI Operating System that connects everything — so intelligence compounds instead of scattering across disconnected apps.",
+          "Built for Southeast Asia's fast-growing enterprises, it turns fragmented systems and manual follow-up into a single, self-improving operating layer — the difference between a company that merely uses AI and one that truly runs on it.",
         ],
         zh: [
           "我们不只是提供 AI 工具。我们帮助企业建立属于自己的 AI 大脑（AI Brain）、AI 员工（AI Workforce）与 AI 操作系统（AI Operating System），让 AI 成为企业持续成长、执行与决策的核心驱动力。",
           "我们协助企业完成完整升级：传统企业 → 数字化企业 → AI 辅助 → AI 驱动 → AI 原生企业。未来企业最大的竞争优势，不再只是拥有系统，而是拥有能够持续学习、自动执行、实时分析与不断优化的 AI 能力。",
           "多数企业缺的并不是系统 —— 它们早已拥有 ERP、CRM、HRMS、Excel、Google Workspace、Notion、Slack 与 Power BI；但依然存在信息断层、知识无法沉淀、KPI 缺乏闭环、任务无人跟进、决策低效。NEXJARVIS 正是为此而生，将传统人力组织升级为「Human Workforce ＋ AI Workforce」。",
+          "NEXJARVIS 要做的，不是再多加一个工具，而是为每一家企业配上一个会记忆的 AI 大脑、一支会执行的 AI 员工团队，以及一套把一切连接起来的 AI 操作系统 —— 让智能不断累积复利，而不是散落在彼此割裂的应用之中。",
+          "面向东南亚快速成长的企业，NEXJARVIS 把割裂的系统与靠人力的跟进，转化为一个统一、能够自我进化的运营层 —— 这正是「只是使用 AI」与「真正以 AI 运转」之间的分水岭。",
         ],
       },
       quickFacts: {
@@ -354,10 +362,14 @@ export const companies: Company[] = [
         en: [
           "Combining leisure, accommodation, corporate activities and nature-inspired environments, Gemas serves as a destination for both personal retreats and business gatherings.",
           "From championship golf to weekend escapes, corporate retreats and family recreation, the resort brings golf, hospitality and lifestyle together in one place.",
+          "Set within nature-inspired surroundings, Gemas brings together a golf and country club, resort accommodation, dining and wellness, and versatile spaces for corporate and private events — all within a single destination.",
+          "Whether for a weekend escape, a corporate retreat or a family day out, the resort is designed around memorable experiences that blend recreation, hospitality and lifestyle — creating a destination that reaches well beyond the fairway.",
         ],
         zh: [
           "将休闲、住宿、企业活动与自然环境融为一体，Gemas 既是个人度假的去处，也是商务聚会的目的地。",
           "从锦标级高尔夫到周末度假、企业静修与家庭休闲，度假村将高尔夫、款待与生活方式汇聚于一处。",
+          "置身于自然环境之中，Gemas 将高尔夫与乡村俱乐部、度假住宿、餐饮与健康设施，以及适用于企业与私人活动的多功能空间汇聚一处，集于同一个目的地。",
+          "无论是周末度假、企业静修，还是家庭出游，度假村都围绕难忘的体验而设计，将休闲、款待与生活方式融为一体 —— 打造一处远不止于球场的目的地。",
         ],
       },
       quickFacts: {
@@ -445,10 +457,14 @@ export const companies: Company[] = [
         en: [
           "National 6A Investment Co., Ltd. is a Phnom Penh–based property developer founded and led by Malaysian entrepreneur Kam Chin Seng. Since 2012, the company has established itself as a Malaysian-background developer with deep roots in the Cambodian capital.",
           "Its work spans the full development lifecycle — from property development and project investment to sales, marketing and long-term property management — creating tangible, long-horizon assets for residents, partners and investors.",
+          "The company pairs Malaysian standards of design and delivery with a deep understanding of the Cambodian market, building places that are made to last — and to appreciate — across market cycles.",
+          "From landmark residences such as Galaxy Residence and The Peninsula to integrated urban communities, National 6A focuses on developments that raise the standard of city living while creating durable, long-horizon value for residents, partners and investors alike.",
         ],
         zh: [
           "National 6A Investment Co., Ltd. 是一家总部位于柬埔寨金边的房地产开发公司，由马来西亚企业家 Kam Chin Seng 创立及领导。自 2012 年以来，公司以「马来西亚背景的柬埔寨地产开发商」立足，深耕金边市场。",
           "其业务覆盖完整的开发周期 —— 从房地产开发、项目投资，到销售、营销与长期物业管理 —— 为住户、合作伙伴与投资者创造可见、可长期持有的资产。",
+          "公司将马来西亚的设计与交付标准，与对柬埔寨市场的深刻理解相结合，打造经得起时间考验、并能跨越市场周期持续增值的作品。",
+          "从 Galaxy Residence、The Peninsula 等地标住宅，到一体化的城市社区，National 6A 专注于既能提升城市生活标准、又能为住户、合作伙伴与投资者创造持久长期价值的开发项目。",
         ],
       },
       quickFacts: {
