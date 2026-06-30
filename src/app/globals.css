@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   DESIGN TOKENS — single source of truth for the dark, editorial, investor-grade
+   aesthetic (inspired by Lux Capital × McKinsey). Edit here to retune the whole
+   site. Tailwind v4 turns each token into a utility, e.g.
+     --color-accent  ->  text-accent  bg-accent  border-accent
+   ========================================================================== */
+@theme {
+  /* Surfaces (near-black, layered) */
+  --color-bg: #09090b;        /* page background */
+  --color-surface: #0e0e11;   /* cards / panels */
+  --color-elevated: #16161a;  /* hover / raised surfaces */
+
+  /* Text */
+  --color-fg: #ededea;        /* primary, warm off-white */
+  --color-muted: #9b9a94;     /* secondary text */
+  --color-faint: #6a6863;     /* tertiary / meta */
+
+  /* Lines & accent */
+  --color-line: rgba(255, 255, 255, 0.08);  /* hairlines, dividers */
+  --color-line-strong: rgba(255, 255, 255, 0.16);
+  --color-accent: #c6a871;        /* champagne — used sparingly */
+  --color-accent-soft: #d8c39a;
+
+  /* Fonts (CSS vars set by next/font in layout.tsx) */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+
+  /* Easing for a refined, calm motion feel */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================================================
+   BASE STYLES
+   ========================================================================== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem; /* offset for the sticky header on anchor jumps */
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: "ss01", "cv01";
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection {
+    background-color: var(--color-accent);
+    color: #0a0a0a;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Dark, unobtrusive scrollbar */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-bg); }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid var(--color-bg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ============================================================================
+   UTILITIES — small editorial helpers
+   ========================================================================== */
+@layer utilities {
+  /* Hairline-thin uppercase label used for eyebrows / meta */
+  .label {
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* Subtle top-down vignette for hero / dark sections */
+  .vignette {
+    background:
+      radial-gradient(60% 50% at 50% 0%, rgba(198, 168, 113, 0.06), transparent 70%),
+      radial-gradient(80% 60% at 50% 100%, rgba(255, 255, 255, 0.025), transparent 70%);
+  }
+
+  /* Faint grid backdrop for technical / portfolio sections */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 80px 80px;
+    -webkit-mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
+    mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
+  }
+}

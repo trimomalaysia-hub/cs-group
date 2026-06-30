@@ -1,70 +1,66 @@
-# Nexxatech Official Website — Project Guide for Claude
+# KCS Group Website — Project Guide for Claude
 
-This is the **Nexxatech company website**, built with **Astro 5 + Tailwind CSS v4**.
-It will mostly be edited by a **non-technical team member** giving you plain-English
-requests. Your job: make the changes correctly, keep the site polished and on-brand,
-and explain what you did in simple terms.
+Premium corporate site for **KCS Group**, the founder-led group established by
+**Kam Chin Seng**. Built with **Next.js 15 (App Router) · TypeScript · TailwindCSS v4
+· Framer Motion**. Aesthetic: dark, minimal, editorial, investor-grade (Lux Capital ×
+McKinsey). It will often be edited by a **non-technical team member** in plain English.
 
 ## Golden rule: design work → use the `ui-ux-pro-max` skill
+For anything visual or structural (pages, sections, styling, layout, colour,
+typography, motion, responsiveness, forms), **use the `ui-ux-pro-max` skill** in
+`.claude/skills/ui-ux-pro-max/`. It defines the design system and quality bar.
+Follow it; do not freelance styling or introduce off-system colours/fonts.
 
-Whenever a request involves **anything visual or structural** — adding/editing pages
-or sections, styling, layout, colours, components, spacing, responsiveness, forms,
-or "make it look nicer" — **use the `ui-ux-pro-max` skill** (in
-`.claude/skills/ui-ux-pro-max/`). It defines the design system and quality bar.
-Follow it; don't freelance the styling.
-
-## Project map
-
+## Architecture
 ```
 src/
-  data/site.ts          ← SINGLE source of truth: name, nav, contact, socials, SEO
-  styles/global.css     ← design tokens (colours, fonts) + base styles
-  layouts/BaseLayout.astro  ← shared head/SEO/header/footer wrapper for every page
-  components/            ← reusable pieces: Button, Section, Header, Footer, FeatureCard, CTA
-  pages/                ← one file = one page (index, about, services, contact). URL = filename.
-public/                 ← static files served as-is (favicon, og-image, robots.txt)
+  app/         layout.tsx (fonts, SEO, header/footer) · page.tsx (composes sections) · globals.css (tokens)
+  components/
+    ui/        Container, Section, SectionHeading, Eyebrow, Button, Reveal (+Stagger/StaggerItem)
+    layout/    Header (client, scroll-aware) · Footer
+    sections/  Hero, Founder, Companies, Vision, Portfolio, Timeline, Insights, Contact
+  lib/         site.ts (identity/nav/contact) · data.ts (companies, principles, timeline, insights)
 ```
+- Path alias `@/*` → `src/*`.
+- **Server components by default**; add `"use client"` only for state/effects/Framer
+  Motion. Server components can render the client `Reveal`/`Stagger` wrappers.
 
-## How to do common things (do them this way)
+## Where things live (edit these, not the markup)
+- **Companies / vision / timeline / insights copy** → `src/lib/data.ts`
+- **Group name, founder, nav, contact, social** → `src/lib/site.ts`
+- **Colours, fonts, motion easing** → `src/app/globals.css` (`@theme`) + `layout.tsx`
+- **Add a section** → file in `src/components/sections/`, built from `Section` +
+  `SectionHeading` + `Reveal/Stagger`; import into `src/app/page.tsx`; add its `#id`
+  to `nav` in `site.ts`.
 
-- **Change company name / contact info / menu / social links** → edit `src/data/site.ts` only.
-- **Change brand colours or fonts** → edit the `@theme` block in `src/styles/global.css`
-  (and the font `<link>` in `BaseLayout.astro` if changing fonts).
-- **Add a page** → new file in `src/pages/`, wrap in `<BaseLayout title=... description=...>`,
-  build from `<Section>` + existing components, then add it to `nav` in `src/data/site.ts`.
-- **Add/edit a section** → copy an existing `<Section>` block and change its content.
-- **Buttons** → always use `Button.astro`. **Cards** → `FeatureCard.astro`. Don't hand-roll styles.
-- **Never** hard-code hex colours or random fonts in markup — use the design tokens.
+## Design system quick reference
+- Surfaces `bg-bg` / `bg-surface` / `bg-elevated`; text `text-fg` / `text-muted` /
+  `text-faint`; hairlines `border-line` / `border-line-strong`; accent `text-accent`
+  (champagne — **sparingly**). Headings = serif `font-display`; body = Inter.
+- Sections via `<Section>`; container via `<Container>`; buttons via `<Button>`.
+- Motion: `<Reveal>` / `<Stagger>` only — subtle, once-only, reduced-motion-safe.
 
 ## Commands
-
-- `npm run dev` — start the local preview server (then open the printed `localhost` URL).
-- `npm run build` — build the production site into `dist/`.
-- `npm run preview` — preview the production build locally.
-
-When starting the dev server during a task, prefer background mode so it doesn't
-block: `astro dev --background` (manage with `astro dev stop` / `status` / `logs`).
+- `npm run dev` — local dev server (http://localhost:3000)
+- `npm run build` — production build
+- `npm run start` — serve the production build
 
 ## Quality bar (always)
+- Investor-grade restraint: large type, generous whitespace, accent used sparingly.
+- Mobile-first and fully responsive (check ~375px and desktop).
+- Accessible: one `<h1>`, logical headings, labelled inputs, `aria-hidden`/`aria-label`,
+  visible focus ring.
+- Run `npm run build` after non-trivial changes; summarise changes plainly.
 
-- Mobile-first and fully responsive; check ~375px and desktop.
-- Accessible: semantic HTML, one `<h1>` per page, labelled form fields, `alt` on images,
-  strong contrast, visible focus rings.
-- Astro ships **zero JS** by default — keep it that way unless real interactivity is needed.
-- After a change, summarise it plainly and suggest previewing with `npm run dev`.
+## Content / TODO notes
+- `data.ts` years and portfolio metrics are **illustrative placeholders** — replace
+  with verified figures. The group name **"KCS Group"** is a placeholder for the
+  holding brand; rename in `site.ts` if a formal brand exists.
+- Replace monogram placeholders (Founder portrait, logo mark) with real assets via
+  `next/image` when available.
+- Contact form posts to a placeholder Formspree endpoint (see `Contact.tsx`).
 
 ## Environment notes
-
-- Node.js and Git are installed in the user folder (`%LOCALAPPDATA%\Programs\nodejs`
-  and `…\Programs\MinGit\cmd`). If a fresh terminal can't find `node`/`npm`/`git`,
-  they're on the user PATH — open a new terminal, or prepend those two folders to PATH.
-
-## Reference docs
-
-Full Astro docs: https://docs.astro.build — consult before non-trivial work:
-- [Pages & routing](https://docs.astro.build/en/basics/astro-pages/)
-- [Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Styling & Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Images](https://docs.astro.build/en/guides/images/)
-- [Content collections](https://docs.astro.build/en/guides/content-collections/) (for a blog later)
-- [Deploy](https://docs.astro.build/en/guides/deploy/)
+- Node.js and Git are no-admin user-folder installs (`%LOCALAPPDATA%\Programs\nodejs`
+  and `…\Programs\MinGit\cmd`), on the user PATH. If a fresh terminal can't find
+  `node`/`npm`/`git`, open a new terminal or prepend those folders to PATH.

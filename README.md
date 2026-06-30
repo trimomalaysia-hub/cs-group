@@ -1,79 +1,64 @@
-# Nexxatech Official Website
+# KCS Group — Official Website
 
-The official Nexxatech company website. Built with [Astro](https://astro.build) +
-[Tailwind CSS](https://tailwindcss.com). Designed to be edited with the help of
-**Claude Code** — you describe the change in plain English, Claude makes it.
+A premium, investor-grade corporate website for **KCS Group**, the founder-led
+group of companies established by **Kam Chin Seng**. Dark, minimal, editorial
+aesthetic inspired by Lux Capital and McKinsey.
+
+**The ecosystem**
+- **Nexxatech Global Sdn Bhd** — *TRIMO*, a green social platform
+- **Nexflo Sdn Bhd** — *Jarvis AI*, an enterprise intelligence platform
+- **Gemas Golf Resort Sdn Bhd** — hospitality & golf resort
+- **National 6A Investment Co., Ltd.** — property development
+
+**Sections:** Hero · Founder · Companies · Vision · Portfolio · Timeline · Insights · Contact
 
 ---
 
-## 🚀 For the website editor (non-technical) — start here
+## Tech stack
+Next.js 15 (App Router) · TypeScript · TailwindCSS v4 · Framer Motion
 
-You don't need to know how to code. You'll mostly do two things: **preview the
-site** and **ask Claude Code to make changes**.
-
-### 1. Preview the website on your computer
-Open a terminal in this folder and run:
-
+## Getting started
 ```bash
-npm install      # only needed the first time
-npm run dev
+npm install     # first time / after pulling changes
+npm run dev      # http://localhost:3000
 ```
+| Command         | What it does                         |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the local dev server           |
+| `npm run build` | Build the production site            |
+| `npm run start` | Serve the production build           |
 
-Then open the link it prints (usually **http://localhost:4321**) in your browser.
-The page updates automatically as changes are made. Press `Ctrl + C` to stop.
+## Editing the site
+You mostly edit **content**, not code:
+- **Company / vision / timeline / insights text** → [`src/lib/data.ts`](src/lib/data.ts)
+- **Group name, founder, navigation, contact, social** → [`src/lib/site.ts`](src/lib/site.ts)
+- **Colours, fonts, motion** → [`src/app/globals.css`](src/app/globals.css)
 
-### 2. Ask Claude Code to make changes
-Just describe what you want, for example:
-- "Change the headline on the home page to …"
-- "Add a new page called Careers with a list of open jobs."
-- "Update the company phone number and email."
-- "Make the buttons green instead of purple."
-- "Add a Pricing section with three plans."
+Or just ask **Claude Code** in plain English (e.g. *"add a Careers section",
+"make the accent colour deep blue", "update the founder bio"*). It follows the
+built-in **ui-ux-pro-max** design guide so changes stay premium and consistent.
 
-Claude follows the built-in **ui-ux-pro-max** design guide, so changes stay
-clean, consistent, and on-brand automatically.
-
-### 3. Quick edits you can make yourself
-Open `src/data/site.ts` to change the **company name, phone, email, address,
-menu links, and social media links** — it's all plain text between quotes.
-
----
-
-## 🧑‍💻 For developers
-
-| Command           | What it does                                   |
-| ----------------- | ---------------------------------------------- |
-| `npm install`     | Install dependencies (first time / after pull) |
-| `npm run dev`     | Start local dev server at `localhost:4321`     |
-| `npm run build`   | Build the production site into `dist/`         |
-| `npm run preview` | Preview the production build locally           |
-
-**Project structure**
-
+## Project structure
 ```
 src/
-  data/site.ts        # single source of truth (name, nav, contact, SEO)
-  styles/global.css   # design tokens (colours, fonts) + base styles
-  layouts/            # BaseLayout.astro — head/SEO/header/footer wrapper
-  components/         # Button, Section, Header, Footer, FeatureCard, CTA
-  pages/              # one file per page (file name = URL)
-public/               # static assets (favicon, og-image, robots.txt)
-.claude/skills/       # ui-ux-pro-max design system skill for Claude Code
+  app/          layout, home page, global styles + design tokens
+  components/
+    ui/         reusable primitives (Container, Section, Button, Reveal, …)
+    layout/     Header, Footer
+    sections/   the 8 page sections
+  lib/          site config + content data
+.claude/skills/ ui-ux-pro-max design system skill for Claude Code
 ```
 
-The design system and front-end conventions live in
-[`.claude/skills/ui-ux-pro-max/SKILL.md`](.claude/skills/ui-ux-pro-max/SKILL.md)
-and [`CLAUDE.md`](CLAUDE.md).
+## Before going live
+- Set the real domain in `src/lib/site.ts` (`url`).
+- Replace **illustrative** years/metrics in `data.ts` with verified figures, and
+  confirm the holding brand name (placeholder: *KCS Group*).
+- Add real imagery (founder portrait, logo) via `next/image`.
+- Connect the contact form (replace `YOUR_FORM_ID` in `src/components/sections/Contact.tsx`).
+- Add a `public/og-image.png` (1200×630) for social sharing.
 
----
-
-## 🌐 Publishing the site (when ready)
-
-This is a static site — it can be hosted **free**. Easiest options:
-- **Netlify** or **Vercel** — connect this project's Git repository and it deploys
-  automatically on every change. (Ask Claude Code: "help me deploy to Netlify".)
-- **Cloudflare Pages** — also free and fast.
-
-Before going live: set the real domain in `src/data/site.ts` (`url`), add a
-`public/og-image.png` (1200×630) for social sharing, and connect the contact form
-(see the note at the top of `src/pages/contact.astro`).
+## Deploy (free)
+Optimised for **Vercel** (the makers of Next.js): push the repo to GitHub and
+import it at vercel.com — it auto-detects Next.js and deploys on every push.
+Netlify and Cloudflare Pages also work. (Ask Claude Code: *"help me deploy to Vercel"*.)

@@ -1,0 +1,71 @@
+import type { Metadata } from "next";
+import { Fraunces, Inter } from "next/font/google";
+import { site } from "@/lib/site";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import "./globals.css";
+
+/* Editorial serif for display headlines (McKinsey-like authority) */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  variable: "--font-fraunces",
+  display: "swap",
+  axes: ["opsz"],
+});
+
+/* Clean grotesque for UI + body (Lux-like restraint) */
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: {
+    default: `${site.name} — Founder-Led Group`,
+    template: `%s — ${site.name}`,
+  },
+  description: site.description,
+  applicationName: site.name,
+  authors: [{ name: site.founder }],
+  keywords: [
+    site.name,
+    site.founder,
+    "TRIMO",
+    "Jarvis AI",
+    "Gemas Golf Resort",
+    "National 6A",
+    "founder-led group",
+    "investment",
+    "technology",
+    "hospitality",
+  ],
+  openGraph: {
+    type: "website",
+    siteName: site.name,
+    title: `${site.name} — Founder-Led Group`,
+    description: site.description,
+    url: site.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — Founder-Led Group`,
+    description: site.description,
+  },
+  robots: { index: true, follow: true },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <body className="min-h-screen bg-bg text-fg antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

@@ -1,133 +1,121 @@
 ---
 name: ui-ux-pro-max
 description: >-
-  Senior product-designer playbook for this website. USE THIS WHENEVER building,
-  editing, or styling any UI — pages, sections, components, layout, colours,
-  typography, spacing, responsiveness, animation, forms, or accessibility.
-  It enforces the project's design system so every change looks polished,
-  consistent, and on-brand. Trigger on requests like "add a page", "change the
-  look", "make it nicer", "add a section/hero/button", "fix the spacing",
-  "redesign", or any visual/layout/design work.
+  Senior product-designer playbook for the KCS Group website (Next.js 15 +
+  TypeScript + TailwindCSS v4 + Framer Motion). USE THIS WHENEVER building or
+  editing anything visual or structural — pages, sections, components, layout,
+  typography, colour, spacing, motion/animation, responsiveness, forms, or
+  accessibility. It enforces the dark, editorial, investor-grade design system
+  (Lux Capital × McKinsey) so every change stays premium and consistent.
+  Trigger on requests like "add a section/page", "change the look", "make it
+  feel more premium", "add an animation", "fix the spacing/typography", or any
+  design/layout/styling work.
 ---
 
-# UI/UX Pro Max — Design System & Playbook
+# UI/UX Pro Max — KCS Group Design System & Playbook
 
-You are acting as a **senior product designer + front-end engineer** for the
-**Nexxatech** marketing website (Astro 5 + Tailwind CSS v4). Your job is to make
-every change look like it was crafted by a top design studio: clean, modern,
-consistent, accessible, and fast. Non-designers will be requesting changes —
-your taste is the quality bar. Hold it high.
+Act as a **senior product designer + front-end engineer** for the **KCS Group**
+corporate site — a founder-led holding group. The bar is **investor-grade**:
+dark, minimal, editorial, premium, elegant. Think **Lux Capital × McKinsey**.
+Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
+1. **Reuse before you create.** There is a full design system and component
+   library already. Compose existing pieces; don't reinvent.
+2. **Read first:** `src/lib/site.ts`, `src/lib/data.ts`, `src/app/globals.css`,
+   and the relevant files in `src/components/`. Match their patterns exactly.
+3. **Stay on-system.** Never introduce off-palette colours, new fonts, or one-off
+   spacing. If something genuinely new is needed, add a token in `globals.css`.
 
-1. **Reuse before you create.** This project already has a design system and
-   components. Always prefer existing tokens/components over inventing new ones.
-2. **Read the relevant files first**: `src/data/site.ts`, `src/styles/global.css`,
-   and the components in `src/components/`. Match their patterns exactly.
-3. **Stay on-brand.** Never introduce off-system colours, random fonts, or
-   one-off spacing. If something truly new is needed, add it as a token in
-   `global.css`, don't hard-code it.
+## 1. Tech & file architecture
+- **Next.js 15 App Router** + **TypeScript** + **Tailwind v4** + **Framer Motion**.
+- Path alias `@/*` → `src/*`.
+```
+src/
+  app/            layout.tsx (fonts, metadata, header/footer), page.tsx (composes sections), globals.css
+  components/
+    ui/           Container, Section, SectionHeading, Eyebrow, Button, Reveal (+ Stagger/StaggerItem)
+    layout/       Header (client, scroll-aware), Footer
+    sections/     Hero, Founder, Companies, Vision, Portfolio, Timeline, Insights, Contact
+  lib/            site.ts (identity/nav/contact), data.ts (companies, principles, timeline, insights)
+```
+- **Server components by default.** Add `"use client"` only when a component uses
+  state, effects, or Framer Motion directly. Server components may render the
+  client motion wrappers (`Reveal`, `Stagger`) freely.
 
-## 1. The design system (use these — don't reinvent)
-
-**Colour tokens** (defined in `src/styles/global.css` → become Tailwind classes):
-- `brand-50 … brand-950` — primary colour. Buttons, links, accents. `brand-600` is the main one.
-- `accent-400/500/600` — cyan highlight for gradients & small accents. Use sparingly.
-- `ink` — main text. `muted` — secondary text. `surface` — page bg. `subtle` — alternating section bg.
-- Use Tailwind's `slate-*` only for borders/dividers (e.g. `border-slate-200`).
-- **Never** use raw hex in markup. Add/adjust colours in `global.css` instead.
+## 2. The design system (use these tokens — defined in `globals.css @theme`)
+**Colour** (dark, layered, near-monochrome):
+- Surfaces: `bg-bg` (page), `bg-surface` (cards), `bg-elevated` (hover/raised).
+- Text: `text-fg` (primary off-white), `text-muted` (secondary), `text-faint` (meta).
+- Lines: `border-line` (hairlines), `border-line-strong`.
+- Accent: `text-accent` / `bg-accent` (champagne). **Use sparingly** — eyebrows,
+  one keyword, hairline highlights, hover states. Never fill large areas with it.
+- **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
 **Typography:**
-- Headings automatically use `font-display` (Space Grotesk). Body uses Inter.
-- Scale: hero `text-4xl sm:text-6xl`, section title `text-3xl sm:text-4xl`,
-  card title `text-lg`. Body `text-base`/`text-lg`, secondary `text-sm`.
-- Keep headings tight (`leading-tight`), give body comfortable line-height.
+- Headings use the serif display (`font-display`, Fraunces) automatically.
+  Body/UI uses Inter (`font-sans`, the default).
+- Scale is **large and editorial**: hero `text-6xl`→`text-7xl`; section titles
+  `text-4xl`→`text-6xl`; keep `leading` tight on display, relaxed on body.
+- An italic accent keyword in a headline (`italic text-accent`) is the signature
+  flourish — at most one per headline.
 
-**Spacing & layout:**
-- Wrap page bands in the `<Section>` component — it gives consistent vertical
-  rhythm (`py-20 sm:py-28`) and a centered `max-w-6xl` container. Use `muted`
-  prop to alternate background colour between sections.
-- Inside content, use the 4-pt-ish Tailwind scale (`gap-6`, `mt-4`, `p-7`…).
-  Be consistent; don't mix `mt-3` and `mt-[13px]`.
-- Generous whitespace is a feature, not wasted space. When unsure, add more.
+**Layout & spacing:**
+- Wrap content in `<Container>` (max-w-7xl, consistent gutters).
+- Every band is a `<Section id="...">` — it provides the generous rhythm
+  (`py-24 sm:py-32 lg:py-40`) and top hairline. Don't hand-roll section padding.
+- Open every section with `<SectionHeading index="0X" eyebrow="..." title=...
+  lead=... />` for a consistent editorial top.
+- **Whitespace is the luxury.** Be generous; never crowd.
 
-**Components** (in `src/components/` — compose these):
-- `BaseLayout.astro` — every page must be wrapped in this (handles head/SEO/header/footer).
-- `Section.astro` — one band of a page.
-- `Button.astro` — `variant="primary|secondary|ghost"`, `size="sm|md|lg"`, `href` optional.
-- `FeatureCard.astro` — icon + title + description card.
-- `CTA.astro` — bold call-to-action band.
-- `Header.astro` / `Footer.astro` — driven by `src/data/site.ts`.
+**Shape:** soft, restrained — cards `rounded-2xl`, buttons `rounded-full`,
+hairline borders, no heavy shadows (the depth comes from layered dark surfaces).
 
-**Border radius & elevation:** rounded and soft. Cards `rounded-2xl`, buttons
-`rounded-full`, big panels `rounded-3xl`. Shadows are subtle (`shadow-sm`,
-`hover:shadow-lg`) — never harsh.
+## 3. Motion (Framer Motion — subtle, premium)
+- Reveal content on scroll with `<Reveal>` (single) or `<Stagger>` + `<StaggerItem>`
+  (lists). Default easing is `[0.16, 1, 0.3, 1]`; durations ~0.6–0.9s.
+- Motion is **felt, not noticed**: short fades + small lifts (y ≈ 20–28px). No
+  bounce, no spin, no parallax-heavy gimmicks. Hover transitions are slow (300–500ms).
+- Always respect `prefers-reduced-motion` (the Reveal primitives already do via
+  `useReducedMotion` — keep it that way; don't hard-code large offsets).
+- `whileInView` with `viewport={{ once: true }}` so things animate once.
 
-## 2. Visual quality principles (the "pro max" part)
+## 4. Accessibility (non-negotiable)
+- Semantic HTML; one `<h1>` (in Hero) per page; logical `<h2>`/`<h3>` order.
+- Form fields need `<label htmlFor>` + matching `id` (see `Contact.tsx`).
+- Decorative elements get `aria-hidden`; icon-only controls get `aria-label`.
+- Strong contrast: `fg`/`muted` on dark surfaces; never `faint` for body copy on
+  busy backgrounds. Keep the focus ring (global `:focus-visible`) intact.
 
-- **Hierarchy:** one clear focal point per section. Size, weight, and colour
-  guide the eye. The most important thing should be the most prominent.
-- **Contrast & restraint:** lots of neutral, small doses of brand colour. A
-  page that's all colour has none. Accent gradients are seasoning, not the meal.
-- **Alignment & grid:** everything lines up. Use grids (`grid sm:grid-cols-2
-  lg:grid-cols-3`) and consistent containers. No floating, misaligned elements.
-- **Consistency:** same kind of thing looks the same everywhere (all cards share
-  padding/radius/hover; all buttons come from `Button.astro`).
-- **Motion with purpose:** subtle transitions only (`transition`, `duration-200`,
-  gentle `hover:-translate-y-1`). No flashy or distracting animation. Respect
-  `prefers-reduced-motion` (already handled globally — don't override it).
-- **Polish the details:** hover/focus states, rounded corners, balanced text
-  (`text-wrap: balance` is on headings), aligned icons, even gaps.
+## 5. Responsiveness & performance
+- **Mobile-first.** Base styles for small screens; layer `sm:`/`lg:` up. Verify
+  ~375px and desktop; nothing overflows; large type scales down gracefully.
+- Keep client components minimal — push `"use client"` to the leaf that needs it.
+- Images: `next/image` from `next/image`, with width/height + meaningful `alt`;
+  put source files in `/public`. Replace monogram placeholders (Founder portrait,
+  logo mark) with real assets when available.
 
-## 3. Accessibility (non-negotiable)
+## 6. Common tasks — the right way
+- **Edit content** (companies, timeline, insights, vision) → `src/lib/data.ts`.
+- **Edit identity / nav / contact** → `src/lib/site.ts`.
+- **Retune colours, fonts, easing** → `src/app/globals.css` (`@theme`) and the
+  `next/font` setup in `layout.tsx`.
+- **Add a section** → new file in `src/components/sections/`, build it from
+  `Section` + `SectionHeading` + `Reveal/Stagger` + existing UI; import it into
+  `src/app/page.tsx`; add its `#id` to `nav` in `site.ts`.
+- **Add a button** → `Button` (`variant="primary|outline|ghost"`). Don't hand-style.
+- **A new page** (e.g. /insights/[slug]) → add a route under `src/app/`, reuse the
+  same primitives and tokens.
 
-- Use **semantic HTML**: `header/nav/main/section/footer`, real `<h1>`→`<h2>`→`<h3>`
-  order (one `<h1>` per page), `<button>` for actions, `<a>` for navigation.
-- Every image needs a meaningful `alt`. Decorative images get `alt=""`.
-- Form inputs need a `<label>` tied via `for`/`id` (see `contact.astro`).
-- Keep text contrast strong: `ink`/`muted` on light backgrounds, white on
-  `brand-600`+. Don't put `muted` text on coloured backgrounds.
-- Keyboard focus is visible (global `:focus-visible` ring) — never remove outlines.
-- Interactive icons/buttons without text need `aria-label`.
+## 7. Definition of done — self-check
+- [ ] Server/client split correct (`"use client"` only where needed); builds clean.
+- [ ] Only design-system tokens + components; no raw hex, no stray fonts/colours.
+- [ ] Section uses `Section` + `SectionHeading`; rhythm and hairlines consistent.
+- [ ] Large editorial type; generous whitespace; accent used sparingly.
+- [ ] Motion is subtle, once-only, reduced-motion-safe.
+- [ ] Great at ~375px and desktop; no overflow; type scales.
+- [ ] Accessible: heading order, labels, `aria-hidden`/`aria-label`, focus ring.
+- [ ] New content in `data.ts`/`site.ts`, not hard-coded in markup.
+- [ ] `npm run build` passes.
 
-## 4. Responsive & performance
-
-- **Mobile-first.** Write base styles for small screens, then add `sm:`/`lg:`
-  overrides. Always check the layout reflows cleanly on a phone width.
-- Astro ships **zero JavaScript** by default — keep it that way. Only add a
-  `<script>` for genuine interactivity (like the mobile menu), and keep it tiny.
-- Images: put them in `src/assets/` and use Astro's `<Image />` from
-  `astro:assets` for automatic optimization; put unprocessed files (favicons,
-  PDFs, OG image) in `public/`. Always set width/height to avoid layout shift.
-
-## 5. Common tasks — how to do them right
-
-**Add a new page:** create `src/pages/<name>.astro`, wrap content in
-`<BaseLayout title="..." description="...">`, build it from `<Section>` bands and
-existing components. Then add it to `nav` in `src/data/site.ts` so it appears in
-the menu and footer.
-
-**Add a section to a page:** copy an existing `<Section>` block as a template,
-keep the same container/heading pattern, swap the content.
-
-**Change brand colour / fonts:** edit the tokens in `src/styles/global.css`
-(`@theme` block) and the font `<link>` in `BaseLayout.astro`. Don't touch
-individual files.
-
-**Add a button/CTA:** use `Button.astro` (don't hand-roll button styles).
-
-**Change company name / contact / nav / socials:** edit `src/data/site.ts` only.
-
-## 6. Definition of done — self-check before finishing
-
-- [ ] Wrapped in `BaseLayout`; unique `<h1>`; heading order is logical.
-- [ ] Only design-system tokens/components used; no raw hex, no off-system fonts.
-- [ ] Looks great at mobile (≈375px) **and** desktop; nothing overflows.
-- [ ] Consistent spacing via `Section` + Tailwind scale; generous whitespace.
-- [ ] Hover/focus states present; focus ring intact; `prefers-reduced-motion` respected.
-- [ ] Images optimized with width/height + meaningful `alt`.
-- [ ] `title`/`description` set for SEO; new pages added to `site.ts` nav.
-- [ ] Ran `npm run build` mentally/▶ no Tailwind class typos, no broken imports.
-
-When you finish a visual change, briefly tell the user what you changed and
-suggest running the dev server (`npm run dev`) to preview it.
+After a change, summarise what you did plainly and suggest `npm run dev` to preview.
