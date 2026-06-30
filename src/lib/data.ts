@@ -128,7 +128,7 @@ export const companies: Company[] = [
     id: "nexflo",
     index: "02",
     legalName: "Nexflo Sdn Bhd",
-    brand: "Jarvis AI",
+    brand: "NEXJARVIS",
     category: { en: "Enterprise Intelligence Platform", zh: "企业智能平台" },
     sector: { en: "Artificial Intelligence", zh: "人工智能" },
     summary: {
@@ -136,8 +136,8 @@ export const companies: Company[] = [
       zh: "统一数据、把信息转化为决策的企业级 AI。",
     },
     description: {
-      en: "Jarvis AI gives organisations a single intelligence layer — connecting fragmented systems, automating knowledge work and surfacing the insight leaders need to act with speed and confidence. It is the group's bet on applied, enterprise-grade AI.",
-      zh: "Jarvis AI 为组织提供统一的智能层 —— 打通分散的系统、自动化知识工作，并呈现领导者据以快速、果断行动所需的洞察。它是集团在落地的企业级 AI 上的布局。",
+      en: "NEXJARVIS gives organisations a single intelligence layer — connecting fragmented systems, automating knowledge work and surfacing the insight leaders need to act with speed and confidence. It is the group's bet on applied, enterprise-grade AI.",
+      zh: "NEXJARVIS 为组织提供统一的智能层 —— 打通分散的系统、自动化知识工作，并呈现领导者据以快速、果断行动所需的洞察。它是集团在落地的企业级 AI 上的布局。",
     },
     highlights: {
       en: ["Unified data intelligence", "Workflow automation", "Decision-grade insight"],
@@ -394,7 +394,7 @@ export const sectors: Sector[] = [
       en: "Enterprise intelligence that compounds in value as organisations scale.",
       zh: "随组织规模扩大而价值复利的企业智能。",
     },
-    company: "Jarvis AI",
+    company: "NEXJARVIS",
   },
   {
     name: { en: "Hospitality & Leisure", zh: "酒店与休闲" },
@@ -442,8 +442,8 @@ export const timeline: Milestone[] = [
     year: "2023",
     title: { en: "Enterprise AI", zh: "企业 AI" },
     text: {
-      en: "Nexflo introduces Jarvis AI, extending the group into applied enterprise intelligence.",
-      zh: "Nexflo 推出 Jarvis AI，将集团拓展至落地的企业智能领域。",
+      en: "Nexflo introduces NEXJARVIS, extending the group into applied enterprise intelligence.",
+      zh: "Nexflo 推出 NEXJARVIS，将集团拓展至落地的企业智能领域。",
     },
   },
   {

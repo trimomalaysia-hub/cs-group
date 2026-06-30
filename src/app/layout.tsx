@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     site.name,
     site.founder,
     "TRIMO",
-    "Jarvis AI",
+    "NEXJARVIS",
     "Gemas Golf Resort",
     "National 6A",
     "founder-led group",
