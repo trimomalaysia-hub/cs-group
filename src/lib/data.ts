@@ -337,6 +337,75 @@ export const companies: Company[] = [
     },
     status: { en: "Operating", zh: "运营中" },
     year: "2021",
+    detail: {
+      tagline: {
+        en: "Where Leisure Meets Hospitality Excellence",
+        zh: "让休闲，遇见卓越款待",
+      },
+      intro: {
+        en: "Gemas Golf Resort is a lifestyle and hospitality destination dedicated to delivering premium golf, resort and recreational experiences.",
+        zh: "Gemas 高尔夫度假村是一处生活方式与酒店款待目的地，专注于呈现高端的高尔夫、度假与休闲体验。",
+      },
+      positioning: {
+        en: "Creating destinations beyond golf.",
+        zh: "打造超越高尔夫的目的地。",
+      },
+      overview: {
+        en: [
+          "Combining leisure, accommodation, corporate activities and nature-inspired environments, Gemas serves as a destination for both personal retreats and business gatherings.",
+          "From championship golf to weekend escapes, corporate retreats and family recreation, the resort brings golf, hospitality and lifestyle together in one place.",
+        ],
+        zh: [
+          "将休闲、住宿、企业活动与自然环境融为一体，Gemas 既是个人度假的去处，也是商务聚会的目的地。",
+          "从锦标级高尔夫到周末度假、企业静修与家庭休闲，度假村将高尔夫、款待与生活方式汇聚于一处。",
+        ],
+      },
+      quickFacts: {
+        en: ["Golf & Country Club", "Resort & Hospitality", "Corporate Retreats"],
+        zh: ["高尔夫与乡村俱乐部", "度假与酒店", "企业静修"],
+      },
+      facts: [
+        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2021", zh: "2021" } },
+        { label: { en: "Location", zh: "所在地" }, value: { en: "Gemas, Malaysia", zh: "马来西亚 · 金马士" } },
+        { label: { en: "Industry", zh: "行业" }, value: { en: "Hospitality & Leisure", zh: "酒店与休闲" } },
+        { label: { en: "Offering", zh: "主营" }, value: { en: "Golf · Resort · Events", zh: "高尔夫 · 度假 · 活动" } },
+        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
+      ],
+      businessAreas: [
+        {
+          title: { en: "Golf & Country Club", zh: "高尔夫与乡村俱乐部" },
+          text: {
+            en: "Golf course operations and management, membership programmes, corporate golf events and tournaments, and recreational and social activities.",
+            zh: "高尔夫球场运营与管理、会籍计划与打球体验、企业高尔夫活动与赛事，以及休闲与社交活动。",
+          },
+        },
+        {
+          title: { en: "Resort & Hospitality", zh: "度假与酒店" },
+          text: {
+            en: "Resort accommodation and guest services, food and beverage experiences, leisure and wellness facilities, and weekend getaways and staycations.",
+            zh: "度假住宿与宾客服务、餐饮体验、休闲与健康设施，以及周末度假与本地度假体验。",
+          },
+        },
+        {
+          title: { en: "Corporate Events & Retreats", zh: "企业活动与静修" },
+          text: {
+            en: "Team-building programmes, corporate retreats and seminars, conferences and business gatherings, and private functions and celebrations.",
+            zh: "团队建设项目、企业静修与研讨会、会议与商务聚会，以及私人宴会与庆典。",
+          },
+        },
+        {
+          title: { en: "Lifestyle & Destination Experiences", zh: "生活方式与目的地体验" },
+          text: {
+            en: "Nature-inspired leisure activities, community engagement programmes, family-oriented recreation and sustainable tourism initiatives.",
+            zh: "自然主题的休闲活动、社区参与项目、亲子休闲体验，以及可持续旅游倡议。",
+          },
+        },
+      ],
+      vision: {
+        en: "To become a leading integrated golf and hospitality destination, creating memorable experiences that combine recreation, wellness, business connectivity and lifestyle excellence.",
+        zh: "成为领先的高尔夫与酒店一体化目的地，创造将休闲、健康、商务连接与卓越生活方式融为一体的难忘体验。",
+      },
+    },
   },
   {
     id: "national6a",
