@@ -35,7 +35,7 @@ export default function Header() {
         {/* Wordmark */}
         <a href="#top" className="group flex items-center gap-2.5" aria-label={site.name}>
           <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong text-[0.85rem] font-display text-accent transition-colors group-hover:border-accent/60">
-            K
+            C
           </span>
           <span className="font-display text-lg tracking-tight text-fg">{site.name}</span>
         </a>

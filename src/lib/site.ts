@@ -5,19 +5,19 @@
 
 export const site = {
   /* Holding group identity. Rename here if the group adopts a formal brand. */
-  name: "KCS Group",
-  legalName: "KCS Group",
+  name: "CS Group",
+  legalName: "CS Group",
   founder: "Kam Chin Seng",
   tagline: "A founder-led group building enduring companies across technology, hospitality and capital.",
   description:
-    "KCS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning green technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
+    "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning green technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
 
   /* Public URL (used for SEO + social previews). Set your real domain here. */
-  url: "https://www.kcsgroup.com",
+  url: "https://www.csgroup.com",
 
   /* Contact */
-  email: "office@kcsgroup.com",
-  investorEmail: "invest@kcsgroup.com",
+  email: "office@csgroup.com",
+  investorEmail: "invest@csgroup.com",
   phone: "+60 12-345 6789",
   location: "Kuala Lumpur, Malaysia",
 
@@ -33,8 +33,8 @@ export const site = {
   ],
 
   social: {
-    linkedin: "https://www.linkedin.com/company/kcsgroup",
-    x: "https://x.com/kcsgroup",
+    linkedin: "https://www.linkedin.com/company/csgroup",
+    x: "https://x.com/csgroup",
   },
 } as const;
 

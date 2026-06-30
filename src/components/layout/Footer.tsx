@@ -13,7 +13,7 @@ export default function Footer() {
           <div className="lg:col-span-5">
             <div className="flex items-center gap-2.5">
               <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong font-display text-accent">
-                K
+                C
               </span>
               <span className="font-display text-lg text-fg">{site.name}</span>
             </div>
