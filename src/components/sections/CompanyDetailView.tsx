@@ -183,6 +183,31 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
         </Section>
       )}
 
+      {/* ---------------- Custom sections (products, AI agents, capabilities…) ---------------- */}
+      {d?.sections?.map((sec, idx) => (
+        <Section key={idx}>
+          <SectionHeading
+            eyebrow={sec.eyebrow[lang]}
+            title={sec.title[lang]}
+            lead={sec.intro?.[lang]}
+          />
+          <Stagger
+            className={`mt-12 grid gap-4 ${
+              sec.cols === 3 ? "sm:grid-cols-2 lg:grid-cols-3" : "sm:grid-cols-2"
+            }`}
+          >
+            {sec.items.map((it) => (
+              <StaggerItem key={it.name.en}>
+                <div className="h-full rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
+                  <h3 className="text-lg text-fg sm:text-xl">{it.name[lang]}</h3>
+                  <p className="mt-3 text-base leading-relaxed text-muted">{it.text[lang]}</p>
+                </div>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Section>
+      ))}
+
       {/* ---------------- Goals ---------------- */}
       {goals && goals.length > 0 && (
         <Section>

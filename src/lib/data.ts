@@ -6,6 +6,16 @@
    ============================================================================ */
 import type { Loc } from "./i18n";
 
+/* A flexible custom content block with its own heading + a grid of cards.
+   Use for company-specific sections (product lines, AI agents, capabilities…). */
+export interface DetailSection {
+  eyebrow: Loc;
+  title: Loc;
+  intro?: Loc;
+  cols?: 2 | 3;
+  items: { name: Loc; text: Loc }[];
+}
+
 export interface CompanyDetail {
   tagline: Loc;
   intro: Loc;
@@ -19,6 +29,7 @@ export interface CompanyDetail {
   mission?: Loc;
   goals?: Loc<string[]>;
   projects?: { name: string; text: Loc }[];
+  sections?: DetailSection[];
 }
 
 export interface Company {
@@ -129,22 +140,181 @@ export const companies: Company[] = [
     index: "02",
     legalName: "Nexflo Sdn Bhd",
     brand: "NEXJARVIS",
-    category: { en: "Enterprise Intelligence Platform", zh: "企业智能平台" },
+    category: { en: "AI Transformation Platform", zh: "AI 转型平台" },
     sector: { en: "Artificial Intelligence", zh: "人工智能" },
     summary: {
-      en: "Enterprise AI that unifies data and turns information into decisions.",
-      zh: "统一数据、把信息转化为决策的企业级 AI。",
+      en: "Helping enterprises become AI-native — with their own AI Brain, AI Workforce and AI Operating System.",
+      zh: "助力企业迈向 AI 原生 —— 拥有专属的 AI 大脑、AI 员工与 AI 操作系统。",
     },
     description: {
-      en: "NEXJARVIS gives organisations a single intelligence layer — connecting fragmented systems, automating knowledge work and surfacing the insight leaders need to act with speed and confidence. It is the group's bet on applied, enterprise-grade AI.",
-      zh: "NEXJARVIS 为组织提供统一的智能层 —— 打通分散的系统、自动化知识工作，并呈现领导者据以快速、果断行动所需的洞察。它是集团在落地的企业级 AI 上的布局。",
+      en: "Nexflo is the company behind NEXJARVIS — a Southeast Asian enterprise AI transformation platform that helps companies move from traditional operations to AI-native organizations.",
+      zh: "Nexflo 是 NEXJARVIS 背后的公司 —— 一个面向东南亚的企业 AI 转型平台，帮助企业从传统运营迈向 AI 原生组织。",
     },
     highlights: {
-      en: ["Unified data intelligence", "Workflow automation", "Decision-grade insight"],
-      zh: ["统一的数据智能", "工作流自动化", "决策级洞察"],
+      en: ["AI Brain & Workforce", "Workflow automation", "AI-native transformation"],
+      zh: ["AI 大脑与员工", "流程自动化", "AI 原生转型"],
     },
     status: { en: "Scaling", zh: "高速成长" },
     year: "2023",
+    detail: {
+      tagline: {
+        en: "Every Company Deserves Its Own Jarvis.",
+        zh: "让每一家企业，都拥有属于自己的 Jarvis。",
+      },
+      intro: {
+        en: "NEXJARVIS is an enterprise AI transformation platform — helping companies move from traditional operations to becoming AI-Native Enterprises.",
+        zh: "NEXJARVIS 是一家企业 AI 转型平台公司，致力于帮助企业从传统运营模式迈向 AI 原生组织（AI-Native Enterprise）。",
+      },
+      positioning: {
+        en: "We don't build AI tools. We build AI-powered organizations.",
+        zh: "我们不打造 AI 工具，我们打造 AI 驱动的组织。",
+      },
+      overview: {
+        en: [
+          "We don't just provide AI tools. We help companies build their own AI Brain, AI Workforce and AI Operating System — making AI the core engine of growth, execution and decision-making.",
+          "We guide enterprises through the full upgrade: Traditional → Digital → AI-Assisted → AI-Driven → AI-Native. Tomorrow's biggest competitive advantage isn't owning systems — it's owning AI that continuously learns, executes, analyses in real time and keeps optimising.",
+          "Most companies don't lack systems — they already run ERP, CRM, HRMS, Excel, Workspace, Notion, Slack and Power BI. What they lack is real intelligence: information stays siloed, knowledge isn't retained, KPIs lack closed-loop management, tasks go unfollowed and decisions are slow. NEXJARVIS upgrades the human organization into Human Workforce + AI Workforce.",
+        ],
+        zh: [
+          "我们不只是提供 AI 工具。我们帮助企业建立属于自己的 AI 大脑（AI Brain）、AI 员工（AI Workforce）与 AI 操作系统（AI Operating System），让 AI 成为企业持续成长、执行与决策的核心驱动力。",
+          "我们协助企业完成完整升级：传统企业 → 数字化企业 → AI 辅助 → AI 驱动 → AI 原生企业。未来企业最大的竞争优势，不再只是拥有系统，而是拥有能够持续学习、自动执行、实时分析与不断优化的 AI 能力。",
+          "多数企业缺的并不是系统 —— 它们早已拥有 ERP、CRM、HRMS、Excel、Google Workspace、Notion、Slack 与 Power BI；但依然存在信息断层、知识无法沉淀、KPI 缺乏闭环、任务无人跟进、决策低效。NEXJARVIS 正是为此而生，将传统人力组织升级为「Human Workforce ＋ AI Workforce」。",
+        ],
+      },
+      quickFacts: {
+        en: ["Enterprise AI Transformation", "AI Workforce", "Southeast Asia"],
+        zh: ["企业 AI 转型", "AI 员工", "东南亚"],
+      },
+      facts: [
+        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2023", zh: "2023" } },
+        { label: { en: "Headquarters", zh: "总部" }, value: { en: "Malaysia", zh: "马来西亚" } },
+        {
+          label: { en: "Industry", zh: "行业" },
+          value: { en: "Enterprise AI Transformation", zh: "企业 AI 转型" },
+        },
+        { label: { en: "Focus", zh: "聚焦" }, value: { en: "Southeast Asia", zh: "东南亚" } },
+        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
+      ],
+      vision: {
+        en: "To become Southeast Asia's leading AI Transformation Platform — helping every company build its own AI Brain, AI Workforce and AI Operating System, and achieve truly AI-native operations.",
+        zh: "成为东南亚领先的 AI 转型平台（AI Transformation Platform），帮助每一家企业建立属于自己的 AI Brain、AI Workforce 与 AI Operating System，实现真正意义上的 AI 原生化经营。",
+      },
+      mission: {
+        en: "To help companies transform from traditional operations into AI-Native Enterprises — through AI readiness assessment, transformation strategy, workflow automation, AI agent deployment, an enterprise AI operating framework and continuous optimization — building lasting competitive advantage and continuously evolving organizational capability.",
+        zh: "协助企业从传统运营模式，转型成为 AI 原生企业 —— 通过 AI 成熟度评估、转型战略、流程自动化、AI Agent 部署、企业 AI 运营框架与持续优化，建立长期竞争优势，实现组织能力的持续进化。",
+      },
+      sections: [
+        {
+          eyebrow: { en: "Products", zh: "产品体系" },
+          title: { en: "Our product system", zh: "我们的产品体系" },
+          cols: 2,
+          items: [
+            {
+              name: { en: "AIMRAM™ — AI Readiness Assessment", zh: "AIMRAM™ —— AI 成熟度评估" },
+              text: {
+                en: "An AI-maturity assessment framework spanning data infrastructure, process integration, people & culture, AI adoption and business impact — answering: where are we now, where should we go, and what's next?",
+                zh: "企业 AI 成熟度评估框架，全面分析数据基础、流程整合、人才与文化、AI 采用与业务影响 —— 回答三个关键问题：我们现在在哪里？未来应走向哪里？下一步如何行动？",
+              },
+            },
+            {
+              name: { en: "AI Transformation Consulting", zh: "AI 转型咨询" },
+              text: {
+                en: "AI strategy, transformation roadmap, change management, organization adoption and governance — taking AI from concept to real operations.",
+                zh: "协助制定 AI 战略、转型路线图、变革管理、组织采用与治理框架，推动 AI 从概念真正落地到组织运营。",
+              },
+            },
+            {
+              name: { en: "AI Operating System", zh: "AI 操作系统" },
+              text: {
+                en: "The enterprise AI hub — integrating CRM, HR, finance, marketing, operations and knowledge base into one Enterprise Intelligence Layer for full coordination of data, process and decisions.",
+                zh: "企业 AI 中枢平台，整合并连接 CRM、HR、财务、市场、运营与知识库，建立统一的企业智能层（Enterprise Intelligence Layer），实现数据、流程与决策的全面协同。",
+              },
+            },
+            {
+              name: { en: "Jarvis AI Workforce", zh: "Jarvis AI Workforce" },
+              text: {
+                en: "A team of enterprise-dedicated AI digital employees across sales, marketing, customer service, operations and management.",
+                zh: "打造企业专属的 AI 数字员工团队，覆盖销售、市场、客服、运营与管理。",
+              },
+            },
+          ],
+        },
+        {
+          eyebrow: { en: "AI Workforce", zh: "AI 员工" },
+          title: { en: "Your AI digital workforce", zh: "企业专属 AI 数字员工" },
+          intro: {
+            en: "A team of AI agents that work alongside your people.",
+            zh: "与你的团队并肩工作的 AI Agent 团队。",
+          },
+          cols: 2,
+          items: [
+            {
+              name: { en: "Sales Agent", zh: "销售 Agent" },
+              text: {
+                en: "Lead generation, nurturing, automated follow-up and CRM updates.",
+                zh: "客户开发、客户培育、自动跟进与 CRM 更新。",
+              },
+            },
+            {
+              name: { en: "Marketing Agent", zh: "市场 Agent" },
+              text: {
+                en: "Content generation, ad analysis, campaign optimization and ROI monitoring.",
+                zh: "内容生成、广告分析、投放优化与 ROI 监测。",
+              },
+            },
+            {
+              name: { en: "Customer Service Agent", zh: "客服 Agent" },
+              text: {
+                en: "24/7 support, automated FAQ replies, knowledge-base management and ticketing.",
+                zh: "24/7 客服支持、FAQ 自动回复、知识库管理与工单处理。",
+              },
+            },
+            {
+              name: { en: "Operations Agent", zh: "运营 Agent" },
+              text: {
+                en: "Process automation, KPI monitoring, anomaly alerts and task tracking.",
+                zh: "流程自动化、KPI 监控、异常预警与任务追踪。",
+              },
+            },
+            {
+              name: { en: "Management Agent", zh: "管理 Agent" },
+              text: {
+                en: "Business analysis, forecasting, report generation, decision support and dashboards.",
+                zh: "经营分析、预测模型、报告生成、决策辅助与管理仪表板。",
+              },
+            },
+          ],
+        },
+        {
+          eyebrow: { en: "Capabilities", zh: "核心能力" },
+          title: { en: "Jarvis's three core capabilities", zh: "Jarvis 的三大核心能力" },
+          cols: 3,
+          items: [
+            {
+              name: { en: "Auto Execution", zh: "Auto Execution · 自动执行" },
+              text: {
+                en: "Automated workflows that drive tasks across departments — from creation to completion, in continuous motion.",
+                zh: "自动执行工作流程，跨部门协同推动任务，从建立到完成，持续运转。",
+              },
+            },
+            {
+              name: { en: "Relentless Follow-Up", zh: "Relentless Follow-Up · 持续追踪" },
+              text: {
+                en: "Never forgets, never delays, never drops — automatic reminders, chasing and escalation keep the organization running at high efficiency.",
+                zh: "不会遗忘、不会延迟、不会中断 —— 自动提醒、自动催办、自动升级，让组织保持高效运作。",
+              },
+            },
+            {
+              name: { en: "Instant Intelligence", zh: "Instant Intelligence · 即时洞察" },
+              text: {
+                en: "Key answers in seconds — why profit dropped, which ad earns most, which KPIs are off, which team is least efficient — turning decisions from experience-driven to intelligence-driven.",
+                zh: "几秒内获得关键答案：为什么利润下降？哪个广告最赚钱？哪些 KPI 异常？哪个团队效率最低？让决策从经验驱动升级为智能驱动。",
+              },
+            },
+          ],
+        },
+      ],
+    },
   },
   {
     id: "gemas",
