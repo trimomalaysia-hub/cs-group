@@ -73,22 +73,22 @@ export default function Contact() {
               <div className="grid gap-6 sm:grid-cols-2">
                 <div>
                   <label htmlFor="name" className="label text-faint">{t.contact.name}</label>
-                  <input id="name" name="name" type="text" required className={`mt-2 ${inputCls}`} placeholder={t.contact.namePh} />
+                  <input id="name" name="name" type="text" required suppressHydrationWarning className={`mt-2 ${inputCls}`} placeholder={t.contact.namePh} />
                 </div>
                 <div>
                   <label htmlFor="email" className="label text-faint">{t.contact.email}</label>
-                  <input id="email" name="email" type="email" required className={`mt-2 ${inputCls}`} placeholder={t.contact.emailPh} />
+                  <input id="email" name="email" type="email" required suppressHydrationWarning className={`mt-2 ${inputCls}`} placeholder={t.contact.emailPh} />
                 </div>
               </div>
 
               <div className="mt-6">
                 <label htmlFor="organisation" className="label text-faint">{t.contact.organisation}</label>
-                <input id="organisation" name="organisation" type="text" className={`mt-2 ${inputCls}`} placeholder={t.contact.orgPh} />
+                <input id="organisation" name="organisation" type="text" suppressHydrationWarning className={`mt-2 ${inputCls}`} placeholder={t.contact.orgPh} />
               </div>
 
               <div className="mt-6">
                 <label htmlFor="message" className="label text-faint">{t.contact.message}</label>
-                <textarea id="message" name="message" rows={5} required className={`mt-2 resize-none ${inputCls}`} placeholder={t.contact.messagePh} />
+                <textarea id="message" name="message" rows={5} required suppressHydrationWarning className={`mt-2 resize-none ${inputCls}`} placeholder={t.contact.messagePh} />
               </div>
 
               <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
