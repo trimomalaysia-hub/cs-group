@@ -5,7 +5,7 @@ group of companies established by **Kam Chin Seng**. Dark, minimal, editorial
 aesthetic inspired by Lux Capital and McKinsey.
 
 **The ecosystem**
-- **Nexxatech Global Sdn Bhd** — *TRIMO*, a green social platform
+- **Nexxatech Global Sdn. Bhd.** — *TRIMO*, a one-to-one social technology platform
 - **Nexflo Sdn Bhd** — *Jarvis AI*, an enterprise intelligence platform
 - **Gemas Golf Resort Sdn Bhd** — hospitality & golf resort
 - **National 6A Investment Co., Ltd.** — property development

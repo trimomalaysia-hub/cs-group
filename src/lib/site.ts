@@ -10,7 +10,7 @@ export const site = {
   founder: "Kam Chin Seng",
   tagline: "A founder-led group building enduring companies across technology, hospitality and capital.",
   description:
-    "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning green technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
+    "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning social technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
 
   /* Public URL (used for SEO + social previews). Set your real domain here. */
   url: "https://www.csgroup.com",

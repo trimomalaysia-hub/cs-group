@@ -9,15 +9,16 @@ import type { Loc } from "./i18n";
 export interface CompanyDetail {
   tagline: Loc;
   intro: Loc;
-  positioning: Loc;
   overview: Loc<string[]>;
-  quickFacts: Loc<string[]>;
-  facts: { label: Loc; value: Loc }[];
-  businessAreas: { title: Loc; text: Loc }[];
   vision: Loc;
-  mission: Loc;
-  goals: Loc<string[]>;
-  projects: { name: string; text: Loc }[];
+  // Everything below is optional — a company only fills in what applies.
+  positioning?: Loc;
+  quickFacts?: Loc<string[]>;
+  facts?: { label: Loc; value: Loc }[];
+  businessAreas?: { title: Loc; text: Loc }[];
+  mission?: Loc;
+  goals?: Loc<string[]>;
+  projects?: { name: string; text: Loc }[];
 }
 
 export interface Company {
@@ -39,24 +40,89 @@ export const companies: Company[] = [
   {
     id: "nexxatech",
     index: "01",
-    legalName: "Nexxatech Global Sdn Bhd",
+    legalName: "Nexxatech Global Sdn. Bhd.",
     brand: "TRIMO",
-    category: { en: "Green Social Platform", zh: "绿色社交平台" },
-    sector: { en: "Technology · Sustainability", zh: "科技 · 可持续" },
+    category: { en: "Social Technology Platform", zh: "社交科技平台" },
+    sector: { en: "Technology · Social Entertainment", zh: "科技 · 社交娱乐" },
     summary: {
-      en: "A social platform that turns everyday actions into measurable environmental impact.",
-      zh: "一个将日常行动转化为可衡量环境影响的社交平台。",
+      en: "A one-to-one social platform building meaningful digital human connection.",
+      zh: "一个一对一社交平台，缔造有温度的数字人际连接。",
     },
     description: {
-      en: "TRIMO connects people, brands and causes around sustainability — rewarding real-world green behaviour and making collective impact visible, social and habitual. It is the group's flagship technology venture for community-led climate action.",
-      zh: "TRIMO 连接人、品牌与公益，围绕可持续发展 —— 奖励现实中的绿色行为，让集体影响变得可见、可社交、可养成习惯。它是集团在社区主导气候行动领域的旗舰科技项目。",
+      en: "Nexxatech Global is a digital entertainment and social technology company and the creator of TRIMO — a next-generation one-to-one platform uniting real-time communication, entertainment and a virtual economy in one seamless ecosystem.",
+      zh: "Nexxatech Global 是一家数字娱乐与社交科技公司，也是 TRIMO 的缔造者 —— 一个将实时沟通、娱乐与虚拟经济融为一体的新一代一对一社交平台。",
     },
     highlights: {
-      en: ["Community-driven impact", "Rewards & engagement engine", "Brand sustainability partnerships"],
-      zh: ["社区驱动的影响力", "奖励与互动引擎", "品牌可持续合作"],
+      en: ["One-to-one connection", "Messaging & video", "Virtual economy"],
+      zh: ["一对一连接", "即时通讯与视频", "虚拟经济"],
     },
     status: { en: "Scaling", zh: "高速成长" },
     year: "2022",
+    detail: {
+      tagline: {
+        en: "Building the Future of Digital Human Connection",
+        zh: "构建数字人际连接的未来",
+      },
+      intro: {
+        en: "Nexxatech Global Sdn. Bhd. is a digital entertainment and social technology company focused on creating meaningful one-to-one connections through immersive online experiences.",
+        zh: "Nexxatech Global Sdn. Bhd. 是一家数字娱乐与社交科技公司，专注于通过沉浸式的线上体验，缔造有意义的一对一连接。",
+      },
+      positioning: {
+        en: "As the creator of TRIMO, Nexxatech is redefining social interaction in the digital era — combining communication, entertainment and virtual engagement within a seamless ecosystem.",
+        zh: "作为 TRIMO 的缔造者，Nexxatech 正在重新定义数字时代的社交 —— 将沟通、娱乐与虚拟互动融汇于一个无缝的生态之中。",
+      },
+      overview: {
+        en: [
+          "TRIMO — reimagining human connection in the digital era. It is a next-generation one-to-one social interaction platform designed to foster authentic relationships through real-time communication and engaging digital experiences.",
+          "The platform integrates messaging, video communication and a dynamic virtual economy — enabling users to connect, interact and express themselves in more meaningful ways.",
+          "By combining social networking, entertainment and digital monetization, TRIMO delivers an immersive environment where users build genuine connections while taking part in a vibrant online community.",
+        ],
+        zh: [
+          "TRIMO —— 重新想象数字时代的人际连接。它是新一代的一对一社交互动平台，通过实时沟通与引人入胜的数字体验，培育真实的人际关系。",
+          "平台融合即时通讯、视频沟通与充满活力的虚拟经济 —— 让用户以更有意义的方式连接、互动并表达自我。",
+          "通过将社交、娱乐与数字变现相结合，TRIMO 打造出沉浸式的环境，让用户在融入活跃线上社区的同时，建立真诚的连接。",
+        ],
+      },
+      quickFacts: {
+        en: ["Creator of TRIMO", "Social Technology", "Est. 2022"],
+        zh: ["TRIMO 缔造者", "社交科技", "成立于 2022"],
+      },
+      facts: [
+        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2022", zh: "2022" } },
+        { label: { en: "Headquarters", zh: "总部" }, value: { en: "Malaysia", zh: "马来西亚" } },
+        {
+          label: { en: "Industry", zh: "行业" },
+          value: { en: "Social Technology & Digital Entertainment", zh: "社交科技与数字娱乐" },
+        },
+        { label: { en: "Product", zh: "产品" }, value: { en: "TRIMO", zh: "TRIMO" } },
+        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
+      ],
+      businessAreas: [
+        {
+          title: { en: "Instant Messaging", zh: "即时通讯" },
+          text: { en: "Real-time one-to-one conversations.", zh: "实时的一对一对话。" },
+        },
+        {
+          title: { en: "Video Communication", zh: "视频沟通" },
+          text: { en: "Interactive, face-to-face experiences.", zh: "面对面的互动体验。" },
+        },
+        {
+          title: { en: "Virtual Gifting", zh: "虚拟礼物" },
+          text: { en: "Digital expressions that enrich social engagement.", zh: "丰富社交互动的数字表达。" },
+        },
+        {
+          title: { en: "Diamond Economy", zh: "钻石经济" },
+          text: {
+            en: "A virtual-currency system powering premium interactions and personalized experiences.",
+            zh: "驱动高级互动与个性化体验的虚拟货币系统。",
+          },
+        },
+      ],
+      vision: {
+        en: "To become a leading global social entertainment platform that empowers meaningful digital relationships through innovation, engagement and technology-driven experiences.",
+        zh: "成为全球领先的社交娱乐平台，以创新、互动与技术驱动的体验，赋能有意义的数字关系。",
+      },
+    },
   },
   {
     id: "nexflo",
@@ -315,10 +381,10 @@ export interface Sector {
 
 export const sectors: Sector[] = [
   {
-    name: { en: "Technology & Sustainability", zh: "科技与可持续" },
+    name: { en: "Social Technology", zh: "社交科技" },
     text: {
-      en: "Consumer and social platforms that turn participation into measurable impact.",
-      zh: "将参与转化为可衡量影响的消费与社交平台。",
+      en: "Consumer social platforms that connect people through real-time, immersive experiences.",
+      zh: "通过实时、沉浸式体验连接人与人的消费级社交平台。",
     },
     company: "TRIMO",
   },
@@ -366,10 +432,10 @@ export const timeline: Milestone[] = [
   },
   {
     year: "2022",
-    title: { en: "Green technology", zh: "绿色科技" },
+    title: { en: "Social technology", zh: "社交科技" },
     text: {
-      en: "Nexxatech Global launches TRIMO, the group's flagship green social platform.",
-      zh: "Nexxatech Global 推出 TRIMO，集团的旗舰绿色社交平台。",
+      en: "Nexxatech Global launches TRIMO, its flagship one-to-one social platform.",
+      zh: "Nexxatech Global 推出 TRIMO，旗舰级的一对一社交平台。",
     },
   },
   {

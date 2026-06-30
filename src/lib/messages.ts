@@ -18,17 +18,17 @@ export const messages = {
         post: " — across technology, hospitality & capital.",
       },
       description:
-        "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning green technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
+        "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning social technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
       ctaPrimary: "Explore the companies",
       ctaSecondary: "Meet the founder",
-      sectors: ["Green Technology", "Enterprise AI", "Hospitality", "Property"],
+      sectors: ["Social Technology", "Enterprise AI", "Hospitality", "Property"],
     },
 
     founder: {
       eyebrow: "Founder",
       heading: "A builder’s mindset, held to a generational horizon.",
       p1: "Kam Chin Seng founded CS Group on a simple conviction: the companies worth building are the ones designed to outlast their founder. Rather than chase a single market, he set out to assemble a diversified ecosystem — where technology, hospitality and capital each strengthen the others.",
-      p2: "That philosophy now spans a green social platform, an enterprise AI company, a destination golf resort and a property development arm — distinct businesses united by one long-term vision and a shared standard of craft.",
+      p2: "That philosophy now spans a social technology platform, an enterprise AI company, a destination golf resort and a property development arm — distinct businesses united by one long-term vision and a shared standard of craft.",
       quote:
         "Build companies that compound — in value, in trust, and in the good they do for the communities around them.",
       role: "Founder & Chairman",
@@ -131,17 +131,17 @@ export const messages = {
         post: " —— 横跨科技、酒店与资本。",
       },
       description:
-        "CS Group 是由 Kam Chin Seng 创立的多元化、创始人主导的企业生态 —— 横跨绿色科技、企业级 AI、酒店与房地产开发，秉持长期、投资级的愿景。",
+        "CS Group 是由 Kam Chin Seng 创立的多元化、创始人主导的企业生态 —— 横跨社交科技、企业级 AI、酒店与房地产开发，秉持长期、投资级的愿景。",
       ctaPrimary: "了解旗下企业",
       ctaSecondary: "认识创始人",
-      sectors: ["绿色科技", "企业级 AI", "酒店", "房地产"],
+      sectors: ["社交科技", "企业级 AI", "酒店", "房地产"],
     },
 
     founder: {
       eyebrow: "创始人",
       heading: "建造者的格局，着眼于跨越世代的远见。",
       p1: "Kam Chin Seng 怀着一个简单的信念创立 CS Group：值得打造的企业，是那些注定要超越创始人本身、长久存续的企业。他没有押注单一市场，而是着手构建一个多元化的生态系统 —— 让科技、酒店与资本彼此成就。",
-      p2: "这一理念如今已延伸至一个绿色社交平台、一家企业级 AI 公司、一座目的地高尔夫度假村，以及一个房地产开发板块 —— 这些各自独立的业务，由同一个长期愿景与同一套对品质的坚持紧密相连。",
+      p2: "这一理念如今已延伸至一个社交科技平台、一家企业级 AI 公司、一座目的地高尔夫度假村，以及一个房地产开发板块 —— 这些各自独立的业务，由同一个长期愿景与同一套对品质的坚持紧密相连。",
       quote:
         "打造能够复利成长的企业 —— 在价值上、在信任上，也在它们为周遭社区带来的福祉上。",
       role: "创始人兼主席",
