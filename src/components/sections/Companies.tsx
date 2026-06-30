@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
@@ -22,7 +23,10 @@ export default function Companies() {
       <Stagger className="mt-16 sm:mt-20">
         {companies.map((c) => (
           <StaggerItem key={c.id}>
-            <article className="group grid grid-cols-1 gap-6 border-t border-line py-10 transition-colors duration-500 hover:bg-elevated/40 lg:grid-cols-12 lg:gap-8 lg:px-4">
+            <Link
+              href={`/companies/${c.id}`}
+              className="group grid grid-cols-1 gap-6 border-t border-line py-10 transition-colors duration-500 hover:bg-elevated/40 lg:grid-cols-12 lg:gap-8 lg:px-4"
+            >
               {/* Identity */}
               <div className="lg:col-span-4">
                 <div className="flex items-baseline gap-4">
@@ -55,13 +59,14 @@ export default function Companies() {
                   <p className="mt-1 text-sm text-faint">Since {c.year}</p>
                 </div>
                 <span
-                  className="mt-2 inline-block translate-x-0 text-accent opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-faint transition-colors duration-500 group-hover:text-accent"
                   aria-hidden
                 >
-                  →
+                  View
+                  <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
                 </span>
               </div>
-            </article>
+            </Link>
           </StaggerItem>
         ))}
         <div className="border-t border-line" />

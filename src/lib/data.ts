@@ -4,8 +4,38 @@
    Years / metrics marked as illustrative — replace with verified figures.
    ============================================================================ */
 
+export interface CompanyFact {
+  label: string;
+  value: string;
+}
+
+export interface BusinessArea {
+  title: string;
+  text: string;
+}
+
+export interface CompanyProject {
+  name: string;
+  text: string;
+}
+
+/* Optional rich content for a company's dedicated detail page.
+   Add a `detail` to any company to give it a full /companies/[id] page. */
+export interface CompanyDetail {
+  tagline: string;          // headline strapline, e.g. "Creating Sustainable Urban Communities"
+  intro: string;            // one-line positioning under the name
+  positioning: string;      // a pull-quote style positioning statement
+  overview: string[];       // narrative paragraphs
+  facts: CompanyFact[];     // at-a-glance table
+  businessAreas: BusinessArea[];
+  vision: string;
+  mission: string;
+  goals: string[];
+  projects: CompanyProject[];
+}
+
 export interface Company {
-  id: string;
+  id: string;             // also used as the URL slug: /companies/[id]
   index: string;          // editorial numbering, e.g. "01"
   legalName: string;      // registered entity
   brand: string;          // product / brand name
@@ -16,6 +46,7 @@ export interface Company {
   highlights: string[];   // 3 short proof points
   status: string;         // Operating / Scaling / In development
   year: string;
+  detail?: CompanyDetail; // present -> the company has a rich detail page
 }
 
 export const companies: Company[] = [
@@ -72,12 +103,52 @@ export const companies: Company[] = [
     category: "Property Development",
     sector: "Real Estate · Development",
     summary:
-      "Property development creating long-term value through considered places.",
+      "Sustainable urban communities and real-estate development in Cambodia.",
     description:
-      "National 6A develops and invests in real estate with a patient, value-led approach — building community-anchored places designed to appreciate across cycles. It is the group's foundation in tangible, long-horizon assets.",
-    highlights: ["Long-horizon assets", "Community-anchored design", "Disciplined capital"],
-    status: "In development",
-    year: "2024",
+      "National 6A is a Phnom Penh–based, Malaysian-founded developer creating sustainable urban communities across Cambodia — spanning development, investment management and long-term property management.",
+    highlights: ["Phnom Penh market", "Residential & mixed-use", "End-to-end development"],
+    status: "Operating",
+    year: "2012",
+    detail: {
+      tagline: "Creating Sustainable Urban Communities in Cambodia",
+      intro:
+        "A Cambodian urban-development and real-estate investment platform, focused on residential, mixed-use and resort property projects.",
+      positioning:
+        "A Malaysian-founded property developer rooted in Cambodia, with a deep focus on the Phnom Penh market.",
+      overview: [
+        "National 6A Investment Co., Ltd. is a Phnom Penh–based property developer founded and led by Malaysian entrepreneur Kam Chin Seng. Since 2012, the company has established itself as a Malaysian-background developer with deep roots in the Cambodian capital.",
+        "Its work spans the full development lifecycle — from property development and project investment to sales, marketing and long-term property management — creating tangible, long-horizon assets for residents, partners and investors.",
+      ],
+      facts: [
+        { label: "Founded", value: "2012" },
+        { label: "Headquarters", value: "Phnom Penh, Cambodia" },
+        { label: "Industry", value: "Property Development" },
+        { label: "Team", value: "11–50 employees" },
+        { label: "Founder", value: "Kam Chin Seng" },
+        { label: "Core business", value: "Development · Asset & property management" },
+      ],
+      businessAreas: [
+        { title: "Property Development", text: "Conceiving and delivering residential, mixed-use and resort developments from land to handover." },
+        { title: "Investment & Development Management", text: "Structuring capital and managing project execution across the full development lifecycle." },
+        { title: "Sales & Marketing", text: "Positioning and selling projects to local and international buyers and investors." },
+        { title: "Property Management", text: "Operating and maintaining completed communities to a lasting, professional standard." },
+      ],
+      vision:
+        "To shape Cambodia's urban future — building sustainable, well-designed communities that endure for generations.",
+      mission:
+        "To develop and manage real estate that pairs Malaysian standards of quality with deep local insight, creating lasting value for residents, partners and investors across Phnom Penh and beyond.",
+      goals: [
+        "Deliver landmark residential and mixed-use developments that raise the standard of city living in Cambodia.",
+        "Build long-term value through disciplined investment and end-to-end development management.",
+        "Partner with leading regional and international groups to bring world-class projects to market.",
+        "Steward every community we create with professional, long-term property management.",
+        "Grow responsibly — balancing commercial returns with sustainable, people-centred urban design.",
+      ],
+      projects: [
+        { name: "Galaxy Residence", text: "A residential development in Phnom Penh, reflecting the company's focus on quality city living." },
+        { name: "The Peninsula Private Residences", text: "A high-end residential project co-developed with Cambodia's Sun & Moon Group and Chinese investment partners." },
+      ],
+    },
   },
 ];
 

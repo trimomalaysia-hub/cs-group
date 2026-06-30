@@ -23,13 +23,13 @@ export const site = {
 
   /* Primary navigation — maps to section IDs on the home page. */
   nav: [
-    { label: "Founder", href: "#founder" },
-    { label: "Companies", href: "#companies" },
-    { label: "Vision", href: "#vision" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Timeline", href: "#timeline" },
-    { label: "Insights", href: "#insights" },
-    { label: "Contact", href: "#contact" },
+    { label: "Founder", href: "/#founder" },
+    { label: "Companies", href: "/#companies" },
+    { label: "Vision", href: "/#vision" },
+    { label: "Portfolio", href: "/#portfolio" },
+    { label: "Timeline", href: "/#timeline" },
+    { label: "Insights", href: "/#insights" },
+    { label: "Contact", href: "/#contact" },
   ],
 
   social: {

@@ -33,7 +33,7 @@ export default function Header() {
     >
       <Container className="flex h-20 items-center justify-between">
         {/* Wordmark */}
-        <a href="#top" className="group flex items-center gap-2.5" aria-label={site.name}>
+        <a href="/#top" className="group flex items-center gap-2.5" aria-label={site.name}>
           <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong text-[0.85rem] font-display text-accent transition-colors group-hover:border-accent/60">
             C
           </span>
@@ -55,7 +55,7 @@ export default function Header() {
 
         <div className="hidden lg:block">
           <a
-            href="#contact"
+            href="/#contact"
             className="rounded-full border border-line-strong px-5 py-2 text-sm text-fg transition-colors hover:border-accent/70 hover:text-accent"
           >
             Enquire

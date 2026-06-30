@@ -31,7 +31,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {companies.map((c) => (
                 <li key={c.id}>
-                  <a href="#companies" className="text-sm text-muted transition-colors hover:text-fg">
+                  <a href={`/companies/${c.id}`} className="text-sm text-muted transition-colors hover:text-fg">
                     {c.brand}
                   </a>
                 </li>
