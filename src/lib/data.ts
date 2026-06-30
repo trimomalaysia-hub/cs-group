@@ -1,52 +1,38 @@
 /* ============================================================================
-   CONTENT DATA — the group's companies, vision, milestones and insights.
-   This is the editorial source of truth. Update copy here; the UI follows.
-   Years / metrics marked as illustrative — replace with verified figures.
+   CONTENT DATA — bilingual (English + Simplified Chinese).
+   Each translatable field is a Loc: { en, zh }. Structural fields (id, index,
+   brand, legalName, year, company) are language-neutral.
+   In a component: const { lang } = useLanguage();  company.summary[lang]
    ============================================================================ */
+import type { Loc } from "./i18n";
 
-export interface CompanyFact {
-  label: string;
-  value: string;
-}
-
-export interface BusinessArea {
-  title: string;
-  text: string;
-}
-
-export interface CompanyProject {
-  name: string;
-  text: string;
-}
-
-/* Optional rich content for a company's dedicated detail page.
-   Add a `detail` to any company to give it a full /companies/[id] page. */
 export interface CompanyDetail {
-  tagline: string;          // headline strapline, e.g. "Creating Sustainable Urban Communities"
-  intro: string;            // one-line positioning under the name
-  positioning: string;      // a pull-quote style positioning statement
-  overview: string[];       // narrative paragraphs
-  facts: CompanyFact[];     // at-a-glance table
-  businessAreas: BusinessArea[];
-  vision: string;
-  mission: string;
-  goals: string[];
-  projects: CompanyProject[];
+  tagline: Loc;
+  intro: Loc;
+  positioning: Loc;
+  overview: Loc<string[]>;
+  quickFacts: Loc<string[]>;
+  facts: { label: Loc; value: Loc }[];
+  businessAreas: { title: Loc; text: Loc }[];
+  vision: Loc;
+  mission: Loc;
+  goals: Loc<string[]>;
+  projects: { name: string; text: Loc }[];
 }
 
 export interface Company {
-  id: string;             // also used as the URL slug: /companies/[id]
-  index: string;          // editorial numbering, e.g. "01"
-  legalName: string;      // registered entity
-  brand: string;          // product / brand name
-  category: string;       // what it is
-  sector: string;         // sector tag
-  summary: string;        // one-line positioning
-  description: string;    // fuller paragraph
-  highlights: string[];   // 3 short proof points
-  status: string;         // Operating / Scaling / In development
+  id: string;             // URL slug: /companies/[id]
+  index: string;          // editorial numbering
+  legalName: string;      // registered entity (not translated)
+  brand: string;          // brand name (not translated)
+  category: Loc;
+  sector: Loc;
+  summary: Loc;
+  description: Loc;
+  highlights: Loc<string[]>;
+  status: Loc;
   year: string;
-  detail?: CompanyDetail; // present -> the company has a rich detail page
+  detail?: CompanyDetail;
 }
 
 export const companies: Company[] = [
@@ -55,14 +41,21 @@ export const companies: Company[] = [
     index: "01",
     legalName: "Nexxatech Global Sdn Bhd",
     brand: "TRIMO",
-    category: "Green Social Platform",
-    sector: "Technology · Sustainability",
-    summary:
-      "A social platform that turns everyday actions into measurable environmental impact.",
-    description:
-      "TRIMO connects people, brands and causes around sustainability — rewarding real-world green behaviour and making collective impact visible, social and habitual. It is the group's flagship technology venture for community-led climate action.",
-    highlights: ["Community-driven impact", "Rewards & engagement engine", "Brand sustainability partnerships"],
-    status: "Scaling",
+    category: { en: "Green Social Platform", zh: "绿色社交平台" },
+    sector: { en: "Technology · Sustainability", zh: "科技 · 可持续" },
+    summary: {
+      en: "A social platform that turns everyday actions into measurable environmental impact.",
+      zh: "一个将日常行动转化为可衡量环境影响的社交平台。",
+    },
+    description: {
+      en: "TRIMO connects people, brands and causes around sustainability — rewarding real-world green behaviour and making collective impact visible, social and habitual. It is the group's flagship technology venture for community-led climate action.",
+      zh: "TRIMO 连接人、品牌与公益，围绕可持续发展 —— 奖励现实中的绿色行为，让集体影响变得可见、可社交、可养成习惯。它是集团在社区主导气候行动领域的旗舰科技项目。",
+    },
+    highlights: {
+      en: ["Community-driven impact", "Rewards & engagement engine", "Brand sustainability partnerships"],
+      zh: ["社区驱动的影响力", "奖励与互动引擎", "品牌可持续合作"],
+    },
+    status: { en: "Scaling", zh: "高速成长" },
     year: "2022",
   },
   {
@@ -70,14 +63,21 @@ export const companies: Company[] = [
     index: "02",
     legalName: "Nexflo Sdn Bhd",
     brand: "Jarvis AI",
-    category: "Enterprise Intelligence Platform",
-    sector: "Artificial Intelligence",
-    summary:
-      "Enterprise AI that unifies data and turns information into decisions.",
-    description:
-      "Jarvis AI gives organisations a single intelligence layer — connecting fragmented systems, automating knowledge work and surfacing the insight leaders need to act with speed and confidence. It is the group's bet on applied, enterprise-grade AI.",
-    highlights: ["Unified data intelligence", "Workflow automation", "Decision-grade insight"],
-    status: "Scaling",
+    category: { en: "Enterprise Intelligence Platform", zh: "企业智能平台" },
+    sector: { en: "Artificial Intelligence", zh: "人工智能" },
+    summary: {
+      en: "Enterprise AI that unifies data and turns information into decisions.",
+      zh: "统一数据、把信息转化为决策的企业级 AI。",
+    },
+    description: {
+      en: "Jarvis AI gives organisations a single intelligence layer — connecting fragmented systems, automating knowledge work and surfacing the insight leaders need to act with speed and confidence. It is the group's bet on applied, enterprise-grade AI.",
+      zh: "Jarvis AI 为组织提供统一的智能层 —— 打通分散的系统、自动化知识工作，并呈现领导者据以快速、果断行动所需的洞察。它是集团在落地的企业级 AI 上的布局。",
+    },
+    highlights: {
+      en: ["Unified data intelligence", "Workflow automation", "Decision-grade insight"],
+      zh: ["统一的数据智能", "工作流自动化", "决策级洞察"],
+    },
+    status: { en: "Scaling", zh: "高速成长" },
     year: "2023",
   },
   {
@@ -85,14 +85,21 @@ export const companies: Company[] = [
     index: "03",
     legalName: "Gemas Golf Resort Sdn Bhd",
     brand: "Gemas Golf Resort",
-    category: "Hospitality & Golf Resort",
-    sector: "Hospitality · Leisure",
-    summary:
-      "A destination resort pairing championship golf with refined hospitality.",
-    description:
-      "Gemas Golf Resort is the group's hospitality flagship — a considered leisure destination where landscape, sport and service meet. It anchors the group's long-term presence in premium experiential hospitality.",
-    highlights: ["Championship course", "Resort & events", "Premium guest experience"],
-    status: "Operating",
+    category: { en: "Hospitality & Golf Resort", zh: "酒店与高尔夫度假村" },
+    sector: { en: "Hospitality · Leisure", zh: "酒店 · 休闲" },
+    summary: {
+      en: "A destination resort pairing championship golf with refined hospitality.",
+      zh: "将锦标级高尔夫与精致酒店服务融为一体的目的地度假村。",
+    },
+    description: {
+      en: "Gemas Golf Resort is the group's hospitality flagship — a considered leisure destination where landscape, sport and service meet. It anchors the group's long-term presence in premium experiential hospitality.",
+      zh: "Gemas 高尔夫度假村是集团的酒店旗舰 —— 一处将自然景观、运动与服务融为一体的精心打造的休闲胜地，奠定集团在高端体验式酒店领域的长期布局。",
+    },
+    highlights: {
+      en: ["Championship course", "Resort & events", "Premium guest experience"],
+      zh: ["锦标级球场", "度假与活动", "高端宾客体验"],
+    },
+    status: { en: "Operating", zh: "运营中" },
     year: "2021",
   },
   {
@@ -100,53 +107,129 @@ export const companies: Company[] = [
     index: "04",
     legalName: "National 6A Investment Co., Ltd.",
     brand: "National 6A",
-    category: "Property Development",
-    sector: "Real Estate · Development",
-    summary:
-      "Sustainable urban communities and real-estate development in Cambodia.",
-    description:
-      "National 6A is a Phnom Penh–based, Malaysian-founded developer creating sustainable urban communities across Cambodia — spanning development, investment management and long-term property management.",
-    highlights: ["Phnom Penh market", "Residential & mixed-use", "End-to-end development"],
-    status: "Operating",
+    category: { en: "Property Development", zh: "房地产开发" },
+    sector: { en: "Real Estate · Development", zh: "房地产 · 开发" },
+    summary: {
+      en: "Sustainable urban communities and real-estate development in Cambodia.",
+      zh: "在柬埔寨打造可持续的城市社区与房地产开发。",
+    },
+    description: {
+      en: "National 6A is a Phnom Penh–based, Malaysian-founded developer creating sustainable urban communities across Cambodia — spanning development, investment management and long-term property management.",
+      zh: "National 6A 是一家总部位于金边、由马来西亚人创立的开发商，在柬埔寨打造可持续的城市社区 —— 业务涵盖开发、投资管理与长期物业管理。",
+    },
+    highlights: {
+      en: ["Phnom Penh market", "Residential & mixed-use", "End-to-end development"],
+      zh: ["深耕金边市场", "住宅与综合体", "全周期开发"],
+    },
+    status: { en: "Operating", zh: "运营中" },
     year: "2012",
     detail: {
-      tagline: "Creating Sustainable Urban Communities in Cambodia",
-      intro:
-        "A Cambodian urban-development and real-estate investment platform, focused on residential, mixed-use and resort property projects.",
-      positioning:
-        "A Malaysian-founded property developer rooted in Cambodia, with a deep focus on the Phnom Penh market.",
-      overview: [
-        "National 6A Investment Co., Ltd. is a Phnom Penh–based property developer founded and led by Malaysian entrepreneur Kam Chin Seng. Since 2012, the company has established itself as a Malaysian-background developer with deep roots in the Cambodian capital.",
-        "Its work spans the full development lifecycle — from property development and project investment to sales, marketing and long-term property management — creating tangible, long-horizon assets for residents, partners and investors.",
-      ],
+      tagline: {
+        en: "Creating Sustainable Urban Communities in Cambodia",
+        zh: "在柬埔寨缔造可持续的城市社区",
+      },
+      intro: {
+        en: "A Cambodian urban-development and real-estate investment platform, focused on residential, mixed-use and resort property projects.",
+        zh: "一个柬埔寨城市开发与房地产投资平台，专注于住宅、综合体及度假地产项目的开发。",
+      },
+      positioning: {
+        en: "A Malaysian-founded property developer rooted in Cambodia, with a deep focus on the Phnom Penh market.",
+        zh: "一家由马来西亚人创立、扎根柬埔寨的房地产开发商，深耕金边市场。",
+      },
+      overview: {
+        en: [
+          "National 6A Investment Co., Ltd. is a Phnom Penh–based property developer founded and led by Malaysian entrepreneur Kam Chin Seng. Since 2012, the company has established itself as a Malaysian-background developer with deep roots in the Cambodian capital.",
+          "Its work spans the full development lifecycle — from property development and project investment to sales, marketing and long-term property management — creating tangible, long-horizon assets for residents, partners and investors.",
+        ],
+        zh: [
+          "National 6A Investment Co., Ltd. 是一家总部位于柬埔寨金边的房地产开发公司，由马来西亚企业家 Kam Chin Seng 创立及领导。自 2012 年以来，公司以「马来西亚背景的柬埔寨地产开发商」立足，深耕金边市场。",
+          "其业务覆盖完整的开发周期 —— 从房地产开发、项目投资，到销售、营销与长期物业管理 —— 为住户、合作伙伴与投资者创造可见、可长期持有的资产。",
+        ],
+      },
+      quickFacts: {
+        en: ["Phnom Penh, Cambodia", "Est. 2012", "11–50 employees"],
+        zh: ["柬埔寨金边", "成立于 2012", "11–50 人"],
+      },
       facts: [
-        { label: "Founded", value: "2012" },
-        { label: "Headquarters", value: "Phnom Penh, Cambodia" },
-        { label: "Industry", value: "Property Development" },
-        { label: "Team", value: "11–50 employees" },
-        { label: "Founder", value: "Kam Chin Seng" },
-        { label: "Core business", value: "Development · Asset & property management" },
+        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2012", zh: "2012" } },
+        { label: { en: "Headquarters", zh: "总部" }, value: { en: "Phnom Penh, Cambodia", zh: "柬埔寨金边" } },
+        { label: { en: "Industry", zh: "行业" }, value: { en: "Property Development", zh: "房地产开发" } },
+        { label: { en: "Team", zh: "员工规模" }, value: { en: "11–50 employees", zh: "11–50 人" } },
+        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
+        {
+          label: { en: "Core business", zh: "核心业务" },
+          value: { en: "Development · Asset & property management", zh: "开发 · 资产与物业管理" },
+        },
       ],
       businessAreas: [
-        { title: "Property Development", text: "Conceiving and delivering residential, mixed-use and resort developments from land to handover." },
-        { title: "Investment & Development Management", text: "Structuring capital and managing project execution across the full development lifecycle." },
-        { title: "Sales & Marketing", text: "Positioning and selling projects to local and international buyers and investors." },
-        { title: "Property Management", text: "Operating and maintaining completed communities to a lasting, professional standard." },
+        {
+          title: { en: "Property Development", zh: "房地产开发" },
+          text: {
+            en: "Conceiving and delivering residential, mixed-use and resort developments from land to handover.",
+            zh: "从土地到交付，构思并交付住宅、综合体与度假项目。",
+          },
+        },
+        {
+          title: { en: "Investment & Development Management", zh: "投资与开发管理" },
+          text: {
+            en: "Structuring capital and managing project execution across the full development lifecycle.",
+            zh: "在完整的开发周期中统筹资金结构与项目执行。",
+          },
+        },
+        {
+          title: { en: "Sales & Marketing", zh: "销售与营销" },
+          text: {
+            en: "Positioning and selling projects to local and international buyers and investors.",
+            zh: "面向本地与国际买家及投资者，进行项目定位与销售。",
+          },
+        },
+        {
+          title: { en: "Property Management", zh: "物业管理" },
+          text: {
+            en: "Operating and maintaining completed communities to a lasting, professional standard.",
+            zh: "以持久、专业的标准运营和维护建成社区。",
+          },
+        },
       ],
-      vision:
-        "To shape Cambodia's urban future — building sustainable, well-designed communities that endure for generations.",
-      mission:
-        "To develop and manage real estate that pairs Malaysian standards of quality with deep local insight, creating lasting value for residents, partners and investors across Phnom Penh and beyond.",
-      goals: [
-        "Deliver landmark residential and mixed-use developments that raise the standard of city living in Cambodia.",
-        "Build long-term value through disciplined investment and end-to-end development management.",
-        "Partner with leading regional and international groups to bring world-class projects to market.",
-        "Steward every community we create with professional, long-term property management.",
-        "Grow responsibly — balancing commercial returns with sustainable, people-centred urban design.",
-      ],
+      vision: {
+        en: "To shape Cambodia's urban future — building sustainable, well-designed communities that endure for generations.",
+        zh: "塑造柬埔寨的城市未来 —— 打造可持续、精心设计、世代传承的社区。",
+      },
+      mission: {
+        en: "To develop and manage real estate that pairs Malaysian standards of quality with deep local insight, creating lasting value for residents, partners and investors across Phnom Penh and beyond.",
+        zh: "以马来西亚的品质标准结合对本地的深刻洞察，开发并管理房地产，为金边乃至更广区域的住户、合作伙伴与投资者创造持久价值。",
+      },
+      goals: {
+        en: [
+          "Deliver landmark residential and mixed-use developments that raise the standard of city living in Cambodia.",
+          "Build long-term value through disciplined investment and end-to-end development management.",
+          "Partner with leading regional and international groups to bring world-class projects to market.",
+          "Steward every community we create with professional, long-term property management.",
+          "Grow responsibly — balancing commercial returns with sustainable, people-centred urban design.",
+        ],
+        zh: [
+          "打造地标级的住宅与综合体项目，提升柬埔寨的城市生活标准。",
+          "以纪律化的投资与全周期开发管理，构建长期价值。",
+          "携手区域与国际领先机构，将世界级项目推向市场。",
+          "以专业、长期的物业管理，悉心守护我们打造的每一个社区。",
+          "负责任地成长 —— 在商业回报与可持续、以人为本的城市设计之间取得平衡。",
+        ],
+      },
       projects: [
-        { name: "Galaxy Residence", text: "A residential development in Phnom Penh, reflecting the company's focus on quality city living." },
-        { name: "The Peninsula Private Residences", text: "A high-end residential project co-developed with Cambodia's Sun & Moon Group and Chinese investment partners." },
+        {
+          name: "Galaxy Residence",
+          text: {
+            en: "A residential development in Phnom Penh, reflecting the company's focus on quality city living.",
+            zh: "位于金边的住宅项目，体现公司对高品质城市生活的专注。",
+          },
+        },
+        {
+          name: "The Peninsula Private Residences",
+          text: {
+            en: "A high-end residential project co-developed with Cambodia's Sun & Moon Group and Chinese investment partners.",
+            zh: "与柬埔寨 Sun & Moon Group 及中国投资方共同开发的高端住宅项目。",
+          },
+        },
       ],
     },
   },
@@ -155,66 +238,112 @@ export const companies: Company[] = [
 /* --- Vision principles ---------------------------------------------------- */
 export interface Principle {
   index: string;
-  title: string;
-  text: string;
+  title: Loc;
+  text: Loc;
 }
 
 export const principles: Principle[] = [
   {
     index: "I",
-    title: "Long-term Vision",
-    text: "We build for decades, not quarters — compounding value patiently across companies and cycles.",
+    title: { en: "Long-term Vision", zh: "长期愿景" },
+    text: {
+      en: "We build for decades, not quarters — compounding value patiently across companies and cycles.",
+      zh: "我们以数十年、而非数个季度为尺度 —— 跨越企业与周期，耐心地让价值复利。",
+    },
   },
   {
     index: "II",
-    title: "Innovation & Technology",
-    text: "We treat technology as leverage, backing ventures that reshape how people and enterprises operate.",
+    title: { en: "Innovation & Technology", zh: "创新与科技" },
+    text: {
+      en: "We treat technology as leverage, backing ventures that reshape how people and enterprises operate.",
+      zh: "我们视科技为杠杆，支持那些重塑人与企业运作方式的事业。",
+    },
   },
   {
     index: "III",
-    title: "Community Building",
-    text: "We grow companies that strengthen the communities they serve — impact and enterprise advancing together.",
+    title: { en: "Community Building", zh: "社区共建" },
+    text: {
+      en: "We grow companies that strengthen the communities they serve — impact and enterprise advancing together.",
+      zh: "我们培育能让所服务社区更强大的企业 —— 让影响力与商业并肩前行。",
+    },
   },
   {
     index: "IV",
-    title: "Investment Perspective",
-    text: "We allocate capital with discipline and conviction, holding for fundamental, durable returns.",
+    title: { en: "Investment Perspective", zh: "投资视角" },
+    text: {
+      en: "We allocate capital with discipline and conviction, holding for fundamental, durable returns.",
+      zh: "我们以纪律与信念配置资本，为基本面扎实、持久的回报而长期持有。",
+    },
   },
 ];
 
-/* --- Portfolio dimensions (investor-grade overview) ----------------------- */
+/* --- Portfolio overview --------------------------------------------------- */
 export interface PortfolioPillar {
-  label: string;
-  value: string;
-  detail: string;
+  label: Loc;
+  value: Loc;
+  detail: Loc;
 }
 
 export const portfolioStats: PortfolioPillar[] = [
-  { label: "Operating companies", value: "4", detail: "Across four distinct sectors" },
-  { label: "Core sectors", value: "Tech · AI · Hospitality · Real Estate", detail: "A deliberately diversified base" },
-  { label: "Horizon", value: "Long-term", detail: "Patient, founder-led ownership" },
-  { label: "Base", value: "Malaysia", detail: "With a global outlook" },
+  {
+    label: { en: "Operating companies", zh: "运营中的企业" },
+    value: { en: "4", zh: "4" },
+    detail: { en: "Across four distinct sectors", zh: "横跨四个不同领域" },
+  },
+  {
+    label: { en: "Core sectors", zh: "核心领域" },
+    value: { en: "Tech · AI · Hospitality · Real Estate", zh: "科技 · AI · 酒店 · 地产" },
+    detail: { en: "A deliberately diversified base", zh: "刻意多元化的基础" },
+  },
+  {
+    label: { en: "Horizon", zh: "时间尺度" },
+    value: { en: "Long-term", zh: "长期" },
+    detail: { en: "Patient, founder-led ownership", zh: "耐心的、创始人主导的持有" },
+  },
+  {
+    label: { en: "Base", zh: "根据地" },
+    value: { en: "Malaysia", zh: "马来西亚" },
+    detail: { en: "With a global outlook", zh: "怀抱全球视野" },
+  },
 ];
 
-export const sectors = [
+export interface Sector {
+  name: Loc;
+  text: Loc;
+  company: string;
+}
+
+export const sectors: Sector[] = [
   {
-    name: "Technology & Sustainability",
-    text: "Consumer and social platforms that turn participation into measurable impact.",
+    name: { en: "Technology & Sustainability", zh: "科技与可持续" },
+    text: {
+      en: "Consumer and social platforms that turn participation into measurable impact.",
+      zh: "将参与转化为可衡量影响的消费与社交平台。",
+    },
     company: "TRIMO",
   },
   {
-    name: "Artificial Intelligence",
-    text: "Enterprise intelligence that compounds in value as organisations scale.",
+    name: { en: "Artificial Intelligence", zh: "人工智能" },
+    text: {
+      en: "Enterprise intelligence that compounds in value as organisations scale.",
+      zh: "随组织规模扩大而价值复利的企业智能。",
+    },
     company: "Jarvis AI",
   },
   {
-    name: "Hospitality & Leisure",
-    text: "Experiential, destination assets built around landscape and service.",
+    name: { en: "Hospitality & Leisure", zh: "酒店与休闲" },
+    text: {
+      en: "Experiential, destination assets built around landscape and service.",
+      zh: "围绕自然景观与服务打造的体验式目的地资产。",
+    },
     company: "Gemas Golf Resort",
   },
   {
-    name: "Real Estate & Development",
-    text: "Tangible, long-horizon assets anchored in community and discipline.",
+    name: { en: "Real Estate & Development", zh: "房地产与开发" },
+    text: {
+      en: "Tangible, long-horizon assets anchored in community and discipline.",
+      zh: "扎根社区与纪律的、可长期持有的实体资产。",
+    },
     company: "National 6A",
   },
 ];
@@ -222,47 +351,100 @@ export const sectors = [
 /* --- Timeline ------------------------------------------------------------- */
 export interface Milestone {
   year: string;
-  title: string;
-  text: string;
+  title: Loc;
+  text: Loc;
 }
 
 export const timeline: Milestone[] = [
-  { year: "2021", title: "Hospitality foundation", text: "Gemas Golf Resort establishes the group's presence in premium experiential hospitality." },
-  { year: "2022", title: "Green technology", text: "Nexxatech Global launches TRIMO, the group's flagship green social platform." },
-  { year: "2023", title: "Enterprise AI", text: "Nexflo introduces Jarvis AI, extending the group into applied enterprise intelligence." },
-  { year: "2024", title: "Real assets", text: "National 6A Investment formalises the group's long-horizon property development arm." },
-  { year: "2025", title: "An integrated ecosystem", text: "The companies begin operating as one ecosystem — technology, hospitality and capital reinforcing each other." },
+  {
+    year: "2021",
+    title: { en: "Hospitality foundation", zh: "酒店基石" },
+    text: {
+      en: "Gemas Golf Resort establishes the group's presence in premium experiential hospitality.",
+      zh: "Gemas 高尔夫度假村奠定集团在高端体验式酒店领域的存在。",
+    },
+  },
+  {
+    year: "2022",
+    title: { en: "Green technology", zh: "绿色科技" },
+    text: {
+      en: "Nexxatech Global launches TRIMO, the group's flagship green social platform.",
+      zh: "Nexxatech Global 推出 TRIMO，集团的旗舰绿色社交平台。",
+    },
+  },
+  {
+    year: "2023",
+    title: { en: "Enterprise AI", zh: "企业 AI" },
+    text: {
+      en: "Nexflo introduces Jarvis AI, extending the group into applied enterprise intelligence.",
+      zh: "Nexflo 推出 Jarvis AI，将集团拓展至落地的企业智能领域。",
+    },
+  },
+  {
+    year: "2024",
+    title: { en: "Real assets", zh: "实体资产" },
+    text: {
+      en: "National 6A Investment formalises the group's long-horizon property development arm.",
+      zh: "National 6A Investment 正式确立集团在长周期房地产开发的板块。",
+    },
+  },
+  {
+    year: "2025",
+    title: { en: "An integrated ecosystem", zh: "一个融合的生态" },
+    text: {
+      en: "The companies begin operating as one ecosystem — technology, hospitality and capital reinforcing each other.",
+      zh: "各家企业开始作为一个生态协同运作 —— 科技、酒店与资本彼此成就。",
+    },
+  },
 ];
 
 /* --- Insights ------------------------------------------------------------- */
 export interface Insight {
-  category: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  readingTime: string;
+  category: Loc;
+  title: Loc;
+  excerpt: Loc;
+  date: Loc;
+  readingTime: Loc;
 }
 
 export const insights: Insight[] = [
   {
-    category: "Perspective",
-    title: "Why founder-led groups compound differently",
-    excerpt: "Concentrated ownership and a long horizon let conviction outlast market noise — and let companies reinforce one another.",
-    date: "Jun 2025",
-    readingTime: "6 min",
+    category: { en: "Perspective", zh: "观点" },
+    title: {
+      en: "Why founder-led groups compound differently",
+      zh: "为什么创始人主导的集团，复利方式与众不同",
+    },
+    excerpt: {
+      en: "Concentrated ownership and a long horizon let conviction outlast market noise — and let companies reinforce one another.",
+      zh: "集中的所有权与长远的视野，让信念得以穿越市场的噪音 —— 也让各家企业彼此成就。",
+    },
+    date: { en: "Jun 2025", zh: "2025年6月" },
+    readingTime: { en: "6 min", zh: "6 分钟" },
   },
   {
-    category: "Technology",
-    title: "From platforms to ecosystems: the next decade of impact",
-    excerpt: "When green technology, enterprise AI and real assets share a vision, the whole becomes greater than its parts.",
-    date: "May 2025",
-    readingTime: "8 min",
+    category: { en: "Technology", zh: "科技" },
+    title: {
+      en: "From platforms to ecosystems: the next decade of impact",
+      zh: "从平台到生态：影响力的下一个十年",
+    },
+    excerpt: {
+      en: "When green technology, enterprise AI and real assets share a vision, the whole becomes greater than its parts.",
+      zh: "当绿色科技、企业 AI 与实体资产共享同一愿景，整体便大于部分之和。",
+    },
+    date: { en: "May 2025", zh: "2025年5月" },
+    readingTime: { en: "8 min", zh: "8 分钟" },
   },
   {
-    category: "Investment",
-    title: "Patient capital in an impatient market",
-    excerpt: "A disciplined view on allocating across cycles — and why the best returns are measured in decades.",
-    date: "Apr 2025",
-    readingTime: "5 min",
+    category: { en: "Investment", zh: "投资" },
+    title: {
+      en: "Patient capital in an impatient market",
+      zh: "在浮躁市场中的耐心资本",
+    },
+    excerpt: {
+      en: "A disciplined view on allocating across cycles — and why the best returns are measured in decades.",
+      zh: "关于跨周期配置的纪律之见 —— 以及为何最好的回报，要以数十年为尺度。",
+    },
+    date: { en: "Apr 2025", zh: "2025年4月" },
+    readingTime: { en: "5 min", zh: "5 分钟" },
   },
 ];

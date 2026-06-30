@@ -1,16 +1,21 @@
+"use client";
+
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { timeline } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Timeline() {
+  const { lang, t } = useLanguage();
+
   return (
     <Section id="timeline">
       <SectionHeading
         index="05"
-        eyebrow="Timeline"
-        title="A deliberate progression."
-        lead="The group has grown one considered step at a time — each company laying the ground for the next."
+        eyebrow={t.timeline.eyebrow}
+        title={t.timeline.title}
+        lead={t.timeline.lead}
       />
 
       <div className="relative mt-16">
@@ -28,8 +33,8 @@ export default function Timeline() {
                 />
                 <span className="font-display text-2xl text-accent">{m.year}</span>
                 <div>
-                  <h3 className="text-xl text-fg sm:text-2xl">{m.title}</h3>
-                  <p className="mt-2 max-w-xl leading-relaxed text-muted">{m.text}</p>
+                  <h3 className="text-xl text-fg sm:text-2xl">{m.title[lang]}</h3>
+                  <p className="mt-2 max-w-xl leading-relaxed text-muted">{m.text[lang]}</p>
                 </div>
               </div>
             </StaggerItem>

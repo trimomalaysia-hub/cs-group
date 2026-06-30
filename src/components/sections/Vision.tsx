@@ -1,9 +1,14 @@
+"use client";
+
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal, { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { principles } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Vision() {
+  const { lang, t } = useLanguage();
+
   return (
     <Section id="vision" className="relative overflow-hidden">
       <div
@@ -14,14 +19,12 @@ export default function Vision() {
       <div className="relative mx-auto max-w-4xl text-center">
         <Reveal>
           <div className="flex justify-center">
-            <Eyebrow index="03">Vision</Eyebrow>
+            <Eyebrow index="03">{t.vision.eyebrow}</Eyebrow>
           </div>
         </Reveal>
         <Reveal delay={0.05}>
           <p className="mt-8 font-display text-3xl leading-[1.2] tracking-tight text-fg sm:text-4xl lg:text-[2.9rem]">
-            Technology compounds. Hospitality endures. Capital is patient.
-            Held together by a single vision, they build something larger than any
-            one company — and made to last beyond any one lifetime.
+            {t.vision.manifesto}
           </p>
         </Reveal>
       </div>
@@ -31,8 +34,8 @@ export default function Vision() {
           <StaggerItem key={p.index} className="bg-bg">
             <div className="h-full bg-surface/40 p-8 transition-colors duration-500 hover:bg-elevated/60 sm:p-10">
               <span className="font-display text-2xl text-accent/80">{p.index}</span>
-              <h3 className="mt-5 text-xl text-fg sm:text-2xl">{p.title}</h3>
-              <p className="mt-3 text-base leading-relaxed text-muted">{p.text}</p>
+              <h3 className="mt-5 text-xl text-fg sm:text-2xl">{p.title[lang]}</h3>
+              <p className="mt-3 text-base leading-relaxed text-muted">{p.text[lang]}</p>
             </div>
           </StaggerItem>
         ))}

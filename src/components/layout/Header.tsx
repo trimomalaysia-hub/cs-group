@@ -3,9 +3,42 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { site } from "@/lib/site";
+import { useLanguage, type Lang } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
 
+function LangToggle({
+  lang,
+  setLang,
+  className = "",
+}: {
+  lang: Lang;
+  setLang: (l: Lang) => void;
+  className?: string;
+}) {
+  const opts: { code: Lang; label: string }[] = [
+    { code: "en", label: "EN" },
+    { code: "zh", label: "中" },
+  ];
+  return (
+    <div className={`inline-flex items-center rounded-full border border-line-strong p-0.5 ${className}`}>
+      {opts.map((o) => (
+        <button
+          key={o.code}
+          onClick={() => setLang(o.code)}
+          aria-pressed={lang === o.code}
+          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
+            lang === o.code ? "bg-fg text-bg" : "text-muted hover:text-fg"
+          }`}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
 export default function Header() {
+  const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -42,46 +75,50 @@ export default function Header() {
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex">
-          {site.nav.map((item) => (
+          {site.nav.map((item, i) => (
             <a
               key={item.href}
               href={item.href}
               className="text-sm text-muted transition-colors hover:text-fg"
             >
-              {item.label}
+              {t.nav[i]}
             </a>
           ))}
         </nav>
 
-        <div className="hidden lg:block">
+        <div className="hidden items-center gap-4 lg:flex">
+          <LangToggle lang={lang} setLang={setLang} />
           <a
             href="/#contact"
             className="rounded-full border border-line-strong px-5 py-2 text-sm text-fg transition-colors hover:border-accent/70 hover:text-accent"
           >
-            Enquire
+            {t.header.enquire}
           </a>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="flex h-10 w-10 items-center justify-center lg:hidden"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-        >
-          <div className="relative h-4 w-6">
-            <span
-              className={`absolute left-0 top-0 h-px w-full bg-fg transition-all duration-300 ${
-                open ? "top-1/2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`absolute bottom-0 left-0 h-px w-full bg-fg transition-all duration-300 ${
-                open ? "bottom-1/2 -rotate-45" : ""
-              }`}
-            />
-          </div>
-        </button>
+        {/* Mobile controls */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <LangToggle lang={lang} setLang={setLang} />
+          <button
+            className="flex h-10 w-10 items-center justify-center"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+          >
+            <div className="relative h-4 w-6">
+              <span
+                className={`absolute left-0 top-0 h-px w-full bg-fg transition-all duration-300 ${
+                  open ? "top-1/2 rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`absolute bottom-0 left-0 h-px w-full bg-fg transition-all duration-300 ${
+                  open ? "bottom-1/2 -rotate-45" : ""
+                }`}
+              />
+            </div>
+          </button>
+        </div>
       </Container>
 
       {/* Mobile overlay menu */}
@@ -95,14 +132,14 @@ export default function Header() {
             className="overflow-hidden border-t border-line bg-bg/95 backdrop-blur-xl lg:hidden"
           >
             <Container className="flex flex-col py-6">
-              {site.nav.map((item) => (
+              {site.nav.map((item, i) => (
                 <a
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
                   className="border-b border-line py-4 font-display text-2xl text-fg transition-colors hover:text-accent"
                 >
-                  {item.label}
+                  {t.nav[i]}
                 </a>
               ))}
             </Container>

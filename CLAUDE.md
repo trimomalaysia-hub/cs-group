@@ -40,6 +40,18 @@ src/
 - Sections via `<Section>`; container via `<Container>`; buttons via `<Button>`.
 - Motion: `<Reveal>` / `<Stagger>` only — subtle, once-only, reduced-motion-safe.
 
+## Bilingual (English / 简体中文)
+The site is bilingual with an in-place **EN / 中** toggle (no URL change; choice saved
+to localStorage; default English). Implementation:
+- `src/lib/i18n.tsx` — `LanguageProvider` + `useLanguage()` hook (`{ lang, setLang, t }`).
+- `src/lib/messages.ts` — all UI chrome strings, `{ en, zh }`. Keep both objects' keys identical.
+- `src/lib/data.ts` — content fields are `Loc` values `{ en, zh }` (and `Loc<string[]>` for lists).
+- In a client component: `const { lang, t } = useLanguage();` then `t.section.key` for UI,
+  and `someField[lang]` for data (e.g. `company.summary[lang]`).
+- **When editing or adding any text, update BOTH `en` and `zh`.** Don't leave one language blank.
+- Components that render translatable text must be client components (`"use client"`); the
+  company detail route stays a server component and renders the client `CompanyDetailView`.
+
 ## Commands
 - `npm run dev` — local dev server (http://localhost:3000)
 - `npm run build` — production build

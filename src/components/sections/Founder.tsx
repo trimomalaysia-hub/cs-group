@@ -1,26 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
 import { site } from "@/lib/site";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Founder() {
+  const { t } = useLanguage();
+
   return (
     <Section id="founder">
       <div className="grid gap-14 lg:grid-cols-12 lg:gap-20">
-        {/* Portrait — uses /public/founder.jpg */}
+        {/* Portrait — uses /public/founder.png */}
         <div className="lg:col-span-5">
           <Reveal>
             <figure className="relative overflow-hidden rounded-2xl border border-line bg-surface">
               <div className="relative aspect-[4/5]">
                 <Image
                   src="/founder.png"
-                  alt={`${site.founder}, Founder & Chairman of ${site.name}`}
+                  alt={`${site.founder}, ${t.founder.role}, ${site.name}`}
                   fill
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   className="object-cover object-[center_15%]"
                 />
-                {/* gradient so the caption stays legible over the photo */}
                 <div
                   className="absolute inset-0 bg-gradient-to-t from-bg/90 via-bg/10 to-transparent"
                   aria-hidden
@@ -29,7 +33,7 @@ export default function Founder() {
               <div className="absolute inset-x-0 bottom-0 flex items-end justify-between border-t border-line bg-bg/40 px-6 py-5 backdrop-blur-sm">
                 <div>
                   <p className="font-display text-xl text-fg">{site.founder}</p>
-                  <p className="mt-1 text-sm text-muted">Founder &amp; Chairman</p>
+                  <p className="mt-1 text-sm text-muted">{t.founder.role}</p>
                 </div>
                 <span className="label text-faint">{site.name}</span>
               </div>
@@ -40,37 +44,25 @@ export default function Founder() {
         {/* Narrative */}
         <div className="lg:col-span-7">
           <Reveal>
-            <Eyebrow index="01">Founder</Eyebrow>
+            <Eyebrow index="01">{t.founder.eyebrow}</Eyebrow>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-6 text-4xl leading-[1.08] sm:text-5xl">
-              A builder&rsquo;s mindset, held to a generational horizon.
-            </h2>
+            <h2 className="mt-6 text-4xl leading-[1.08] sm:text-5xl">{t.founder.heading}</h2>
           </Reveal>
 
           <div className="mt-8 space-y-6 text-lg leading-relaxed text-muted">
             <Reveal delay={0.1}>
-              <p>
-                {site.founder} founded {site.name} on a simple conviction: the companies
-                worth building are the ones designed to outlast their founder. Rather than
-                chase a single market, he set out to assemble a diversified ecosystem —
-                where technology, hospitality and capital each strengthen the others.
-              </p>
+              <p>{t.founder.p1}</p>
             </Reveal>
             <Reveal delay={0.15}>
-              <p>
-                That philosophy now spans a green social platform, an enterprise AI company,
-                a destination golf resort and a property development arm — distinct businesses
-                united by one long-term vision and a shared standard of craft.
-              </p>
+              <p>{t.founder.p2}</p>
             </Reveal>
           </div>
 
           <Reveal delay={0.2}>
             <blockquote className="mt-12 border-l border-accent/60 pl-6">
               <p className="font-display text-2xl italic leading-snug text-fg sm:text-3xl">
-                &ldquo;Build companies that compound — in value, in trust, and in the good
-                they do for the communities around them.&rdquo;
+                &ldquo;{t.founder.quote}&rdquo;
               </p>
               <footer className="mt-4 text-sm text-faint">— {site.founder}</footer>
             </blockquote>

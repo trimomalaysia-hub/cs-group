@@ -1,8 +1,12 @@
+"use client";
+
 import Container from "@/components/ui/Container";
 import { site } from "@/lib/site";
 import { companies } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
+  const { t } = useLanguage();
   const year = new Date().getFullYear();
 
   return (
@@ -17,17 +21,15 @@ export default function Footer() {
               </span>
               <span className="font-display text-lg text-fg">{site.name}</span>
             </div>
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">
-              {site.tagline}
-            </p>
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">{t.footer.tagline}</p>
             <p className="mt-6 text-sm text-faint">
-              Founded by {site.founder}
+              {t.footer.foundedBy} {site.founder}
             </p>
           </div>
 
           {/* Companies */}
           <div className="lg:col-span-3">
-            <h3 className="label text-faint">Companies</h3>
+            <h3 className="label text-faint">{t.footer.companies}</h3>
             <ul className="mt-5 space-y-3">
               {companies.map((c) => (
                 <li key={c.id}>
@@ -41,12 +43,12 @@ export default function Footer() {
 
           {/* Navigate */}
           <div className="lg:col-span-2">
-            <h3 className="label text-faint">Navigate</h3>
+            <h3 className="label text-faint">{t.footer.navigate}</h3>
             <ul className="mt-5 space-y-3">
-              {site.nav.slice(0, 5).map((item) => (
+              {site.nav.slice(0, 5).map((item, i) => (
                 <li key={item.href}>
                   <a href={item.href} className="text-sm text-muted transition-colors hover:text-fg">
-                    {item.label}
+                    {t.nav[i]}
                   </a>
                 </li>
               ))}
@@ -55,7 +57,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div className="lg:col-span-2">
-            <h3 className="label text-faint">Contact</h3>
+            <h3 className="label text-faint">{t.footer.getInTouch}</h3>
             <ul className="mt-5 space-y-3 text-sm text-muted">
               <li>
                 <a href={`mailto:${site.email}`} className="transition-colors hover:text-fg">
@@ -81,8 +83,8 @@ export default function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col gap-3 border-t border-line pt-8 text-sm text-faint sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {site.legalName}. All rights reserved.</p>
-          <p>Technology · Hospitality · Capital</p>
+          <p>© {year} {site.legalName}. {t.footer.rights}</p>
+          <p>{t.footer.tagcloud}</p>
         </div>
       </Container>
     </footer>

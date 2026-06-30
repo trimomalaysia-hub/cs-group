@@ -1,23 +1,28 @@
+"use client";
+
 import Link from "next/link";
 import Section from "@/components/ui/Section";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { companies } from "@/lib/data";
+import { useLanguage } from "@/lib/i18n";
 
 export default function Companies() {
+  const { lang, t } = useLanguage();
+
   return (
     <Section id="companies">
       <SectionHeading
         index="02"
-        eyebrow="Companies"
+        eyebrow={t.companies.eyebrow}
         title={
           <>
-            Four companies,
+            {t.companies.titleLine1}
             <br />
-            one ecosystem.
+            {t.companies.titleLine2}
           </>
         }
-        lead="Each business stands on its own — yet shares a founder, a standard and a long-term vision."
+        lead={t.companies.lead}
       />
 
       <Stagger className="mt-16 sm:mt-20">
@@ -40,10 +45,10 @@ export default function Companies() {
 
               {/* Description */}
               <div className="lg:col-span-6">
-                <p className="label text-accent/80">{c.category}</p>
-                <p className="mt-3 text-lg leading-relaxed text-muted">{c.summary}</p>
+                <p className="label text-accent/80">{c.category[lang]}</p>
+                <p className="mt-3 text-lg leading-relaxed text-muted">{c.summary[lang]}</p>
                 <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-                  {c.highlights.map((h) => (
+                  {c.highlights[lang].map((h) => (
                     <li key={h} className="flex items-center gap-2 text-sm text-faint">
                       <span className="h-1 w-1 rounded-full bg-accent/70" aria-hidden />
                       {h}
@@ -55,14 +60,14 @@ export default function Companies() {
               {/* Meta */}
               <div className="flex items-start justify-between lg:col-span-2 lg:flex-col lg:items-end lg:justify-between lg:text-right">
                 <div>
-                  <p className="text-sm text-fg">{c.status}</p>
-                  <p className="mt-1 text-sm text-faint">Since {c.year}</p>
+                  <p className="text-sm text-fg">{c.status[lang]}</p>
+                  <p className="mt-1 text-sm text-faint">{t.companies.since} {c.year}</p>
                 </div>
                 <span
                   className="mt-2 inline-flex items-center gap-1.5 text-sm text-faint transition-colors duration-500 group-hover:text-accent"
                   aria-hidden
                 >
-                  View
+                  {t.companies.view}
                   <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
                 </span>
               </div>
