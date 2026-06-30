@@ -7,15 +7,15 @@
      --color-accent  ->  text-accent  bg-accent  border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces (near-black, layered) */
-  --color-bg: #09090b;        /* page background */
-  --color-surface: #0e0e11;   /* cards / panels */
-  --color-elevated: #16161a;  /* hover / raised surfaces */
+  /* Surfaces (deep charcoal, layered) */
+  --color-bg: #121216;        /* page background — lifted from near-black */
+  --color-surface: #1b1b21;   /* cards / panels */
+  --color-elevated: #25252c;  /* hover / raised surfaces */
 
   /* Text */
-  --color-fg: #ededea;        /* primary, warm off-white */
-  --color-muted: #9b9a94;     /* secondary text */
-  --color-faint: #6a6863;     /* tertiary / meta */
+  --color-fg: #f3f2ef;        /* primary, warm off-white */
+  --color-muted: #c2c1bb;     /* secondary text — brighter, more readable */
+  --color-faint: #8c8a83;     /* tertiary / meta */
 
   /* Lines & accent */
   --color-line: rgba(255, 255, 255, 0.08);  /* hairlines, dividers */
