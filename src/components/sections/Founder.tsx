@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Reveal from "@/components/ui/Reveal";
@@ -16,7 +17,8 @@ export default function Founder() {
         {/* Portrait — uses /public/founder.png */}
         <div className="lg:col-span-5">
           <Reveal>
-            <figure className="relative overflow-hidden rounded-2xl border border-line bg-surface">
+            <Link href="/founder" className="group block">
+            <figure className="relative overflow-hidden rounded-2xl border border-line bg-surface transition-colors group-hover:border-accent/40">
               <div className="relative aspect-[4/5]">
                 <Image
                   src="/founder.png"
@@ -38,6 +40,7 @@ export default function Founder() {
                 <span className="label text-faint">{site.name}</span>
               </div>
             </figure>
+            </Link>
           </Reveal>
         </div>
 
@@ -66,6 +69,16 @@ export default function Founder() {
               </p>
               <footer className="mt-4 text-sm text-faint">— {site.founder}</footer>
             </blockquote>
+          </Reveal>
+
+          <Reveal delay={0.25}>
+            <Link
+              href="/founder"
+              className="group mt-10 inline-flex items-center gap-2 text-sm text-fg transition-colors hover:text-accent"
+            >
+              {t.founder.readMore}
+              <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+            </Link>
           </Reveal>
         </div>
       </div>

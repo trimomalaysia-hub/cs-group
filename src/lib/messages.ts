@@ -26,12 +26,14 @@ export const messages = {
 
     founder: {
       eyebrow: "Founder",
-      heading: "A builder’s mindset, held to a generational horizon.",
-      p1: "Kam Chin Seng founded CS Group on a simple conviction: the companies worth building are the ones designed to outlast their founder. Rather than chase a single market, he set out to assemble a diversified ecosystem — where technology, hospitality and capital each strengthen the others.",
-      p2: "That philosophy now spans a social technology platform, an enterprise AI company, a destination golf resort and a property development arm — distinct businesses united by one long-term vision and a shared standard of craft.",
+      heading: "A builder’s vision — enabling people, and believing in the future.",
+      p1: "Kam Chin Seng believes a company is not only a platform for commercial value, but a place for creating opportunity — cultivating talent, uniting culture, and giving people the room to grow and glimpse the future.",
+      p2: "In the age of AI he sees not just gains in efficiency, but a new way for people and technology to work together — because technology amplifies capability, yet it is people who truly drive an organization’s growth.",
       quote:
-        "Build companies that compound — in value, in trust, and in the good they do for the communities around them.",
+        "A company can grow ever more intelligent — but it must never lose its warmth.",
       role: "Founder & Chairman",
+      readMore: "Read his philosophy",
+      back: "Back to group",
     },
 
     companies: {
@@ -139,12 +141,14 @@ export const messages = {
 
     founder: {
       eyebrow: "创始人",
-      heading: "建造者的格局，着眼于跨越世代的远见。",
-      p1: "Kam Chin Seng 怀着一个简单的信念创立 CS Group：值得打造的企业，是那些注定要超越创始人本身、长久存续的企业。他没有押注单一市场，而是着手构建一个多元化的生态系统 —— 让科技、酒店与资本彼此成就。",
-      p2: "这一理念如今已延伸至一个社交科技平台、一家企业级 AI 公司、一座目的地高尔夫度假村，以及一个房地产开发板块 —— 这些各自独立的业务，由同一个长期愿景与同一套对品质的坚持紧密相连。",
+      heading: "建造者的远见 —— 成就人，也相信未来。",
+      p1: "Kam Chin Seng 相信，企业不仅是创造商业价值的平台，更是创造机会的地方 —— 培养人才、凝聚文化，让更多人在成长中看见未来。",
+      p2: "在 AI 的时代，他看到的不只是效率的提升，而是人与科技全新的协作方式 —— 因为科技放大能力，但真正驱动组织成长的，始终是人。",
       quote:
-        "打造能够复利成长的企业 —— 在价值上、在信任上，也在它们为周遭社区带来的福祉上。",
+        "企业可以越来越智能，但不能失去温度。",
       role: "创始人兼主席",
+      readMore: "阅读他的理念",
+      back: "返回集团",
     },
 
     companies: {
