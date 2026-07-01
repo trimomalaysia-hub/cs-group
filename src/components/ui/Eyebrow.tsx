@@ -13,6 +13,7 @@ export default function Eyebrow({
 }) {
   return (
     <span className={`label inline-flex items-center gap-3 text-accent ${className}`}>
+      <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-accent" aria-hidden />
       <span className="h-px w-8 bg-accent/60" aria-hidden />
       {index && <span className="text-faint">{index}</span>}
       <span className="text-muted">{children}</span>

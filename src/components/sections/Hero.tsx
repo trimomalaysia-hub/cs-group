@@ -18,13 +18,8 @@ export default function Hero() {
 
   return (
     <section id="top" className="relative flex min-h-screen items-center overflow-hidden">
-      {/* Atmospheric backdrops */}
+      {/* Subtle local depth (grid + aurora come from the global TechBackdrop) */}
       <div className="vignette pointer-events-none absolute inset-0" aria-hidden />
-      <div className="grid-lines pointer-events-none absolute inset-x-0 bottom-0 h-1/2 opacity-60" aria-hidden />
-      <div
-        className="pointer-events-none absolute left-1/2 top-[-10rem] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-accent/[0.06] blur-[140px]"
-        aria-hidden
-      />
 
       <Container className="relative z-10 pb-24 pt-32">
         <motion.p {...rise(0)} className="label inline-flex items-center gap-3 text-muted">
@@ -37,7 +32,7 @@ export default function Hero() {
           className="mt-8 max-w-5xl text-[2.75rem] leading-[1.04] tracking-tight sm:text-6xl lg:text-7xl"
         >
           {t.hero.headline.a}
-          <span className="italic text-accent">{t.hero.headline.accent}</span>
+          <span className="text-shimmer">{t.hero.headline.accent}</span>
           {t.hero.headline.post}
         </motion.h1>
 

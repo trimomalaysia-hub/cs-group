@@ -10,6 +10,7 @@ import Button from "@/components/ui/Button";
 import { companies } from "@/lib/data";
 import { site } from "@/lib/site";
 import { useLanguage } from "@/lib/i18n";
+import { onSpotlightMove } from "@/lib/spotlight";
 
 export default function CompanyDetailView({ slug }: { slug: string }) {
   const { lang, t } = useLanguage();
@@ -198,7 +199,7 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           >
             {sec.items.map((it) => (
               <StaggerItem key={it.name.en}>
-                <div className="h-full rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
+                <div onMouseMove={onSpotlightMove} className="spotlight h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
                   <h3 className="text-lg text-fg sm:text-xl">{it.name[lang]}</h3>
                   <p className="mt-3 text-base leading-relaxed text-muted">{it.text[lang]}</p>
                 </div>
@@ -235,7 +236,7 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           <Stagger className="mt-12 grid gap-4 sm:grid-cols-2">
             {businessAreas.map((a) => (
               <StaggerItem key={a.title.en}>
-                <div className="h-full rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
+                <div onMouseMove={onSpotlightMove} className="spotlight h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
                   <h3 className="text-lg text-fg sm:text-xl">{a.title[lang]}</h3>
                   <p className="mt-3 text-base leading-relaxed text-muted">{a.text[lang]}</p>
                 </div>

@@ -5,6 +5,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { insights } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
+import { onSpotlightMove } from "@/lib/spotlight";
 
 export default function Insights() {
   const { lang, t } = useLanguage();
@@ -24,7 +25,8 @@ export default function Insights() {
             {/* href is a placeholder — point to real articles or a /insights route later */}
             <a
               href="/#insights"
-              className="group flex h-full flex-col rounded-2xl border border-line bg-surface/40 p-8 transition-colors duration-500 hover:border-accent/40 hover:bg-elevated/50"
+              onMouseMove={onSpotlightMove}
+              className="spotlight group flex h-full flex-col rounded-2xl border border-line bg-surface/40 p-8 transition-colors duration-500 hover:border-accent/40 hover:bg-elevated/50"
             >
               <span className="label text-accent/80">{post.category[lang]}</span>
               <h3 className="mt-6 font-display text-2xl leading-snug text-fg transition-colors duration-500 group-hover:text-accent">

@@ -119,4 +119,76 @@
     -webkit-mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
     mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
   }
+
+  /* --- Tech atmosphere: fixed grid + drifting aurora glows --------------- */
+  .tech-backdrop { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none; }
+  .tech-backdrop .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+    background-size: 62px 62px;
+    opacity: 0.6;
+    -webkit-mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
+    mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
+  }
+  .aurora {
+    position: absolute; border-radius: 9999px; filter: blur(55px);
+    opacity: 0.45; mix-blend-mode: screen; will-change: transform;
+  }
+  .aurora-1 {
+    width: 44rem; height: 44rem; top: -15rem; left: -9rem;
+    background: radial-gradient(closest-side, color-mix(in srgb, var(--color-accent) 60%, transparent), transparent);
+    animation: aurora-1 24s var(--ease-out-soft) infinite alternate;
+  }
+  .aurora-2 {
+    width: 38rem; height: 38rem; top: -9rem; right: -11rem;
+    background: radial-gradient(closest-side, color-mix(in srgb, #8ab0ff 55%, transparent), transparent);
+    animation: aurora-2 31s var(--ease-out-soft) infinite alternate;
+  }
+
+  /* --- Animated gradient text for a hero keyword ------------------------ */
+  .text-shimmer {
+    background-image: linear-gradient(100deg, var(--color-accent) 18%, #d6e4ff 47%, var(--color-accent) 76%);
+    background-size: 220% auto;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+    animation: shimmer 7s linear infinite;
+  }
+
+  /* --- Cursor-follow spotlight on cards --------------------------------- */
+  .spotlight { position: relative; isolation: isolate; }
+  .spotlight::before {
+    content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+    background: radial-gradient(240px circle at var(--mx, 50%) var(--my, -30%),
+      color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 62%);
+    opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
+  }
+  .spotlight:hover::before { opacity: 1; }
+
+  /* --- Breathing status dot -------------------------------------------- */
+  .pulse-dot { position: relative; }
+  .pulse-dot::after {
+    content: ""; position: absolute; inset: 0; border-radius: inherit;
+    animation: pulse-ring 2.6s ease-out infinite;
+  }
+}
+
+/* ============================================================================
+   KEYFRAMES
+   ========================================================================== */
+@keyframes aurora-1 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(6rem, 4rem, 0) scale(1.18); }
+}
+@keyframes aurora-2 {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(-5rem, 3rem, 0) scale(1.12); }
+}
+@keyframes shimmer {
+  to { background-position: 220% center; }
+}
+@keyframes pulse-ring {
+  0%       { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 60%, transparent); }
+  70%,100% { box-shadow: 0 0 0 7px transparent; }
 }

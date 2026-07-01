@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { LanguageProvider } from "@/lib/i18n";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import TechBackdrop from "@/components/ui/TechBackdrop";
 import "./globals.css";
 
 /* Clean grotesque for headlines + body (modern corporate) */
@@ -55,6 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className="min-h-screen bg-bg text-fg antialiased">
+        <TechBackdrop />
         <LanguageProvider>
           <Header />
           <main>{children}</main>
