@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
@@ -27,6 +28,10 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
   const businessAreas = d?.businessAreas;
   const projects = d?.projects;
   const hasMission = !!d?.mission;
+  const journey = d?.journey;
+  const compare = d?.compare;
+  const readiness = d?.readiness;
+  const stats = d?.stats;
 
   const facts =
     d?.facts?.map((f) => ({ label: f.label[lang], value: f.value[lang] })) ?? [
@@ -154,6 +159,74 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
         </div>
       </Section>
 
+      {/* ---------------- Transformation journey (stepper) ---------------- */}
+      {journey && (
+        <Section>
+          <SectionHeading
+            eyebrow={journey.eyebrow[lang]}
+            title={journey.title[lang]}
+            lead={journey.intro?.[lang]}
+          />
+          <Stagger className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+            {journey.steps.map((s, i) => {
+              const isLast = i === journey.steps.length - 1;
+              return (
+                <StaggerItem key={s.name.en}>
+                  <div
+                    className={`h-full rounded-2xl border p-6 ${
+                      isLast ? "border-accent/40 bg-elevated" : "border-line bg-surface/40"
+                    }`}
+                  >
+                    <div className="flex items-center gap-2">
+                      <span className={`font-display text-sm ${isLast ? "text-accent" : "text-accent/70"}`}>
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="h-px flex-1 bg-line" aria-hidden />
+                    </div>
+                    <h3 className="mt-4 font-display text-lg text-fg">{s.name[lang]}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-muted">{s.text[lang]}</p>
+                  </div>
+                </StaggerItem>
+              );
+            })}
+          </Stagger>
+        </Section>
+      )}
+
+      {/* ---------------- Today vs tomorrow (comparison) ---------------- */}
+      {compare && (
+        <Section>
+          <SectionHeading
+            eyebrow={compare.eyebrow[lang]}
+            title={compare.title[lang]}
+            lead={compare.intro?.[lang]}
+          />
+          <Reveal>
+            <div className="mt-12 overflow-hidden rounded-2xl border border-line">
+              {/* Header row */}
+              <div className="grid sm:grid-cols-2">
+                <div className="border-b border-line bg-surface/40 px-6 py-4">
+                  <span className="label text-faint">{compare.beforeLabel[lang]}</span>
+                </div>
+                <div className="border-b border-line bg-elevated px-6 py-4 sm:border-l">
+                  <span className="label text-accent/80">{compare.afterLabel[lang]}</span>
+                </div>
+              </div>
+              {/* Rows */}
+              {compare.rows.map((r, i) => (
+                <div key={i} className={`grid sm:grid-cols-2 ${i > 0 ? "border-t border-line" : ""}`}>
+                  <div className="px-6 py-5 text-base leading-relaxed text-muted">{r.before[lang]}</div>
+                  <div className="bg-surface/20 px-6 py-5 text-base leading-relaxed text-fg sm:border-l sm:border-line">
+                    <span className="mr-2 text-accent/70" aria-hidden>→</span>
+                    {r.after[lang]}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </Section>
+      )}
+
       {/* ---------------- Vision & Mission ---------------- */}
       {d && (
         <Section>
@@ -208,6 +281,53 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           </Stagger>
         </Section>
       ))}
+
+      {/* ---------------- Readiness model (AIMRAM bars + score) ---------------- */}
+      {readiness && (
+        <Section>
+          <SectionHeading
+            eyebrow={readiness.eyebrow[lang]}
+            title={readiness.title[lang]}
+            lead={readiness.intro?.[lang]}
+          />
+          <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-12">
+            <div className="space-y-5 lg:col-span-7">
+              {readiness.dimensions.map((dim, i) => (
+                <ReadinessBar key={dim.label.en} label={dim.label[lang]} value={dim.value} delay={i * 0.08} />
+              ))}
+            </div>
+            <Reveal delay={0.1} className="lg:col-span-5">
+              <div className="flex h-full flex-col justify-center rounded-2xl border border-accent/30 bg-elevated p-8 text-center sm:p-10">
+                <span className="label text-faint">{readiness.scoreCaption[lang]}</span>
+                <p className="mt-4 font-display text-6xl leading-none text-accent sm:text-7xl">
+                  {readiness.scoreValue}
+                  <span className="align-top text-3xl text-accent/70">%</span>
+                </p>
+                <p className="mt-5 text-sm leading-relaxed text-muted">{readiness.scoreNote[lang]}</p>
+              </div>
+            </Reveal>
+          </div>
+        </Section>
+      )}
+
+      {/* ---------------- Impact metrics (big-number band) ---------------- */}
+      {stats && (
+        <Section>
+          <SectionHeading
+            eyebrow={stats.eyebrow[lang]}
+            title={stats.title[lang]}
+            lead={stats.intro?.[lang]}
+          />
+          <Stagger className="mt-12 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-line sm:grid-cols-3 lg:grid-cols-5">
+            {stats.items.map((s) => (
+              <StaggerItem key={s.label.en} className="bg-surface/40 p-8 text-center sm:p-10">
+                <p className="font-display text-4xl text-fg sm:text-5xl">{s.value}</p>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{s.label[lang]}</p>
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </Section>
+      )}
 
       {/* ---------------- Goals ---------------- */}
       {goals && goals.length > 0 && (
@@ -285,5 +405,27 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
         </Reveal>
       </Section>
     </article>
+  );
+}
+
+/* A single labelled readiness bar — fills to `value`% when scrolled into view. */
+function ReadinessBar({ label, value, delay }: { label: string; value: number; delay: number }) {
+  const reduce = useReducedMotion();
+  return (
+    <div>
+      <div className="flex items-baseline justify-between gap-4">
+        <span className="text-sm text-fg">{label}</span>
+        <span className="label text-accent/90">{value}%</span>
+      </div>
+      <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-line">
+        <motion.div
+          className="h-full rounded-full bg-accent"
+          initial={{ width: reduce ? `${value}%` : "0%" }}
+          whileInView={{ width: `${value}%` }}
+          viewport={{ once: true, margin: "0px 0px -10% 0px" }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay }}
+        />
+      </div>
+    </div>
   );
 }

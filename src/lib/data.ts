@@ -16,6 +16,48 @@ export interface DetailSection {
   items: { name: Loc; text: Loc }[];
 }
 
+/* --- Visual blocks (all optional, per-company) ----------------------------
+   These render as graphics rather than prose — used to break up text-heavy
+   pages with a big-number band, a before/after table, a progression stepper
+   and a scored readiness meter. */
+
+/* Big-number impact band. `value` is display text (e.g. "+40%", "3.2×"). */
+export interface StatBlock {
+  eyebrow: Loc;
+  title: Loc;
+  intro?: Loc;
+  items: { value: string; label: Loc }[];
+}
+
+/* Before → after transformation comparison table. */
+export interface CompareBlock {
+  eyebrow: Loc;
+  title: Loc;
+  intro?: Loc;
+  beforeLabel: Loc;
+  afterLabel: Loc;
+  rows: { before: Loc; after: Loc }[];
+}
+
+/* Horizontal maturity / progression stepper (last step is highlighted). */
+export interface JourneyBlock {
+  eyebrow: Loc;
+  title: Loc;
+  intro?: Loc;
+  steps: { name: Loc; text: Loc }[];
+}
+
+/* Scored readiness model — labelled bars (0–100) + one overall score. */
+export interface ReadinessBlock {
+  eyebrow: Loc;
+  title: Loc;
+  intro?: Loc;
+  dimensions: { label: Loc; value: number }[];
+  scoreValue: number;
+  scoreCaption: Loc;
+  scoreNote: Loc;
+}
+
 export interface CompanyDetail {
   tagline: Loc;
   intro: Loc;
@@ -30,6 +72,11 @@ export interface CompanyDetail {
   goals?: Loc<string[]>;
   projects?: { name: string; text: Loc }[];
   sections?: DetailSection[];
+  // Visual blocks:
+  journey?: JourneyBlock;
+  compare?: CompareBlock;
+  readiness?: ReadinessBlock;
+  stats?: StatBlock;
 }
 
 export interface Company {
@@ -210,6 +257,104 @@ const companiesRaw: Company[] = [
       mission: {
         en: "To help companies transform from traditional operations into AI-Native Enterprises — through AI readiness assessment, transformation strategy, workflow automation, AI agent deployment, an enterprise AI operating framework and continuous optimization — building lasting competitive advantage and continuously evolving organizational capability.",
         zh: "协助企业从传统运营模式，转型成为 AI 原生企业 —— 通过 AI 成熟度评估、转型战略、流程自动化、AI Agent 部署、企业 AI 运营框架与持续优化，建立长期竞争优势，实现组织能力的持续进化。",
+      },
+      journey: {
+        eyebrow: { en: "Transformation path", zh: "转型路径" },
+        title: { en: "From traditional to AI-native.", zh: "从传统企业，到 AI 原生企业。" },
+        intro: {
+          en: "We guide enterprises through every stage of the upgrade — not a single tool, but a complete evolution in how a company operates.",
+          zh: "我们陪伴企业走过升级的每一个阶段 —— 不是加一个工具，而是一场企业运作方式的完整进化。",
+        },
+        steps: [
+          {
+            name: { en: "Traditional", zh: "传统" },
+            text: { en: "Manual work, siloed systems, reactive decisions.", zh: "人工作业、系统割裂、被动决策。" },
+          },
+          {
+            name: { en: "Digital", zh: "数字化" },
+            text: { en: "Operations are digitised — but real intelligence is missing.", zh: "实现数字化，却仍缺乏真正的智能。" },
+          },
+          {
+            name: { en: "AI-Assisted", zh: "AI 辅助" },
+            text: { en: "AI augments people with insights and recommendations.", zh: "AI 辅助人力，提供洞察与建议。" },
+          },
+          {
+            name: { en: "AI-Driven", zh: "AI 驱动" },
+            text: { en: "AI automates core processes and drives measurable outcomes.", zh: "AI 自动执行核心流程，驱动可衡量的成果。" },
+          },
+          {
+            name: { en: "AI-Native", zh: "AI 原生" },
+            text: { en: "The organisation runs on AI — self-learning, self-optimising.", zh: "组织以 AI 运转 —— 自我学习、持续优化。" },
+          },
+        ],
+      },
+      compare: {
+        eyebrow: { en: "Today vs tomorrow", zh: "现在与未来" },
+        title: { en: "The business challenge, rewritten.", zh: "重写企业面对的挑战。" },
+        intro: {
+          en: "Most businesses are held back by fragmented systems and manual work. NEXJARVIS turns each drag into an advantage.",
+          zh: "多数企业被割裂的系统与人工作业拖累。NEXJARVIS 把每一处阻力，都转化为优势。",
+        },
+        beforeLabel: { en: "Today — fragmented · manual · reactive", zh: "如今 —— 割裂 · 人工 · 被动" },
+        afterLabel: { en: "With NEXJARVIS — intelligent · connected · proactive", zh: "有了 NEXJARVIS —— 智能 · 连接 · 主动" },
+        rows: [
+          {
+            before: { en: "Costs rise with manual work and rework.", zh: "人工与返工，不断推高成本。" },
+            after: { en: "AI cuts waste and lowers operating cost.", zh: "AI 减少浪费，降低运营成本。" },
+          },
+          {
+            before: { en: "Hard to find and keep the right talent.", zh: "难以招到、也难以留住合适的人才。" },
+            after: { en: "AI augments your people and closes skill gaps.", zh: "AI 赋能团队，弥补能力缺口。" },
+          },
+          {
+            before: { en: "Disconnected data and siloed departments.", zh: "数据割裂，部门各自为政。" },
+            after: { en: "Integrated platforms and one clean data layer.", zh: "平台整合，统一的数据底座。" },
+          },
+          {
+            before: { en: "Limited visibility delays every decision.", zh: "信息有限，决策处处滞后。" },
+            after: { en: "Real-time, predictive intelligence on hand.", zh: "实时预测洞察，随手可得。" },
+          },
+          {
+            before: { en: "Repetitive tasks and manual approvals.", zh: "重复的任务与人工审批。" },
+            after: { en: "Automated workflows that scale without limits.", zh: "自动化流程，无限扩展。" },
+          },
+        ],
+      },
+      readiness: {
+        eyebrow: { en: "AIMRAM™", zh: "AIMRAM™" },
+        title: { en: "AI readiness, measured.", zh: "让 AI 成熟度，可被衡量。" },
+        intro: {
+          en: "Our proprietary model scores an organisation across five dimensions — turning “are we ready for AI?” into a clear, actionable roadmap.",
+          zh: "我们的专有模型从五个维度为企业打分 —— 把「我们准备好迎接 AI 了吗」，变成清晰、可执行的路线图。",
+        },
+        dimensions: [
+          { label: { en: "Data infrastructure", zh: "数据基础" }, value: 78 },
+          { label: { en: "AI application depth", zh: "AI 应用深度" }, value: 65 },
+          { label: { en: "People & culture", zh: "人才与文化" }, value: 62 },
+          { label: { en: "Process integration", zh: "流程整合" }, value: 70 },
+          { label: { en: "Business impact", zh: "业务影响" }, value: 73 },
+        ],
+        scoreValue: 69,
+        scoreCaption: { en: "Overall readiness", zh: "综合成熟度" },
+        scoreNote: {
+          en: "Developing — on the right path, with significant value still to unlock.",
+          zh: "发展中 —— 方向正确，仍有巨大价值待释放。",
+        },
+      },
+      stats: {
+        eyebrow: { en: "Impact", zh: "成效" },
+        title: { en: "Outcomes that compound.", zh: "可以复利的成效。" },
+        intro: {
+          en: "What an AI workforce delivers once it runs alongside your team.",
+          zh: "当 AI 员工与团队并肩运转，会带来这些改变。",
+        },
+        items: [
+          { value: "+40%", label: { en: "Productivity", zh: "生产力提升" } },
+          { value: "−30%", label: { en: "Operating costs", zh: "运营成本下降" } },
+          { value: "+25%", label: { en: "Revenue opportunities", zh: "营收机会增加" } },
+          { value: "90%", label: { en: "Faster response", zh: "响应更快" } },
+          { value: "2.5×", label: { en: "Customer satisfaction", zh: "客户满意度提升" } },
+        ],
       },
       sections: [
         {
