@@ -2,9 +2,9 @@
 
 Premium corporate site for **KCS Group**, the founder-led group established by
 **Kam Chin Seng**. Built with **Next.js 15 (App Router) · TypeScript · TailwindCSS v4
-· Framer Motion**. Aesthetic: deep-navy corporate, investor-grade — a navy canvas with
-cool near-white type, clean sans-serif headlines and a steel-blue accent. It will often
-be edited by a **non-technical team member** in plain English.
+· Framer Motion**. Aesthetic: monochrome black/white/beige, minimal, investor-grade — a
+beige paper canvas with near-black ink and clean sans-serif headlines, no chromatic colour.
+It will often be edited by a **non-technical team member** in plain English.
 
 ## Golden rule: design work → use the `ui-ux-pro-max` skill
 For anything visual or structural (pages, sections, styling, layout, colour,
@@ -37,8 +37,8 @@ src/
 ## Design system quick reference
 - Surfaces `bg-bg` / `bg-surface` / `bg-elevated`; text `text-fg` / `text-muted` /
   `text-faint`; hairlines `border-line` / `border-line-strong`; accent `text-accent`
-  (steel blue — **sparingly**). Type is Inter throughout; headings are heavier/tighter.
-  Surfaces are a deep navy page with raised navy cards; text is cool near-white.
+  (near-black ink — **sparingly**). Type is Inter throughout; headings are heavier/tighter.
+  Surfaces are a beige page with warm near-white cards; text is near-black.
 - Sections via `<Section>`; container via `<Container>`; buttons via `<Button>`.
 - Motion: `<Reveal>` / `<Stagger>` only — subtle, once-only, reduced-motion-safe.
 

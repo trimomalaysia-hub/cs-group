@@ -1,33 +1,31 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DESIGN TOKENS — deep corporate navy. Authoritative, professional, "big-company"
-   feel: navy canvas, cool near-white text, steel-blue accent, clean sans headlines.
-   Edit these to retune the whole site. Tailwind v4 @theme:
-     --color-accent  ->  text-accent  bg-accent  border-accent
+   DESIGN TOKENS — monochrome: black · white · beige. Minimal, elegant, timeless
+   (design-studio / architectural). Beige paper canvas, near-black ink, no colour.
+   Tailwind v4 @theme:  --color-accent -> text-accent bg-accent border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces — deep navy, layered */
-  --color-bg: #0f1e33;        /* page background — deep corporate navy */
-  --color-surface: #17293f;   /* cards / panels */
-  --color-elevated: #21344c;  /* hover / raised surfaces */
+  /* Surfaces — warm beige paper, layered */
+  --color-bg: #eae4d6;        /* page background — beige */
+  --color-surface: #fbf9f3;   /* cards / panels — warm near-white */
+  --color-elevated: #e0d9c8;  /* hover / raised surfaces */
 
-  /* Text (cool, near-white) */
-  --color-fg: #f1f5fa;        /* primary text */
-  --color-muted: #a7b4c7;     /* secondary text — steel */
-  --color-faint: #6f7f95;     /* tertiary / meta */
+  /* Ink (warm near-black) */
+  --color-fg: #17140f;        /* primary text */
+  --color-muted: #575046;     /* secondary text */
+  --color-faint: #8a8172;     /* tertiary / meta */
 
-  /* Lines & accent */
-  --color-line: rgba(255, 255, 255, 0.10);      /* hairlines, dividers */
-  --color-line-strong: rgba(255, 255, 255, 0.18);
-  --color-accent: #5b8def;        /* steel blue — corporate accent */
-  --color-accent-soft: #86aaf5;
+  /* Lines & accent (monochrome — accent is essentially black) */
+  --color-line: rgba(20, 17, 12, 0.15);        /* hairline rules */
+  --color-line-strong: rgba(20, 17, 12, 0.26);
+  --color-accent: #211c14;        /* espresso near-black — the "ink" accent */
+  --color-accent-soft: #4a4234;
 
   /* Fonts (CSS vars set by next/font in layout.tsx) — clean sans throughout */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  /* Easing for a refined, calm motion feel */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -37,9 +35,9 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem; /* offset for the sticky header on anchor jumps */
+    scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
-    color-scheme: dark;
+    color-scheme: light;
   }
 
   body {
@@ -50,7 +48,6 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Clean, confident sans-serif headlines (corporate) */
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 600;
@@ -62,8 +59,8 @@
   p { text-wrap: pretty; }
 
   ::selection {
-    background-color: var(--color-accent);
-    color: #0b1626;
+    background-color: var(--color-fg);
+    color: var(--color-bg);
   }
 
   :focus-visible {
@@ -72,7 +69,6 @@
     border-radius: 2px;
   }
 
-  /* Dark, unobtrusive scrollbar */
   ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb {
@@ -91,10 +87,9 @@
 }
 
 /* ============================================================================
-   UTILITIES — small editorial helpers
+   UTILITIES + tech atmosphere (monochrome)
    ========================================================================== */
 @layer utilities {
-  /* Hairline-thin uppercase label used for eyebrows / meta */
   .label {
     font-family: var(--font-sans);
     text-transform: uppercase;
@@ -103,14 +98,13 @@
     font-weight: 600;
   }
 
-  /* Subtle depth: cool blue glow up top, gentle darkening at the base */
+  /* Subtle paper vignette */
   .vignette {
     background:
-      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 70%),
-      radial-gradient(80% 60% at 50% 100%, color-mix(in srgb, #000 24%, transparent), transparent 70%);
+      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-accent) 6%, transparent), transparent 70%),
+      radial-gradient(80% 60% at 50% 100%, color-mix(in srgb, var(--color-fg) 6%, transparent), transparent 70%);
   }
 
-  /* Faint grid backdrop for technical / portfolio sections */
   .grid-lines {
     background-image:
       linear-gradient(to right, var(--color-line) 1px, transparent 1px),
@@ -120,7 +114,7 @@
     mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
   }
 
-  /* --- Tech atmosphere: fixed grid + drifting aurora glows --------------- */
+  /* --- Tech atmosphere: fixed grid + soft drifting light pools ----------- */
   .tech-backdrop { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none; }
   .tech-backdrop .grid {
     position: absolute; inset: 0;
@@ -128,40 +122,43 @@
       linear-gradient(to right, var(--color-line) 1px, transparent 1px),
       linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
     background-size: 62px 62px;
-    opacity: 0.6;
+    opacity: 0.55;
     -webkit-mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
     mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
   }
   .aurora {
-    position: absolute; border-radius: 9999px; filter: blur(55px);
-    opacity: 0.45; mix-blend-mode: screen; will-change: transform;
+    position: absolute; border-radius: 9999px; filter: blur(60px);
+    opacity: 0.7; will-change: transform;
   }
   .aurora-1 {
-    width: 44rem; height: 44rem; top: -15rem; left: -9rem;
-    background: radial-gradient(closest-side, color-mix(in srgb, var(--color-accent) 60%, transparent), transparent);
+    width: 44rem; height: 44rem; top: -16rem; left: -9rem;
+    background: radial-gradient(closest-side, color-mix(in srgb, #fffdf7 72%, transparent), transparent);
     animation: aurora-1 24s var(--ease-out-soft) infinite alternate;
   }
   .aurora-2 {
-    width: 38rem; height: 38rem; top: -9rem; right: -11rem;
-    background: radial-gradient(closest-side, color-mix(in srgb, #8ab0ff 55%, transparent), transparent);
+    width: 38rem; height: 38rem; top: -10rem; right: -11rem;
+    background: radial-gradient(closest-side, color-mix(in srgb, #fffdf7 60%, transparent), transparent);
     animation: aurora-2 31s var(--ease-out-soft) infinite alternate;
   }
 
-  /* --- Animated gradient text for a hero keyword ------------------------ */
+  /* --- Animated grayscale sheen for a hero keyword ---------------------- */
   .text-shimmer {
-    background-image: linear-gradient(100deg, var(--color-accent) 18%, #d6e4ff 47%, var(--color-accent) 76%);
+    background-image: linear-gradient(100deg,
+      var(--color-fg) 20%,
+      color-mix(in srgb, var(--color-fg) 42%, var(--color-bg)) 50%,
+      var(--color-fg) 78%);
     background-size: 220% auto;
     -webkit-background-clip: text; background-clip: text;
     color: transparent; -webkit-text-fill-color: transparent;
     animation: shimmer 7s linear infinite;
   }
 
-  /* --- Cursor-follow spotlight on cards --------------------------------- */
+  /* --- Cursor-follow ink spotlight on cards ----------------------------- */
   .spotlight { position: relative; isolation: isolate; }
   .spotlight::before {
     content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
     background: radial-gradient(240px circle at var(--mx, 50%) var(--my, -30%),
-      color-mix(in srgb, var(--color-accent) 22%, transparent), transparent 62%);
+      color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 62%);
     opacity: 0; transition: opacity 0.35s ease; pointer-events: none;
   }
   .spotlight:hover::before { opacity: 1; }
@@ -189,6 +186,6 @@
   to { background-position: 220% center; }
 }
 @keyframes pulse-ring {
-  0%       { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 60%, transparent); }
+  0%       { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent); }
   70%,100% { box-shadow: 0 0 0 7px transparent; }
 }

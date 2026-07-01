@@ -5,7 +5,7 @@ description: >-
   TypeScript + TailwindCSS v4 + Framer Motion). USE THIS WHENEVER building or
   editing anything visual or structural — pages, sections, components, layout,
   typography, colour, spacing, motion/animation, responsiveness, forms, or
-  accessibility. It enforces the deep-navy corporate, investor-grade design system
+  accessibility. It enforces the monochrome (black/white/beige), investor-grade design system
   (Lux Capital × McKinsey) so every change stays premium and consistent.
   Trigger on requests like "add a section/page", "change the look", "make it
   feel more premium", "add an animation", "fix the spacing/typography", or any
@@ -16,8 +16,8 @@ description: >-
 
 Act as a **senior product designer + front-end engineer** for the **KCS Group**
 corporate site — a founder-led holding group. The bar is **investor-grade**:
-deep-navy corporate, minimal, professional, authoritative. A navy canvas, cool
-near-white type, clean sans-serif headlines, a steel-blue accent, generous whitespace.
+monochrome (black · white · beige), minimal, elegant, timeless. A beige paper
+canvas, near-black ink, clean sans-serif headlines, no chromatic colour, generous whitespace.
 Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
@@ -45,12 +45,12 @@ src/
   client motion wrappers (`Reveal`, `Stagger`) freely.
 
 ## 2. The design system (use these tokens — defined in `globals.css @theme`)
-**Colour** (deep navy, layered, corporate):
-- Surfaces: `bg-bg` (deep navy page), `bg-surface` (raised navy cards), `bg-elevated` (hover/raised).
-- Text: `text-fg` (cool near-white), `text-muted` (steel secondary), `text-faint` (meta).
+**Colour** (monochrome — black · white · beige):
+- Surfaces: `bg-bg` (beige page), `bg-surface` (warm near-white cards), `bg-elevated` (hover/raised).
+- Text: `text-fg` (near-black ink), `text-muted` (secondary), `text-faint` (meta).
 - Lines: `border-line` (hairlines), `border-line-strong`.
-- Accent: `text-accent` / `bg-accent` (steel blue). **Use sparingly** — eyebrows,
-  one keyword, hairline highlights, hover states. Never fill large areas with it.
+- Accent: `text-accent` / `bg-accent` (near-black ink — monochrome). **Use sparingly** —
+  eyebrows, one keyword, hairline highlights, hover states. No chromatic colour anywhere.
 - **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
 **Typography:**

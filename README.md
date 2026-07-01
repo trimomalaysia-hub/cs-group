@@ -1,7 +1,7 @@
 # KCS Group — Official Website
 
 A premium, investor-grade corporate website for **KCS Group**, the founder-led
-group of companies established by **Kam Chin Seng**. Deep-navy corporate,
+group of companies established by **Kam Chin Seng**. Monochrome black/white/beige,
 minimal, investor-grade aesthetic.
 
 **The ecosystem**
