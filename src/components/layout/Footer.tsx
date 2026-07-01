@@ -52,6 +52,11 @@ export default function Footer() {
                   </a>
                 </li>
               ))}
+              <li>
+                <a href={site.careersHref} className="text-sm text-muted transition-colors hover:text-fg">
+                  {t.header.careers}
+                </a>
+              </li>
             </ul>
           </div>
 

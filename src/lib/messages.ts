@@ -8,7 +8,7 @@
 export const messages = {
   en: {
     nav: ["Founder", "Companies", "Vision", "Portfolio", "Timeline", "Insights", "Contact"],
-    header: { enquire: "Enquire" },
+    header: { enquire: "Enquire", careers: "Careers" },
 
     hero: {
       eyebrow: "Founder-Led Group — Established by Kam Chin Seng",
@@ -123,7 +123,7 @@ export const messages = {
 
   zh: {
     nav: ["创始人", "旗下企业", "愿景", "投资版图", "发展历程", "洞察", "联系"],
-    header: { enquire: "咨询" },
+    header: { enquire: "咨询", careers: "招贤纳士" },
 
     hero: {
       eyebrow: "创始人主导的企业集团 — 由 Kam Chin Seng 创立",

@@ -87,6 +87,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
+          <a
+            href={site.careersHref}
+            className="text-sm text-muted transition-colors hover:text-fg"
+          >
+            {t.header.careers}
+          </a>
           <LangToggle lang={lang} setLang={setLang} />
           <a
             href="/#contact"
@@ -142,6 +148,13 @@ export default function Header() {
                   {t.nav[i]}
                 </a>
               ))}
+              <a
+                href={site.careersHref}
+                onClick={() => setOpen(false)}
+                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors hover:text-accent"
+              >
+                {t.header.careers}
+              </a>
             </Container>
           </motion.nav>
         )}

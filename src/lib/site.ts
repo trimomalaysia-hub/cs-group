@@ -18,6 +18,7 @@ export const site = {
   /* Contact */
   email: "office@csgroup.com",
   investorEmail: "invest@csgroup.com",
+  careersEmail: "careers@csgroup.com",
   phone: "+60 12-345 6789",
   location: "Kuala Lumpur, Malaysia",
 
@@ -31,6 +32,9 @@ export const site = {
     { label: "Insights", href: "/#insights" },
     { label: "Contact", href: "/#contact" },
   ],
+
+  /* Standalone pages (routes, not homepage anchors). */
+  careersHref: "/careers",
 
   social: {
     linkedin: "https://www.linkedin.com/company/csgroup",
