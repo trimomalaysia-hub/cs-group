@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DESIGN TOKENS — single source of truth for the dark, editorial, investor-grade
-   aesthetic (inspired by Lux Capital × McKinsey). Edit here to retune the whole
-   site. Tailwind v4 turns each token into a utility, e.g.
+   DESIGN TOKENS — warm, light, editorial aesthetic (Lux Capital feel).
+   Paper-like cream background, warm near-black serif headlines, generous space.
+   Edit these to retune the whole site. Tailwind v4 @theme:
      --color-accent  ->  text-accent  bg-accent  border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces (deep charcoal, layered) */
-  --color-bg: #121216;        /* page background — lifted from near-black */
-  --color-surface: #1b1b21;   /* cards / panels */
-  --color-elevated: #25252c;  /* hover / raised surfaces */
+  /* Surfaces (warm paper, layered) */
+  --color-bg: #f2eee6;        /* page background — warm cream / paper */
+  --color-surface: #ffffff;   /* cards / panels */
+  --color-elevated: #e9e3d6;  /* hover / raised surfaces (warm shade) */
 
-  /* Text */
-  --color-fg: #f3f2ef;        /* primary, warm off-white */
-  --color-muted: #c2c1bb;     /* secondary text — brighter, more readable */
-  --color-faint: #8c8a83;     /* tertiary / meta */
+  /* Text (warm near-black) */
+  --color-fg: #1b1915;        /* primary text */
+  --color-muted: #57514a;     /* secondary text */
+  --color-faint: #8a8478;     /* tertiary / meta */
 
   /* Lines & accent */
-  --color-line: rgba(255, 255, 255, 0.08);  /* hairlines, dividers */
-  --color-line-strong: rgba(255, 255, 255, 0.16);
-  --color-accent: #c6a871;        /* champagne — used sparingly */
-  --color-accent-soft: #d8c39a;
+  --color-line: rgba(27, 25, 21, 0.14);        /* hairlines, dividers */
+  --color-line-strong: rgba(27, 25, 21, 0.24);
+  --color-accent: #8a5e2e;        /* deep bronze — used sparingly */
+  --color-accent-soft: #a8793f;
 
   /* Fonts (CSS vars set by next/font in layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -39,6 +39,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem; /* offset for the sticky header on anchor jumps */
     -webkit-text-size-adjust: 100%;
+    color-scheme: light;
   }
 
   body {
@@ -53,8 +54,8 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: -0.02em;
-    line-height: 1.04;
+    letter-spacing: -0.018em;
+    line-height: 1.05;
     text-wrap: balance;
   }
 
@@ -62,7 +63,7 @@
 
   ::selection {
     background-color: var(--color-accent);
-    color: #0a0a0a;
+    color: #fdfbf6;
   }
 
   :focus-visible {
@@ -71,13 +72,13 @@
     border-radius: 2px;
   }
 
-  /* Dark, unobtrusive scrollbar */
-  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  /* Light, unobtrusive scrollbar */
+  ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb {
     background: var(--color-line-strong);
     border-radius: 999px;
-    border: 2px solid var(--color-bg);
+    border: 3px solid var(--color-bg);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -102,11 +103,11 @@
     font-weight: 500;
   }
 
-  /* Subtle top-down vignette for hero / dark sections */
+  /* Subtle warm vignette for hero / feature sections (light theme) */
   .vignette {
     background:
-      radial-gradient(60% 50% at 50% 0%, rgba(198, 168, 113, 0.06), transparent 70%),
-      radial-gradient(80% 60% at 50% 100%, rgba(255, 255, 255, 0.025), transparent 70%);
+      radial-gradient(60% 50% at 50% 0%, rgba(138, 94, 46, 0.06), transparent 70%),
+      radial-gradient(80% 60% at 50% 100%, rgba(27, 25, 21, 0.035), transparent 70%);
   }
 
   /* Faint grid backdrop for technical / portfolio sections */

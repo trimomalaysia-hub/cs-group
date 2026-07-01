@@ -5,7 +5,7 @@ description: >-
   TypeScript + TailwindCSS v4 + Framer Motion). USE THIS WHENEVER building or
   editing anything visual or structural — pages, sections, components, layout,
   typography, colour, spacing, motion/animation, responsiveness, forms, or
-  accessibility. It enforces the dark, editorial, investor-grade design system
+  accessibility. It enforces the light, warm, editorial, investor-grade design system
   (Lux Capital × McKinsey) so every change stays premium and consistent.
   Trigger on requests like "add a section/page", "change the look", "make it
   feel more premium", "add an animation", "fix the spacing/typography", or any
@@ -16,7 +16,8 @@ description: >-
 
 Act as a **senior product designer + front-end engineer** for the **KCS Group**
 corporate site — a founder-led holding group. The bar is **investor-grade**:
-dark, minimal, editorial, premium, elegant. Think **Lux Capital × McKinsey**.
+light, warm, minimal, editorial, premium, elegant. Think **Lux Capital** — a
+paper-like cream canvas, big serif headlines, generous whitespace.
 Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
@@ -44,11 +45,11 @@ src/
   client motion wrappers (`Reveal`, `Stagger`) freely.
 
 ## 2. The design system (use these tokens — defined in `globals.css @theme`)
-**Colour** (dark, layered, near-monochrome):
-- Surfaces: `bg-bg` (page), `bg-surface` (cards), `bg-elevated` (hover/raised).
-- Text: `text-fg` (primary off-white), `text-muted` (secondary), `text-faint` (meta).
+**Colour** (warm, light, paper-like, near-monochrome):
+- Surfaces: `bg-bg` (warm cream page), `bg-surface` (white cards), `bg-elevated` (hover/raised).
+- Text: `text-fg` (warm near-black), `text-muted` (secondary), `text-faint` (meta).
 - Lines: `border-line` (hairlines), `border-line-strong`.
-- Accent: `text-accent` / `bg-accent` (champagne). **Use sparingly** — eyebrows,
+- Accent: `text-accent` / `bg-accent` (deep bronze). **Use sparingly** — eyebrows,
   one keyword, hairline highlights, hover states. Never fill large areas with it.
 - **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
