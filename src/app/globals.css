@@ -8,24 +8,24 @@
    ========================================================================== */
 @theme {
   /* Surfaces (warm paper, layered) */
-  --color-bg: #f2eee6;        /* page background — warm cream / paper */
+  --color-bg: #f4f1e9;        /* page background — warm cream / paper */
   --color-surface: #ffffff;   /* cards / panels */
-  --color-elevated: #e9e3d6;  /* hover / raised surfaces (warm shade) */
+  --color-elevated: #ebe6da;  /* hover / raised surfaces (warm shade) */
 
-  /* Text (warm near-black) */
-  --color-fg: #1b1915;        /* primary text */
-  --color-muted: #57514a;     /* secondary text */
-  --color-faint: #8a8478;     /* tertiary / meta */
+  /* Text (warm near-black ink) */
+  --color-fg: #17150f;        /* primary text */
+  --color-muted: #524c43;     /* secondary text */
+  --color-faint: #8b857a;     /* tertiary / meta */
 
-  /* Lines & accent */
-  --color-line: rgba(27, 25, 21, 0.14);        /* hairlines, dividers */
-  --color-line-strong: rgba(27, 25, 21, 0.24);
-  --color-accent: #8a5e2e;        /* deep bronze — used sparingly */
-  --color-accent-soft: #a8793f;
+  /* Lines & accent (near-monochrome, editorial) */
+  --color-line: rgba(23, 21, 15, 0.16);        /* editorial hairline rules */
+  --color-line-strong: rgba(23, 21, 15, 0.28);
+  --color-accent: #6f5227;        /* deep muted bronze — used sparingly */
+  --color-accent-soft: #8a6a38;
 
   /* Fonts (CSS vars set by next/font in layout.tsx) */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-fraunces), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
 
   /* Easing for a refined, calm motion feel */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
@@ -54,8 +54,8 @@
   h1, h2, h3, h4 {
     font-family: var(--font-display);
     font-weight: 400;
-    letter-spacing: -0.018em;
-    line-height: 1.05;
+    letter-spacing: -0.021em;
+    line-height: 1.04;
     text-wrap: balance;
   }
 
@@ -106,8 +106,8 @@
   /* Subtle warm vignette for hero / feature sections (light theme) */
   .vignette {
     background:
-      radial-gradient(60% 50% at 50% 0%, rgba(138, 94, 46, 0.06), transparent 70%),
-      radial-gradient(80% 60% at 50% 100%, rgba(27, 25, 21, 0.035), transparent 70%);
+      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 70%),
+      radial-gradient(80% 60% at 50% 100%, color-mix(in srgb, var(--color-fg) 4%, transparent), transparent 70%);
   }
 
   /* Faint grid backdrop for technical / portfolio sections */
