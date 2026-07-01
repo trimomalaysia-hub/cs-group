@@ -16,8 +16,8 @@ description: >-
 
 Act as a **senior product designer + front-end engineer** for the **KCS Group**
 corporate site — a founder-led holding group. The bar is **investor-grade**:
-monochrome (black · white · beige), minimal, elegant, timeless. A beige paper
-canvas, near-black ink, clean sans-serif headlines, no chromatic colour, generous whitespace.
+monochrome (black · white · beige), minimal, elegant, timeless. A near-black
+canvas, warm cream text, beige accents, clean sans-serif headlines, generous whitespace.
 Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
@@ -45,12 +45,12 @@ src/
   client motion wrappers (`Reveal`, `Stagger`) freely.
 
 ## 2. The design system (use these tokens — defined in `globals.css @theme`)
-**Colour** (monochrome — black · white · beige):
-- Surfaces: `bg-bg` (beige page), `bg-surface` (warm near-white cards), `bg-elevated` (hover/raised).
-- Text: `text-fg` (near-black ink), `text-muted` (secondary), `text-faint` (meta).
+**Colour** (monochrome — black · white · beige, on a black canvas):
+- Surfaces: `bg-bg` (near-black page), `bg-surface` (dark cards), `bg-elevated` (hover/raised).
+- Text: `text-fg` (warm cream), `text-muted` (secondary), `text-faint` (meta).
 - Lines: `border-line` (hairlines), `border-line-strong`.
-- Accent: `text-accent` / `bg-accent` (near-black ink — monochrome). **Use sparingly** —
-  eyebrows, one keyword, hairline highlights, hover states. No chromatic colour anywhere.
+- Accent: `text-accent` / `bg-accent` (warm beige). **Use sparingly** —
+  eyebrows, one keyword, hairline highlights, hover states. No other colour anywhere.
 - **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
 **Typography:**

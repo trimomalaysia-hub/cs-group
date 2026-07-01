@@ -6,21 +6,21 @@
    Tailwind v4 @theme:  --color-accent -> text-accent bg-accent border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces — warm beige paper, layered */
-  --color-bg: #eae4d6;        /* page background — beige */
-  --color-surface: #fbf9f3;   /* cards / panels — warm near-white */
-  --color-elevated: #e0d9c8;  /* hover / raised surfaces */
+  /* Surfaces — warm near-black, layered */
+  --color-bg: #0c0b08;        /* page background — black */
+  --color-surface: #16140e;   /* cards / panels */
+  --color-elevated: #211d15;  /* hover / raised surfaces */
 
-  /* Ink (warm near-black) */
-  --color-fg: #17140f;        /* primary text */
-  --color-muted: #575046;     /* secondary text */
-  --color-faint: #8a8172;     /* tertiary / meta */
+  /* Text — warm cream on black */
+  --color-fg: #f2ede1;        /* primary text */
+  --color-muted: #a89f8c;     /* secondary text */
+  --color-faint: #6f685a;     /* tertiary / meta */
 
-  /* Lines & accent (monochrome — accent is essentially black) */
-  --color-line: rgba(20, 17, 12, 0.15);        /* hairline rules */
-  --color-line-strong: rgba(20, 17, 12, 0.26);
-  --color-accent: #211c14;        /* espresso near-black — the "ink" accent */
-  --color-accent-soft: #4a4234;
+  /* Lines & accent (black · white · beige — accent is a warm beige) */
+  --color-line: rgba(245, 240, 225, 0.11);     /* hairline rules */
+  --color-line-strong: rgba(245, 240, 225, 0.20);
+  --color-accent: #c8b48c;        /* warm beige — the accent */
+  --color-accent-soft: #d9c9a6;
 
   /* Fonts (CSS vars set by next/font in layout.tsx) — clean sans throughout */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -37,7 +37,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem;
     -webkit-text-size-adjust: 100%;
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   body {
@@ -128,7 +128,7 @@
   }
   .aurora {
     position: absolute; border-radius: 9999px; filter: blur(60px);
-    opacity: 0.7; will-change: transform;
+    opacity: 0.4; will-change: transform;
   }
   .aurora-1 {
     width: 44rem; height: 44rem; top: -16rem; left: -9rem;
