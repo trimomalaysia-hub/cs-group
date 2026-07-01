@@ -5,7 +5,7 @@ description: >-
   TypeScript + TailwindCSS v4 + Framer Motion). USE THIS WHENEVER building or
   editing anything visual or structural — pages, sections, components, layout,
   typography, colour, spacing, motion/animation, responsiveness, forms, or
-  accessibility. It enforces the light, warm, editorial, investor-grade design system
+  accessibility. It enforces the deep-navy corporate, investor-grade design system
   (Lux Capital × McKinsey) so every change stays premium and consistent.
   Trigger on requests like "add a section/page", "change the look", "make it
   feel more premium", "add an animation", "fix the spacing/typography", or any
@@ -16,8 +16,8 @@ description: >-
 
 Act as a **senior product designer + front-end engineer** for the **KCS Group**
 corporate site — a founder-led holding group. The bar is **investor-grade**:
-light, warm, minimal, editorial, premium, elegant. Think **Lux Capital** — a
-paper-like cream canvas, big serif headlines, generous whitespace.
+deep-navy corporate, minimal, professional, authoritative. A navy canvas, cool
+near-white type, clean sans-serif headlines, a steel-blue accent, generous whitespace.
 Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
@@ -45,20 +45,20 @@ src/
   client motion wrappers (`Reveal`, `Stagger`) freely.
 
 ## 2. The design system (use these tokens — defined in `globals.css @theme`)
-**Colour** (warm, light, paper-like, near-monochrome):
-- Surfaces: `bg-bg` (warm cream page), `bg-surface` (white cards), `bg-elevated` (hover/raised).
-- Text: `text-fg` (warm near-black), `text-muted` (secondary), `text-faint` (meta).
+**Colour** (deep navy, layered, corporate):
+- Surfaces: `bg-bg` (deep navy page), `bg-surface` (raised navy cards), `bg-elevated` (hover/raised).
+- Text: `text-fg` (cool near-white), `text-muted` (steel secondary), `text-faint` (meta).
 - Lines: `border-line` (hairlines), `border-line-strong`.
-- Accent: `text-accent` / `bg-accent` (deep bronze). **Use sparingly** — eyebrows,
+- Accent: `text-accent` / `bg-accent` (steel blue). **Use sparingly** — eyebrows,
   one keyword, hairline highlights, hover states. Never fill large areas with it.
 - **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
 **Typography:**
-- Headings use the serif display (`font-display`, Fraunces) automatically.
-  Body/UI uses Inter (`font-sans`, the default).
-- Scale is **large and editorial**: hero `text-6xl`→`text-7xl`; section titles
-  `text-4xl`→`text-6xl`; keep `leading` tight on display, relaxed on body.
-- An italic accent keyword in a headline (`italic text-accent`) is the signature
+- All type is **Inter** (`font-display` = `font-sans` = Inter). Headings are
+  heavier (600) with tight tracking for a clean, confident corporate feel.
+- Scale is **large and structured**: hero `text-6xl`→`text-7xl`; section titles
+  `text-4xl`→`text-6xl`; keep `leading` tight on headlines, relaxed on body.
+- A coloured/italic accent keyword in a headline (`text-accent`) is the signature
   flourish — at most one per headline.
 
 **Layout & spacing:**

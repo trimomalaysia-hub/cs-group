@@ -1,8 +1,8 @@
 # KCS Group — Official Website
 
 A premium, investor-grade corporate website for **KCS Group**, the founder-led
-group of companies established by **Kam Chin Seng**. Dark, minimal, editorial
-aesthetic inspired by Lux Capital and McKinsey.
+group of companies established by **Kam Chin Seng**. Deep-navy corporate,
+minimal, investor-grade aesthetic.
 
 **The ecosystem**
 - **Nexxatech Global Sdn. Bhd.** — *TRIMO*, a one-to-one social technology platform

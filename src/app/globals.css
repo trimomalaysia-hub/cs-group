@@ -1,31 +1,31 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DESIGN TOKENS — warm, light, editorial aesthetic (Lux Capital feel).
-   Paper-like cream background, warm near-black serif headlines, generous space.
+   DESIGN TOKENS — deep corporate navy. Authoritative, professional, "big-company"
+   feel: navy canvas, cool near-white text, steel-blue accent, clean sans headlines.
    Edit these to retune the whole site. Tailwind v4 @theme:
      --color-accent  ->  text-accent  bg-accent  border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces (warm paper, layered) */
-  --color-bg: #f4f1e9;        /* page background — warm cream / paper */
-  --color-surface: #ffffff;   /* cards / panels */
-  --color-elevated: #ebe6da;  /* hover / raised surfaces (warm shade) */
+  /* Surfaces — deep navy, layered */
+  --color-bg: #0f1e33;        /* page background — deep corporate navy */
+  --color-surface: #17293f;   /* cards / panels */
+  --color-elevated: #21344c;  /* hover / raised surfaces */
 
-  /* Text (warm near-black ink) */
-  --color-fg: #17150f;        /* primary text */
-  --color-muted: #524c43;     /* secondary text */
-  --color-faint: #8b857a;     /* tertiary / meta */
+  /* Text (cool, near-white) */
+  --color-fg: #f1f5fa;        /* primary text */
+  --color-muted: #a7b4c7;     /* secondary text — steel */
+  --color-faint: #6f7f95;     /* tertiary / meta */
 
-  /* Lines & accent (near-monochrome, editorial) */
-  --color-line: rgba(23, 21, 15, 0.16);        /* editorial hairline rules */
-  --color-line-strong: rgba(23, 21, 15, 0.28);
-  --color-accent: #6f5227;        /* deep muted bronze — used sparingly */
-  --color-accent-soft: #8a6a38;
+  /* Lines & accent */
+  --color-line: rgba(255, 255, 255, 0.10);      /* hairlines, dividers */
+  --color-line-strong: rgba(255, 255, 255, 0.18);
+  --color-accent: #5b8def;        /* steel blue — corporate accent */
+  --color-accent-soft: #86aaf5;
 
-  /* Fonts (CSS vars set by next/font in layout.tsx) */
+  /* Fonts (CSS vars set by next/font in layout.tsx) — clean sans throughout */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-serif), Georgia, "Times New Roman", serif;
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
   /* Easing for a refined, calm motion feel */
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
@@ -39,7 +39,7 @@
     scroll-behavior: smooth;
     scroll-padding-top: 6rem; /* offset for the sticky header on anchor jumps */
     -webkit-text-size-adjust: 100%;
-    color-scheme: light;
+    color-scheme: dark;
   }
 
   body {
@@ -48,14 +48,14 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    font-feature-settings: "ss01", "cv01";
   }
 
+  /* Clean, confident sans-serif headlines (corporate) */
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 400;
-    letter-spacing: -0.021em;
-    line-height: 1.04;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.08;
     text-wrap: balance;
   }
 
@@ -63,7 +63,7 @@
 
   ::selection {
     background-color: var(--color-accent);
-    color: #fdfbf6;
+    color: #0b1626;
   }
 
   :focus-visible {
@@ -72,7 +72,7 @@
     border-radius: 2px;
   }
 
-  /* Light, unobtrusive scrollbar */
+  /* Dark, unobtrusive scrollbar */
   ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb {
@@ -98,16 +98,16 @@
   .label {
     font-family: var(--font-sans);
     text-transform: uppercase;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.2em;
     font-size: 0.7rem;
-    font-weight: 500;
+    font-weight: 600;
   }
 
-  /* Subtle warm vignette for hero / feature sections (light theme) */
+  /* Subtle depth: cool blue glow up top, gentle darkening at the base */
   .vignette {
     background:
-      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-accent) 7%, transparent), transparent 70%),
-      radial-gradient(80% 60% at 50% 100%, color-mix(in srgb, var(--color-fg) 4%, transparent), transparent 70%);
+      radial-gradient(60% 50% at 50% 0%, color-mix(in srgb, var(--color-accent) 12%, transparent), transparent 70%),
+      radial-gradient(80% 60% at 50% 100%, color-mix(in srgb, #000 24%, transparent), transparent 70%);
   }
 
   /* Faint grid backdrop for technical / portfolio sections */
