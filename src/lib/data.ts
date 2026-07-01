@@ -47,7 +47,7 @@ export interface Company {
   detail?: CompanyDetail;
 }
 
-export const companies: Company[] = [
+const companiesRaw: Company[] = [
   {
     id: "nexxatech",
     index: "01",
@@ -555,6 +555,13 @@ export const companies: Company[] = [
     },
   },
 ];
+
+/* Display order of the four companies — edit this list to reorder them
+   everywhere (home Companies section + footer). The 01–04 numbers auto-update. */
+const COMPANY_ORDER = ["nexflo", "gemas", "nexxatech", "national6a"];
+export const companies: Company[] = [...companiesRaw]
+  .sort((a, b) => COMPANY_ORDER.indexOf(a.id) - COMPANY_ORDER.indexOf(b.id))
+  .map((c, i) => ({ ...c, index: String(i + 1).padStart(2, "0") }));
 
 /* --- Vision principles ---------------------------------------------------- */
 export interface Principle {
