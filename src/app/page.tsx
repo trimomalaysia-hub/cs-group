@@ -1,4 +1,3 @@
-import LogoIntro from "@/components/layout/LogoIntro";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Companies from "@/components/sections/Companies";
@@ -12,9 +11,8 @@ import FinalCta from "@/components/sections/FinalCta";
 export default function Home() {
   return (
     <>
-      {/* Overlay, not a section: holds for 3s then dissolves. The page itself
-          begins at the Hero. */}
-      <LogoIntro />
+      {/* The opening overlay lives in the root layout (outside #site-shell) so
+          it can mark that shell inert without disabling its own controls. */}
       <Hero />
       <About />
       <Companies />

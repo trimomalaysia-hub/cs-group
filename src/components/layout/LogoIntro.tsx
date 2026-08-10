@@ -9,6 +9,7 @@
    so the page's <h1> belongs to the Hero underneath it. */
 
 import { useEffect, useLayoutEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "@/components/ui/Container";
 import StoneSurface from "@/components/ui/StoneSurface";
@@ -46,6 +47,12 @@ const CORNERS = [
 export default function LogoIntro() {
   const { t } = useLanguage();
   const reduce = useReducedMotion();
+  /* Rendered from the root layout so it sits OUTSIDE #site-shell — it marks that
+     shell `inert`, and when it lived inside it (via page.tsx -> <main>) it made
+     itself inert too, which silently killed the backdrop click and the Enter
+     button. Gated on the path here so it still only opens the home page. */
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [done, setDone] = useState(false);
   /* Dismissed without an exit animation — used when the opener is skipped
      outright, so there is nothing to animate away. */
@@ -56,6 +63,7 @@ export default function LogoIntro() {
      like /#about is a request for content, not an invitation to a splash), or
      it has already played once this session. */
   useIsoLayoutEffect(() => {
+    if (!isHome) return;
     let seen = false;
     try {
       seen = window.sessionStorage.getItem(SEEN_KEY) === "1";
@@ -68,10 +76,10 @@ export default function LogoIntro() {
       setInstant(true);
       setDone(true);
     }
-  }, [reduce]);
+  }, [reduce, isHome]);
 
   useEffect(() => {
-    if (done) return;
+    if (!isHome || done) return;
     let cancelled = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
 
@@ -94,22 +102,22 @@ export default function LogoIntro() {
       cancelled = true;
       if (timer) clearTimeout(timer);
     };
-  }, [done]);
+  }, [done, isHome]);
 
   /* Remember it played, so returning to the home page goes straight in. */
   useEffect(() => {
-    if (!done) return;
+    if (!isHome || !done) return;
     try {
       window.sessionStorage.setItem(SEEN_KEY, "1");
     } catch {
       /* ignore */
     }
-  }, [done]);
+  }, [done, isHome]);
 
   /* Honour the hash once the overlay is out of the way. The browser's own hash
      scroll happens while the body is still locked, so it needs redoing. */
   useEffect(() => {
-    if (!done) return;
+    if (!isHome || !done) return;
     const id = decodeURIComponent(window.location.hash.slice(1));
     if (!id) return;
     const el = document.getElementById(id);
@@ -117,12 +125,12 @@ export default function LogoIntro() {
     requestAnimationFrame(() =>
       el.scrollIntoView({ behavior: instant ? "auto" : "smooth", block: "start" }),
     );
-  }, [done, instant]);
+  }, [done, instant, isHome]);
 
   /* Keyboard: Enter, Space or Escape enters at once — no waiting for the fallback.
      A global listener, since nothing is focused on first paint. */
   useEffect(() => {
-    if (done) return;
+    if (!isHome || done) return;
     const onKey = (e: KeyboardEvent) => {
       if (["Enter", " ", "Spacebar", "Escape"].includes(e.key)) {
         e.preventDefault();
@@ -131,10 +139,10 @@ export default function LogoIntro() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [done]);
+  }, [done, isHome]);
 
   useEffect(() => {
-    if (done) {
+    if (!isHome || done) {
       document.body.style.overflow = "";
       return;
     }
@@ -142,7 +150,7 @@ export default function LogoIntro() {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [done]);
+  }, [done, isHome]);
 
   /* The overlay is opaque, so the page beneath must leave the tab order and the
      accessibility tree while it is up — otherwise focus lands on controls with
@@ -150,10 +158,10 @@ export default function LogoIntro() {
   useEffect(() => {
     const shell = document.getElementById("site-shell");
     if (!shell) return;
-    if (done) shell.removeAttribute("inert");
+    if (!isHome || done) shell.removeAttribute("inert");
     else shell.setAttribute("inert", "");
     return () => shell.removeAttribute("inert");
-  }, [done]);
+  }, [done, isHome]);
 
   const settle = (delay: number, y = 10) => ({
     initial: { opacity: 0, y: reduce ? 0 : y },
@@ -172,7 +180,7 @@ export default function LogoIntro() {
 
   return (
     <AnimatePresence>
-      {!done && (
+      {isHome && !done && (
         <motion.div
           key="logo-intro"
           data-logo-intro

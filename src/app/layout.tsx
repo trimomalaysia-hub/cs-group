@@ -3,6 +3,7 @@ import { Bodoni_Moda, Inter, Playfair_Display } from "next/font/google";
 import { site } from "@/lib/site";
 import { LanguageProvider } from "@/lib/i18n";
 import Header from "@/components/layout/Header";
+import LogoIntro from "@/components/layout/LogoIntro";
 import Footer from "@/components/layout/Footer";
 import SkipLink from "@/components/layout/SkipLink";
 import TechBackdrop from "@/components/ui/TechBackdrop";
@@ -97,8 +98,11 @@ export default function RootLayout({
         />
         <TechBackdrop />
         <LanguageProvider>
-          {/* The home page's <LogoIntro /> marks this `inert` while its overlay
-              is up, so Tab cannot reach controls hidden behind it. */}
+          {/* Must stay OUTSIDE #site-shell: it marks that shell inert while the
+              overlay is up, and anything inside an inert subtree cannot be
+              clicked or focused — including itself. It gates on the pathname so
+              it still only opens the home page. */}
+          <LogoIntro />
           <div id="site-shell">
             <SkipLink />
             <Header />
