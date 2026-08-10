@@ -91,8 +91,9 @@ export default function Header() {
           <span className="font-display text-lg text-fg">{site.name}</span>
         </Link>
 
-        {/* Desktop nav */}
-        <nav className="hidden items-center gap-8 lg:flex">
+        {/* Desktop nav — tighter gaps at lg so the secondary cluster (Team /
+            Careers / Investors / EN-中 / Enquire) still fits on a 1024px screen. */}
+        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
           {site.nav.map((item, i) => (
             <Link
               key={item.href}
@@ -104,7 +105,13 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex xl:gap-4">
+          <Link
+            href={site.teamHref}
+            className="hv-nav text-sm text-muted"
+          >
+            {t.header.team}
+          </Link>
           <Link
             href={site.careersHref}
             className="hv-nav text-sm text-muted"
@@ -181,6 +188,13 @@ export default function Header() {
                   {t.nav[i]}
                 </Link>
               ))}
+              <Link
+                href={site.teamHref}
+                onClick={() => setOpen(false)}
+                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
+              >
+                {t.header.team}
+              </Link>
               <Link
                 href={site.careersHref}
                 onClick={() => setOpen(false)}

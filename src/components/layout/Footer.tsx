@@ -53,6 +53,11 @@ export default function Footer() {
                 </li>
               ))}
               <li>
+                <a href={site.teamHref} className="hv-link text-sm text-muted">
+                  {t.header.team}
+                </a>
+              </li>
+              <li>
                 <a href={site.careersHref} className="hv-link text-sm text-muted">
                   {t.header.careers}
                 </a>

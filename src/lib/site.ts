@@ -33,6 +33,7 @@ export const site = {
   ],
 
   /* Standalone pages (routes, not homepage anchors). */
+  teamHref: "/team",
   careersHref: "/careers",
   investHref: "/invest",
 

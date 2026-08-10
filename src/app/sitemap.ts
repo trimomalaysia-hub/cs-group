@@ -7,7 +7,7 @@ import { companies } from "@/lib/data";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = site.url.replace(/\/$/, "");
   const now = new Date();
-  const staticPaths = ["", "/founder", "/careers", "/invest", "/contact"];
+  const staticPaths = ["", "/founder", "/team", "/careers", "/invest", "/contact"];
   const companyPaths = companies.map((c) => `/companies/${c.id}`);
 
   return [...staticPaths, ...companyPaths].map((path) => ({

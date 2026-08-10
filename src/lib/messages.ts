@@ -10,7 +10,7 @@ import type { Lang } from "./i18n-types";
 export const messages = {
   en: {
     nav: ["About", "Companies", "Talent", "Founder", "Vision", "Contact"],
-    header: { enquire: "Enquire", careers: "Careers", investors: "Investors" },
+    header: { enquire: "Enquire", team: "Team", careers: "Careers", investors: "Investors" },
 
     /* The logo-lockup opening screen. `monogram` and `wordmark` are the brand
        identity and stay in Latin in both languages; only the pillars localise. */
@@ -71,6 +71,7 @@ export const messages = {
         { title: "Collaboration", text: "One bench across the group — knowledge travels." },
       ],
       cta: "Join Us",
+      meetTeam: "Meet the team",
     },
 
     finalCta: {
@@ -182,7 +183,7 @@ export const messages = {
 
   zh: {
     nav: ["关于", "旗下企业", "人才", "创始人", "愿景", "联系"],
-    header: { enquire: "咨询", careers: "招贤纳士", investors: "投资者" },
+    header: { enquire: "咨询", team: "团队", careers: "招贤纳士", investors: "投资者" },
 
     logo: {
       monogram: "CS",

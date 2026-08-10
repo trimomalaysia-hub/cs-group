@@ -25,8 +25,14 @@ const SEEN_KEY = "cs-group-intro-seen";
 const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 /* Fallback only. The intended action is to click / tap / press a key — this just
-   guarantees nobody is gated if they never interact. */
+   guarantees nobody is gated if they never interact.
+   Counted from when the lockup has FINISHED arriving, not from mount, so the
+   opener is never cut off mid-animation. */
 const AUTO_ADVANCE_MS = 4500;
+
+/* Longest entrance chain: the corner brackets start at 0.45 + 3x0.07 = 0.66s and
+   run 1.5s, landing at ~2.16s. Rounded up so nothing is still moving. */
+const ENTRANCE_MS = 2300;
 
 /* Corner brackets. Each draws its two hairlines outward from the corner it
    sits in, so the frame appears to be struck rather than fading up. */
@@ -66,8 +72,28 @@ export default function LogoIntro() {
 
   useEffect(() => {
     if (done) return;
-    const timer = setTimeout(() => setDone(true), AUTO_ADVANCE_MS);
-    return () => clearTimeout(timer);
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout> | undefined;
+
+    const startHold = () => {
+      if (cancelled) return;
+      timer = setTimeout(() => setDone(true), ENTRANCE_MS + AUTO_ADVANCE_MS);
+    };
+
+    /* Wait for the webfonts first. The mark is set in Bodoni Moda; if the timer
+       ran from mount, the countdown would start while the lockup was still
+       swapping in and the opener would leave before it had finished arriving. */
+    const fonts = document.fonts;
+    if (fonts?.ready) {
+      fonts.ready.then(startHold, startHold);
+    } else {
+      startHold();
+    }
+
+    return () => {
+      cancelled = true;
+      if (timer) clearTimeout(timer);
+    };
   }, [done]);
 
   /* Remember it played, so returning to the home page goes straight in. */
