@@ -47,7 +47,12 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    /* THE single anchor offset for the whole site: 4rem clears the scrolled
+       header (h-16) and the remaining 3rem is the breathing room above the
+       heading. <Section> cancels its own top padding with a matching negative
+       scroll-mt, so this value alone decides where every #anchor lands — keep
+       it here rather than adding scroll-mt-* to individual targets. */
+    scroll-padding-top: 7rem;
     -webkit-text-size-adjust: 100%;
     color-scheme: dark;
   }
@@ -87,6 +92,18 @@
   }
 
   p { text-wrap: pretty; }
+
+  /* Caret browsing (F7 in Chrome/Edge) drops a blinking text caret into
+     ordinary body copy, which reads as a stray vertical line through the
+     headlines. Suppress it in running text — but never in real text fields,
+     where the caret is how you know where you are typing. */
+  body { caret-color: transparent; }
+  input,
+  textarea,
+  select,
+  [contenteditable] {
+    caret-color: var(--color-accent);
+  }
 
   ::selection {
     background-color: var(--color-fg);
@@ -140,7 +157,7 @@
       /* Without this, an `infinite` animation keeps cycling ~1600x per frame at
          the clamped duration — the compositor samples an arbitrary phase each
          frame, so it jitters instead of freezing. Every ambient animation here
-         (GoldOrb, ParticleField, .scroll-cue, .pulse-dot) is infinite. */
+         (GoldOrb, ParticleField, .cue-descend, .pulse-dot) is infinite. */
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
@@ -529,10 +546,6 @@
     .hv-card:focus-within { transform: none; }
   }
 
-  /* --- Travelling hairline used as the scroll cue ----------------------- */
-  /* Slowed from 2.8s: the opening screens are calm, so the cue must be too. */
-  .scroll-cue { animation: scroll-cue 5s var(--ease-out-soft) infinite; }
-
   /* Vertical variant for the logo screen — a mote descending a hairline, so the
      two opening screens don't stack two identical horizontal cues. */
   .cue-descend { animation: cue-descend 4.5s var(--ease-out-soft) infinite; }
@@ -558,10 +571,6 @@
 }
 @keyframes shimmer {
   to { background-position: 220% center; }
-}
-@keyframes scroll-cue {
-  0%        { transform: translateX(-110%); }
-  55%, 100% { transform: translateX(310%); }
 }
 /* Sheen travelling across metallic type — slow enough to read as reflection. */
 @keyframes metal-sheen {
