@@ -230,7 +230,7 @@ const companiesRaw: Company[] = [
       zh: ["AI 大脑与员工", "流程自动化", "AI 原生转型"],
     },
     status: { en: "Scaling", zh: "高速成长" },
-    year: "2023",
+    year: "2026",
     detail: {
       tagline: {
         en: "Every Company Deserves Its Own Jarvis.",
@@ -265,7 +265,7 @@ const companiesRaw: Company[] = [
         zh: ["企业 AI 转型", "AI 员工", "东南亚"],
       },
       facts: [
-        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2023", zh: "2023" } },
+        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2026", zh: "2026" } },
         { label: { en: "Headquarters", zh: "总部" }, value: { en: "Malaysia", zh: "马来西亚" } },
         {
           label: { en: "Industry", zh: "行业" },
@@ -910,52 +910,134 @@ export const sectors: Sector[] = [
   },
 ];
 
-/* --- Timeline ------------------------------------------------------------- */
+/* --- Timeline -------------------------------------------------------------
+   The founder's journey, told as milestones. `year` is a Loc because the last
+   entry is a word ("Today" / "至今"), not a number — so use `id` for React keys.
+   `tag` is optional: a place or a brand that anchors that chapter.
+   `quote` is the closing maxim, rendered as the pull line of each entry. */
 export interface Milestone {
-  year: string;
+  id: string;
+  year: Loc;
   title: Loc;
+  tag?: Loc;
   text: Loc;
+  quote: Loc;
 }
 
 export const timeline: Milestone[] = [
   {
-    year: "2021",
-    title: { en: "Hospitality foundation", zh: "酒店基石" },
+    id: "cambodia",
+    year: { en: "2012", zh: "2012" },
+    title: {
+      en: "The First Vision Beyond Borders",
+      zh: "跨出国界的第一个远见",
+    },
+    tag: { en: "Cambodia", zh: "柬埔寨" },
     text: {
-      en: "Gemas Golf Resort — a golf and hospitality destination established in 1991 — anchors the group's presence in premium experiential hospitality.",
-      zh: "成立于 1991 年的高尔夫与酒店目的地 Gemas，奠定集团在高端体验式酒店领域的存在。",
+      en: "What began as a venture in Cambodia became the first step towards building something much larger than a single business. Through property development and long-term investments, Kam Chin Seng established not only a company, but a philosophy — building with patience, discipline, and a long-term mindset.",
+      zh: "始于柬埔寨的一次创业，成为通往更宏大格局的第一步 —— 它所建立的，远不止一门生意。通过房地产开发与长期投资，Kam Chin Seng 立下的不只是一家公司，更是一套理念：以耐心、纪律与长期主义去建造。",
+    },
+    quote: {
+      en: "Every ecosystem begins with a single conviction.",
+      zh: "每一个生态，都始于一个坚定的信念。",
     },
   },
   {
-    year: "2023",
-    title: { en: "Social technology", zh: "社交科技" },
+    id: "legacy",
+    year: { en: "2013", zh: "2013" },
+    title: {
+      en: "When Legacy Became Responsibility",
+      zh: "当传承成为责任",
+    },
     text: {
-      en: "Nexxatech Global launches TRIMO — a one-to-one platform built around genuine emotional companionship.",
-      zh: "Nexxatech Global 推出 TRIMO —— 一个以「一对一情感陪伴」为核心的平台。",
+      en: "A turning point in the family placed a legacy built over decades in his hands. His focus remained on expanding the businesses in Cambodia — but the resolve to one day return and lead the next generation had already taken root.",
+      zh: "家族的一次转折，将数十年积累的基业交到了他手上。彼时重心仍在柬埔寨的业务拓展，但有朝一日回来、带领下一代的念头，已经生根。",
+    },
+    quote: {
+      en: "A legacy isn't inherited. It's earned.",
+      zh: "传承不是继承而来的，是挣来的。",
     },
   },
   {
-    year: "2023",
-    title: { en: "Enterprise AI", zh: "企业 AI" },
+    id: "homecoming",
+    year: { en: "2021", zh: "2021" },
+    title: {
+      en: "Returning Home. Building Forward.",
+      zh: "归来，向前",
+    },
     text: {
-      en: "Nexflo introduces NEXJARVIS, extending the group into applied enterprise intelligence.",
-      zh: "Nexflo 推出 NEXJARVIS，将集团拓展至落地的企业智能领域。",
+      en: "Following the pandemic, Kam Chin Seng returned to Gemas Golf Resort — not simply to manage a business, but to reimagine its future. What followed was the beginning of a long-term transformation that balanced heritage with innovation.",
+      zh: "疫情之后，Kam Chin Seng 回到 Gemas 高尔夫度假村 —— 不只是为了经营一门生意，而是要重新想象它的未来。随之开启的，是一场在传承与创新之间取得平衡的长期变革。",
+    },
+    quote: {
+      en: "Respect the past. Build the future.",
+      zh: "敬重过去，建造未来。",
     },
   },
   {
-    year: "2024",
-    title: { en: "Real assets", zh: "实体资产" },
+    id: "digital",
+    year: { en: "2023", zh: "2023" },
+    title: {
+      en: "Building the Digital Economy",
+      zh: "构建数字经济",
+    },
+    tag: { en: "TRIMO", zh: "TRIMO" },
     text: {
-      en: "National 6A — a Phnom Penh developer established in 2012 — is formalised as the group's long-horizon property arm.",
-      zh: "成立于 2012 年的金边开发商 National 6A，正式确立为集团的长周期房地产板块。",
+      en: "The group's expansion into digital platforms marked a new chapter. TRIMO introduced a scalable business model centred on meaningful human connection, extending CS Group beyond traditional industries.",
+      zh: "集团向数字平台的拓展，翻开了新的一页。TRIMO 以「有意义的人际连接」为核心，带来了一个可规模化的商业模式，让 CS Group 跨出传统行业的边界。",
+    },
+    quote: {
+      en: "Every generation builds on different platforms.",
+      zh: "每一代人，都在不同的平台上建造。",
     },
   },
   {
-    year: "2025",
-    title: { en: "An integrated ecosystem", zh: "一个融合的生态" },
+    id: "reimagined",
+    year: { en: "2025", zh: "2025" },
+    title: {
+      en: "A Legacy Reimagined",
+      zh: "重塑传承",
+    },
     text: {
-      en: "The companies begin operating as one ecosystem — technology, hospitality and capital reinforcing each other.",
-      zh: "各家企业开始作为一个生态协同运作 —— 科技、酒店与资本彼此成就。",
+      en: "Gemas Golf Resort entered its most significant transformation in decades. From operational excellence to a complete brand repositioning, the resort evolved into a modern destination while preserving the values on which it was founded.",
+      zh: "Gemas 高尔夫度假村迎来数十年来最重要的一次蜕变。从运营的精进，到品牌的全面重塑，度假村在守住立身之本的同时，成长为一处现代的目的地。",
+    },
+    quote: {
+      en: "Transformation begins with courage, not construction.",
+      zh: "变革始于勇气，而非工程。",
+    },
+  },
+  {
+    id: "intelligence",
+    year: { en: "2026", zh: "2026" },
+    title: {
+      en: "Intelligence Becomes Infrastructure",
+      zh: "让智能成为基础设施",
+    },
+    tag: { en: "NEXJARVIS", zh: "NEXJARVIS" },
+    text: {
+      en: "NEXJARVIS represents more than an AI platform. It reflects the belief that every organisation deserves an intelligent operating system — where people and AI work together to build better businesses.",
+      zh: "NEXJARVIS 不只是一个 AI 平台。它承载着一个信念：每一家企业，都值得拥有属于自己的智能操作系统 —— 让人与 AI 并肩协作，把生意做得更好。",
+    },
+    quote: {
+      en: "The future belongs to organisations that can think.",
+      zh: "未来，属于会思考的组织。",
+    },
+  },
+  {
+    id: "today",
+    year: { en: "Today", zh: "至今" },
+    title: {
+      en: "One Founder. Different Sectors. One System.",
+      zh: "一位创始人。不同领域。一个系统。",
+    },
+    text: {
+      en: "Today, CS Group operates across hospitality, real estate, digital platforms and enterprise AI. One philosophy holds them together: every business strengthens the next, creating an ecosystem designed to endure — not just grow.",
+      zh: "今天，CS Group 的业务横跨酒店、房地产、数字平台与企业 AI。同一套理念将它们贯穿：每一项事业都在成就下一项，构成一个为长存而生、而非只为增长而生的生态。",
+    },
+    quote: {
+      en: "Build. Keep. Compound.",
+      zh: "建造。守成。复利。",
     },
   },
 ];
