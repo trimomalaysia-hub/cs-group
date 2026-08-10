@@ -36,12 +36,7 @@ export default function Founder() {
                     alt={`${site.founder} — ${t.founder.role}`}
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
-                    className="object-cover object-[center_15%] grayscale transition-[filter,transform] duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:grayscale-0"
-                  />
-                  {/* Gold duotone wash — fades away as the photo warms up. */}
-                  <div
-                    className="absolute inset-0 bg-accent/[0.14] mix-blend-color transition-opacity duration-[var(--hover-dur)] group-hover:opacity-0"
-                    aria-hidden
+                    className="object-cover object-[center_15%]"
                   />
                   {/* Bottom fade into the page so the caption sits on black. */}
                   <div
