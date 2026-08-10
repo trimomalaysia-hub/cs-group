@@ -175,6 +175,7 @@ export default function LogoIntro() {
       {!done && (
         <motion.div
           key="logo-intro"
+          data-logo-intro
           role="presentation"
           onClick={() => setDone(true)}
           className="fixed inset-0 z-[100] flex cursor-pointer items-center justify-center overflow-hidden"

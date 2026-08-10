@@ -81,6 +81,20 @@ export default function RootLayout({
       className={`${inter.variable} ${playfair.variable} ${bodoni.variable}`}
     >
       <body className="min-h-screen bg-bg text-fg antialiased">
+        {/* Decides BEFORE first paint whether the opener should be shown.
+            The overlay is server-rendered, so without this it paints on every
+            refresh and only disappears once React has hydrated and read
+            sessionStorage — a visible flash. This runs first and lets CSS hide
+            it outright. Kept inline and tiny so it never blocks meaningfully. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var s=sessionStorage.getItem('cs-group-intro-seen')==='1';" +
+              "var h=location.hash.length>1;" +
+              "if(s||h){document.documentElement.setAttribute('data-intro','skip');}" +
+              "}catch(e){}})();",
+          }}
+        />
         <TechBackdrop />
         <LanguageProvider>
           {/* The home page's <LogoIntro /> marks this `inert` while its overlay

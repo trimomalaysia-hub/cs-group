@@ -99,6 +99,13 @@
     border-radius: 2px;
   }
 
+  /* Opener suppressed by the pre-paint script in layout.tsx (already seen this
+     session, or the URL targets a section). Hiding it here rather than waiting
+     for React means it never paints at all — no flash on refresh. */
+  html[data-intro="skip"] [data-logo-intro] {
+    display: none !important;
+  }
+
   /* Skip-to-content — hidden until focused via keyboard */
   .skip-link {
     position: fixed;

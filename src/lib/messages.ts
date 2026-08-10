@@ -242,6 +242,7 @@ export const messages = {
         { title: "协作", text: "全集团，一支队伍 —— 让经验流动。" },
       ],
       cta: "加入我们",
+      meetTeam: "认识团队",
     },
 
     finalCta: {

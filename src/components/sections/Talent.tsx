@@ -64,9 +64,12 @@ export default function Talent() {
           </Stagger>
 
           <Reveal delay={0.15}>
-            <div className="mt-12">
+            <div className="mt-12 flex flex-wrap gap-4">
               <Button href={site.careersHref} variant="gold" size="lg">
                 {t.talent.cta}
+              </Button>
+              <Button href={site.teamHref} variant="outline" size="lg">
+                {t.talent.meetTeam}
               </Button>
             </div>
           </Reveal>
