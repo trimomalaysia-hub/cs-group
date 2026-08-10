@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { site } from "@/lib/site";
 import { useLanguage, type Lang } from "@/lib/i18n";
@@ -85,15 +86,23 @@ export default function Header() {
           className="hv-mark group flex items-center gap-2.5"
           aria-label={site.name}
         >
-          <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong text-[0.85rem] font-display text-accent transition-colors duration-[var(--hover-dur)] group-hover:border-accent/60">
-            C
-          </span>
+          {/* The real brand mark, cut out of the logo artwork onto transparency.
+              alt is empty on purpose — the Link already carries an aria-label
+              and the wordmark beside it says the name, so a screen reader
+              should not hear "CS Group" three times. */}
+          <Image
+            src="/brand/cs-mark.png"
+            alt=""
+            width={340}
+            height={266}
+            priority
+            className="h-8 w-auto sm:h-9"
+          />
           <span className="font-display text-lg text-fg">{site.name}</span>
         </Link>
 
-        {/* Desktop nav — tighter gaps at lg so the secondary cluster (Team /
-            Careers / Investors / EN-中 / Enquire) still fits on a 1024px screen. */}
-        <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
+        {/* Desktop nav */}
+        <nav className="hidden items-center gap-8 lg:flex">
           {site.nav.map((item, i) => (
             <Link
               key={item.href}
@@ -105,13 +114,7 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex xl:gap-4">
-          <Link
-            href={site.teamHref}
-            className="hv-nav text-sm text-muted"
-          >
-            {t.header.team}
-          </Link>
+        <div className="hidden items-center gap-4 lg:flex">
           <Link
             href={site.careersHref}
             className="hv-nav text-sm text-muted"
@@ -188,13 +191,6 @@ export default function Header() {
                   {t.nav[i]}
                 </Link>
               ))}
-              <Link
-                href={site.teamHref}
-                onClick={() => setOpen(false)}
-                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
-              >
-                {t.header.team}
-              </Link>
               <Link
                 href={site.careersHref}
                 onClick={() => setOpen(false)}

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import { site } from "@/lib/site";
 import { companies } from "@/lib/data";
@@ -16,9 +17,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <div className="hv-mark flex w-fit items-center gap-2.5">
-              <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong font-display text-accent">
-                C
-              </span>
+              <Image
+                src="/brand/cs-mark.png"
+                alt=""
+                width={340}
+                height={266}
+                className="h-8 w-auto"
+              />
               <span className="font-display text-lg text-fg">{site.name}</span>
             </div>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted">{t.footer.tagline}</p>
@@ -45,18 +50,15 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="label text-faint">{t.footer.navigate}</h3>
             <ul className="mt-5 space-y-3">
-              {site.nav.slice(0, 5).map((item, i) => (
+              {/* The whole nav — Contact is no longer one of its entries; the
+                  "Get in touch" column beside this one carries that. */}
+              {site.nav.map((item, i) => (
                 <li key={item.href}>
                   <a href={item.href} className="hv-link text-sm text-muted">
                     {t.nav[i]}
                   </a>
                 </li>
               ))}
-              <li>
-                <a href={site.teamHref} className="hv-link text-sm text-muted">
-                  {t.header.team}
-                </a>
-              </li>
               <li>
                 <a href={site.careersHref} className="hv-link text-sm text-muted">
                   {t.header.careers}
