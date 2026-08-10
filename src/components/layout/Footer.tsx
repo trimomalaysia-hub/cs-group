@@ -81,7 +81,15 @@ export default function Footer() {
                   {site.email}
                 </a>
               </li>
-              <li>{site.location}</li>
+              <li>
+                <address className="not-italic leading-relaxed">
+                  {site.address.map((line) => (
+                    <span key={line} className="block">
+                      {line}
+                    </span>
+                  ))}
+                </address>
+              </li>
               <li className="flex gap-4 pt-2">
                 {Object.entries(site.social).map(([name, url]) => (
                   <a

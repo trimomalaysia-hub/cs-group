@@ -56,7 +56,15 @@ export default function Contact() {
               </div>
               <div>
                 <dt className="label text-muted">{t.contact.office}</dt>
-                <dd className="mt-2 text-muted">{site.location}</dd>
+                <dd className="mt-2">
+                  <address className="not-italic leading-relaxed text-muted">
+                    {site.address.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
+                  </address>
+                </dd>
               </div>
             </dl>
           </Reveal>
