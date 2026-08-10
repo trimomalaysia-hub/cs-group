@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-5">
-            <div className="flex items-center gap-2.5">
+            <div className="hv-mark flex w-fit items-center gap-2.5">
               <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong font-display text-accent">
                 C
               </span>
@@ -33,7 +33,7 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {companies.map((c) => (
                 <li key={c.id}>
-                  <a href={`/companies/${c.id}`} className="text-sm text-muted transition-colors hover:text-fg">
+                  <a href={`/companies/${c.id}`} className="hv-link text-sm text-muted">
                     {c.brand}
                   </a>
                 </li>
@@ -47,14 +47,19 @@ export default function Footer() {
             <ul className="mt-5 space-y-3">
               {site.nav.slice(0, 5).map((item, i) => (
                 <li key={item.href}>
-                  <a href={item.href} className="text-sm text-muted transition-colors hover:text-fg">
+                  <a href={item.href} className="hv-link text-sm text-muted">
                     {t.nav[i]}
                   </a>
                 </li>
               ))}
               <li>
-                <a href={site.careersHref} className="text-sm text-muted transition-colors hover:text-fg">
+                <a href={site.careersHref} className="hv-link text-sm text-muted">
                   {t.header.careers}
+                </a>
+              </li>
+              <li>
+                <a href={site.investHref} className="hv-link text-sm text-muted">
+                  {t.header.investors}
                 </a>
               </li>
             </ul>
@@ -65,7 +70,7 @@ export default function Footer() {
             <h3 className="label text-faint">{t.footer.getInTouch}</h3>
             <ul className="mt-5 space-y-3 text-sm text-muted">
               <li>
-                <a href={`mailto:${site.email}`} className="transition-colors hover:text-fg">
+                <a href={`mailto:${site.email}`} className="hv-link">
                   {site.email}
                 </a>
               </li>
@@ -77,7 +82,7 @@ export default function Footer() {
                     href={url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="capitalize text-faint transition-colors hover:text-accent"
+                    className="hv-link to-gold capitalize text-faint"
                   >
                     {name}
                   </a>

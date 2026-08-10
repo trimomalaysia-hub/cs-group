@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import { AnimatePresence, motion, useScroll, useSpring } from "framer-motion";
 import { site } from "@/lib/site";
 import { useLanguage, type Lang } from "@/lib/i18n";
 import Container from "@/components/ui/Container";
@@ -26,8 +27,8 @@ function LangToggle({
           key={o.code}
           onClick={() => setLang(o.code)}
           aria-pressed={lang === o.code}
-          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors ${
-            lang === o.code ? "bg-fg text-bg" : "text-muted hover:text-fg"
+          className={`rounded-full px-3 py-1 text-xs font-medium transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            lang === o.code ? "bg-fg text-bg" : "text-muted hover:text-accent"
           }`}
         >
           {o.label}
@@ -41,6 +42,14 @@ export default function Header() {
   const { lang, setLang, t } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  /* Reading-progress hairline across the bottom of the bar */
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 30,
+    restDelta: 0.001,
+  });
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -64,42 +73,57 @@ export default function Header() {
           : "border-b border-transparent bg-transparent"
       }`}
     >
-      <Container className="flex h-20 items-center justify-between">
+      <Container
+        className={`flex items-center justify-between transition-[height] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          scrolled && !open ? "h-16" : "h-20"
+        }`}
+      >
         {/* Wordmark */}
-        <a href="/#top" className="group flex items-center gap-2.5" aria-label={site.name}>
-          <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong text-[0.85rem] font-display text-accent transition-colors group-hover:border-accent/60">
+        {/* Brand mark: brightens, never moves. */}
+        <Link
+          href="/#top"
+          className="hv-mark group flex items-center gap-2.5"
+          aria-label={site.name}
+        >
+          <span className="grid h-8 w-8 place-items-center rounded-full border border-line-strong text-[0.85rem] font-display text-accent transition-colors duration-[var(--hover-dur)] group-hover:border-accent/60">
             C
           </span>
-          <span className="font-display text-lg tracking-tight text-fg">{site.name}</span>
-        </a>
+          <span className="font-display text-lg text-fg">{site.name}</span>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-8 lg:flex">
           {site.nav.map((item, i) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
-              className="text-sm text-muted transition-colors hover:text-fg"
+              className="hv-nav text-sm text-muted"
             >
               {t.nav[i]}
-            </a>
+            </Link>
           ))}
         </nav>
 
         <div className="hidden items-center gap-4 lg:flex">
-          <a
+          <Link
             href={site.careersHref}
-            className="text-sm text-muted transition-colors hover:text-fg"
+            className="hv-nav text-sm text-muted"
           >
             {t.header.careers}
-          </a>
+          </Link>
+          <Link
+            href={site.investHref}
+            className="hv-nav text-sm text-muted"
+          >
+            {t.header.investors}
+          </Link>
           <LangToggle lang={lang} setLang={setLang} />
-          <a
+          <Link
             href="/#contact"
-            className="rounded-full border border-line-strong px-5 py-2 text-sm text-fg transition-colors hover:border-accent/70 hover:text-accent"
+            className="rounded-full border border-line-strong px-5 py-2 text-sm text-fg transition-all duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/70 hover:bg-accent/[0.04] hover:text-accent"
           >
             {t.header.enquire}
-          </a>
+          </Link>
         </div>
 
         {/* Mobile controls */}
@@ -108,7 +132,7 @@ export default function Header() {
           <button
             className="flex h-10 w-10 items-center justify-center"
             onClick={() => setOpen((v) => !v)}
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? t.a11y.closeMenu : t.a11y.openMenu}
             aria-expanded={open}
           >
             <div className="relative h-4 w-6">
@@ -127,6 +151,15 @@ export default function Header() {
         </div>
       </Container>
 
+      {/* Reading progress — a hairline that fills as the page is read */}
+      <motion.div
+        aria-hidden
+        style={{ scaleX: progress }}
+        className={`h-px origin-left bg-accent/70 transition-opacity duration-500 ${
+          scrolled ? "opacity-100" : "opacity-0"
+        }`}
+      />
+
       {/* Mobile overlay menu */}
       <AnimatePresence>
         {open && (
@@ -139,22 +172,29 @@ export default function Header() {
           >
             <Container className="flex flex-col py-6">
               {site.nav.map((item, i) => (
-                <a
+                <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="border-b border-line py-4 font-display text-2xl text-fg transition-colors hover:text-accent"
+                  className="border-b border-line py-4 font-display text-2xl text-fg transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
                 >
                   {t.nav[i]}
-                </a>
+                </Link>
               ))}
-              <a
+              <Link
                 href={site.careersHref}
                 onClick={() => setOpen(false)}
-                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors hover:text-accent"
+                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
               >
                 {t.header.careers}
-              </a>
+              </Link>
+              <Link
+                href={site.investHref}
+                onClick={() => setOpen(false)}
+                className="border-b border-line py-4 font-display text-2xl text-fg transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
+              >
+                {t.header.investors}
+              </Link>
             </Container>
           </motion.nav>
         )}

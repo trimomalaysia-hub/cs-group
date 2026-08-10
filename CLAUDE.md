@@ -1,9 +1,11 @@
-# KCS Group Website — Project Guide for Claude
+# CS Group Website — Project Guide for Claude
 
-Premium corporate site for **KCS Group**, the founder-led group established by
+Premium corporate site for **CS Group**, the founder-led group established by
 **Kam Chin Seng**. Built with **Next.js 15 (App Router) · TypeScript · TailwindCSS v4
-· Framer Motion**. Aesthetic: monochrome black/white/beige, minimal, investor-grade — a
-near-black canvas with warm cream text and beige accents, clean sans-serif headlines.
+· Framer Motion**. Aesthetic: **black & gold** — a deep matte black canvas (#0B0B0B),
+near-white text, soft metallic gold accent (#C6A96B) used sparingly, **elegant serif
+headlines** over clean sans body copy. The feel is a hybrid of a luxury brand, a
+consulting firm and a future-focused AI company: premium, calm, powerful, not flashy.
 It will often be edited by a **non-technical team member** in plain English.
 
 ## Golden rule: design work → use the `ui-ux-pro-max` skill
@@ -35,10 +37,25 @@ src/
   to `nav` in `site.ts`.
 
 ## Design system quick reference
-- Surfaces `bg-bg` / `bg-surface` / `bg-elevated`; text `text-fg` / `text-muted` /
-  `text-faint`; hairlines `border-line` / `border-line-strong`; accent `text-accent`
-  (warm beige — **sparingly**). Type is Inter throughout; headings are heavier/tighter.
-  Surfaces are a near-black page with dark cards; text is warm cream.
+- Surfaces `bg-bg` (#0B0B0B) / `bg-surface` (#1A1A1A) / `bg-elevated`; text `text-fg`
+  (#F5F5F5) / `text-muted` / `text-faint`; hairlines `border-line` / `border-line-strong`;
+  accent `text-accent` (#C6A96B soft metallic gold — **sparingly**: a headline keyword,
+  a hairline, a border, a marker; never large fills or body copy).
+- **Type is two-faced**: headings render in **Playfair Display** (serif) automatically —
+  a global rule in `globals.css` applies `--font-display` to `h1`–`h4`, so you never need
+  `font-display` on a heading. Body/UI is **Inter**. Use `font-display` only to put the
+  serif on a non-heading (e.g. a pull quote). Chinese headings fall back to a CJK serif
+  (Playfair has no Han glyphs) and drop to weight 400 via a `:lang(zh)` rule.
+- **Hover system — use these four classes, never hand-roll a hover.** All run at
+  `--hover-dur` (0.4s) on the ease-out curve, and all answer to `:focus-visible` too:
+  - `.hv-nav` — nav items: muted → gold, hairline underline sweeping in from the left
+  - `.hv-link` — text links: brighten + underline fades in (add `.to-gold` to land on gold)
+  - `.hv-card` — the one card hover: 4px lift, gold edge, deeper shadow
+  - `.hv-mark` — headings/logo: brightness only, **never** moves or scales
+  Buttons carry their hover in `Button.tsx` variants (`gold` / `primary` / `outline` / `ghost`).
+  If you need a one-off transition, use `duration-[var(--hover-dur)]` so it stays in step.
+- Other gold utilities: `.rule-gold` (fading gold hairline), `.spotlight` (cursor-follow
+  glow, pair with `onSpotlightMove`), `.metal-gold` / `.metal-emblem` (metallic type).
 - Sections via `<Section>`; container via `<Container>`; buttons via `<Button>`.
 - Motion: `<Reveal>` / `<Stagger>` only — subtle, once-only, reduced-motion-safe.
 
@@ -55,7 +72,7 @@ to localStorage; default English). Implementation:
   company detail route stays a server component and renders the client `CompanyDetailView`.
 
 ## Commands
-- `npm run dev` — local dev server (http://localhost:3000)
+- `npm run dev` — local dev server (http://localhost:5000)
 - `npm run build` — production build
 - `npm run start` — serve the production build
 
@@ -68,8 +85,8 @@ to localStorage; default English). Implementation:
 
 ## Content / TODO notes
 - `data.ts` years and portfolio metrics are **illustrative placeholders** — replace
-  with verified figures. The group name **"KCS Group"** is a placeholder for the
-  holding brand; rename in `site.ts` if a formal brand exists.
+  with verified figures. The holding brand is **"CS Group"** (confirmed); it is set
+  in `site.ts` if it ever needs to change.
 - Replace monogram placeholders (Founder portrait, logo mark) with real assets via
   `next/image` when available.
 - Contact form posts to a placeholder Formspree endpoint (see `Contact.tsx`).

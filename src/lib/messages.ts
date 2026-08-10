@@ -5,30 +5,46 @@
    Content data (companies, vision, timeline, insights) is localized in data.ts.
    ============================================================================ */
 
+import type { Lang } from "./i18n-types";
+
 export const messages = {
   en: {
-    nav: ["Founder", "Companies", "Vision", "Portfolio", "Timeline", "Insights", "Contact"],
-    header: { enquire: "Enquire", careers: "Careers" },
+    nav: ["About", "Companies", "Talent", "Founder", "Vision", "Contact"],
+    header: { enquire: "Enquire", careers: "Careers", investors: "Investors" },
+
+    /* The logo-lockup opening screen. `monogram` and `wordmark` are the brand
+       identity and stay in Latin in both languages; only the pillars localise. */
+    logo: {
+      monogram: "CS",
+      wordmark: "CS GROUP",
+      pillars: ["Excellence", "Prestige", "Legacy"],
+      enter: "Enter",
+    },
 
     hero: {
-      eyebrow: "Founder-Led Group — Established by Kam Chin Seng",
-      headline: {
-        a: "A founder-led group building ",
-        accent: "what endures",
-        post: " — across technology, hospitality & capital.",
-      },
-      description:
-        "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning social technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
-      ctaPrimary: "Explore the companies",
-      ctaSecondary: "Meet the founder",
-      sectors: ["Social Technology", "Enterprise AI", "Hospitality", "Property"],
+      eyebrow: "CS Group · Founder-Led",
+      line1: "We build people.",
+      line2pre: "People build ",
+      line2accent: "the future",
+      line2post: ".",
+      sub: "A founder-led group building talent, companies, and intelligent systems.",
+      ctaPrimary: "Explore Group",
+      ctaSecondary: "Join Talent Network",
+    },
+
+    about: {
+      eyebrow: "About",
+      line1: "Founder-led since the first day.",
+      line2: "Compounding across technology, hospitality and capital.",
+      line3: "Built for the long horizon — measured in decades, not quarters.",
+      milestones: "Milestones",
     },
 
     founder: {
       eyebrow: "Founder",
-      heading: "A builder’s vision — enabling people, and believing in the future.",
-      p1: "Kam Chin Seng believes a company is not only a platform for commercial value, but a place for creating opportunity — cultivating talent, uniting culture, and giving people the room to grow and glimpse the future.",
-      p2: "In the age of AI he sees not just gains in efficiency, but a new way for people and technology to work together — because technology amplifies capability, yet it is people who truly drive an organization’s growth.",
+      heading: "Leadership measured in decades.",
+      p1: "Kam Chin Seng builds companies the way others build institutions — slowly, deliberately, and to be handed on.",
+      p2: "He believes a company is a place to create opportunity: to cultivate talent, to unite a culture, and to give people the room to grow.",
       quote:
         "A company can grow ever more intelligent — but it must never lose its warmth.",
       role: "Founder & Chairman",
@@ -38,15 +54,42 @@ export const messages = {
 
     companies: {
       eyebrow: "Companies",
-      titleLine1: "Four companies,",
-      titleLine2: "one ecosystem.",
-      lead: "Each business stands on its own — yet shares a founder, a standard and a long-term vision.",
+      titleLine1: "An ecosystem of companies.",
+      titleLine2: "Designed for scale, built for the future.",
+      lead: "Each operates independently — yet all move as one.",
       view: "View",
       since: "Since",
     },
 
+    talent: {
+      eyebrow: "Talent",
+      statement: "We don’t just build companies. We build people.",
+      lead: "Talent is the asset that compounds. Everything else follows from it.",
+      values: [
+        { title: "Growth", text: "Room to stretch beyond your title — early, and often." },
+        { title: "Ownership", text: "Real decisions, real consequences, real credit." },
+        { title: "Collaboration", text: "One bench across the group — knowledge travels." },
+      ],
+      cta: "Join Us",
+    },
+
+    finalCta: {
+      heading: "Build the future with us.",
+      cta: "Get in Touch",
+      note: "Or write to us at",
+    },
+
+    stats: {
+      eyebrow: "By the numbers",
+      title: "Built slowly, on purpose.",
+      lead: "The group’s scale is the product of three decades of operating — not of a single funding round.",
+    },
+
     vision: {
       eyebrow: "Vision",
+      statement: "Building AI-native organizations for the next generation.",
+      support:
+        "Not software bolted onto old structures — companies designed, from the ground up, around intelligence.",
       manifesto:
         "Technology compounds. Hospitality endures. Capital is patient. Held together by a single vision, they build something larger than any one company — and made to last beyond any one lifetime.",
     },
@@ -119,31 +162,59 @@ export const messages = {
       allCompaniesCta: "All companies",
       fallback: { sector: "Sector", status: "Status", since: "Since", founder: "Founder" },
     },
+
+    a11y: {
+      skipToContent: "Skip to content",
+      skipIntro: "Skip",
+      openMenu: "Open menu",
+      closeMenu: "Close menu",
+      prev: "Previous",
+      next: "Next",
+      scrollCue: "Scroll",
+    },
+
+    notFound: {
+      title: "Page not found",
+      lead: "The page you’re looking for doesn’t exist or may have moved.",
+      home: "Back to home",
+    },
   },
 
   zh: {
-    nav: ["创始人", "旗下企业", "愿景", "投资版图", "发展历程", "洞察", "联系"],
-    header: { enquire: "咨询", careers: "招贤纳士" },
+    nav: ["关于", "旗下企业", "人才", "创始人", "愿景", "联系"],
+    header: { enquire: "咨询", careers: "招贤纳士", investors: "投资者" },
+
+    logo: {
+      monogram: "CS",
+      wordmark: "CS GROUP",
+      pillars: ["卓越", "尊崇", "传承"],
+      enter: "进入",
+    },
 
     hero: {
-      eyebrow: "创始人主导的企业集团 — 由 Kam Chin Seng 创立",
-      headline: {
-        a: "一家创始人主导的企业集团，缔造",
-        accent: "经得起时间考验的事业",
-        post: " —— 横跨科技、酒店与资本。",
-      },
-      description:
-        "CS Group 是由 Kam Chin Seng 创立的多元化、创始人主导的企业生态 —— 横跨社交科技、企业级 AI、酒店与房地产开发，秉持长期、投资级的愿景。",
-      ctaPrimary: "了解旗下企业",
-      ctaSecondary: "认识创始人",
-      sectors: ["社交科技", "企业级 AI", "酒店", "房地产"],
+      eyebrow: "CS Group · 创始人主导",
+      line1: "我们成就人。",
+      line2pre: "人，成就",
+      line2accent: "未来",
+      line2post: "。",
+      sub: "一家创始人主导的集团 —— 培育人才，创建企业，构建智能系统。",
+      ctaPrimary: "了解集团",
+      ctaSecondary: "加入人才网络",
+    },
+
+    about: {
+      eyebrow: "关于",
+      line1: "自第一天起，由创始人主导。",
+      line2: "在科技、酒店与资本之间，复利生长。",
+      line3: "为长远而建 —— 以十年计，而非以季度计。",
+      milestones: "关键节点",
     },
 
     founder: {
       eyebrow: "创始人",
-      heading: "建造者的远见 —— 成就人，也相信未来。",
-      p1: "Kam Chin Seng 相信，企业不仅是创造商业价值的平台，更是创造机会的地方 —— 培养人才、凝聚文化，让更多人在成长中看见未来。",
-      p2: "在 AI 的时代，他看到的不只是效率的提升，而是人与科技全新的协作方式 —— 因为科技放大能力，但真正驱动组织成长的，始终是人。",
+      heading: "以十年为尺度的领导力。",
+      p1: "Kam Chin Seng 以建造机构的方式建造企业 —— 缓慢、审慎，并且是为了传承。",
+      p2: "他相信，企业是创造机会的地方：培育人才，凝聚文化，让人有生长的余地。",
       quote:
         "企业可以越来越智能，但不能失去温度。",
       role: "创始人兼主席",
@@ -153,15 +224,42 @@ export const messages = {
 
     companies: {
       eyebrow: "旗下企业",
-      titleLine1: "四家企业，",
-      titleLine2: "一个生态。",
-      lead: "每一项业务都独立运营 —— 却共享同一位创始人、同一套标准与同一个长期愿景。",
+      titleLine1: "一个企业生态。",
+      titleLine2: "为规模而设计，为未来而建造。",
+      lead: "各自独立运营 —— 却如一体般前行。",
       view: "查看",
       since: "始于",
     },
 
+    talent: {
+      eyebrow: "人才",
+      statement: "我们不只是创建企业。我们成就人。",
+      lead: "人才，才是真正复利的资产。其余一切，皆由此而来。",
+      values: [
+        { title: "成长", text: "越过头衔的边界 —— 尽早，也常常。" },
+        { title: "主人翁", text: "真实的决策，真实的结果，真实的认可。" },
+        { title: "协作", text: "全集团，一支队伍 —— 让经验流动。" },
+      ],
+      cta: "加入我们",
+    },
+
+    finalCta: {
+      heading: "与我们一起，建造未来。",
+      cta: "联系我们",
+      note: "或来信至",
+    },
+
+    stats: {
+      eyebrow: "集团数据",
+      title: "慢，是刻意的。",
+      lead: "集团今日的规模，来自三十余年的实业经营 —— 而非某一轮融资。",
+    },
+
     vision: {
       eyebrow: "愿景",
+      statement: "为下一代，构建 AI 原生的组织。",
+      support:
+        "不是把软件嫁接在旧结构之上 —— 而是从根基起，就围绕智能而设计的企业。",
       manifesto:
         "科技在复利，酒店在沉淀，资本在等待。由同一个愿景凝聚，它们共同成就的，远大于任何一家企业 —— 并注定超越任何一代人的时光。",
     },
@@ -234,5 +332,27 @@ export const messages = {
       allCompaniesCta: "全部企业",
       fallback: { sector: "行业", status: "状态", since: "始于", founder: "创始人" },
     },
+
+    a11y: {
+      skipToContent: "跳到主要内容",
+      skipIntro: "跳过",
+      openMenu: "打开菜单",
+      closeMenu: "关闭菜单",
+      prev: "上一个",
+      next: "下一个",
+      scrollCue: "向下滚动",
+    },
+
+    notFound: {
+      title: "页面未找到",
+      lead: "您访问的页面不存在，或可能已被移动。",
+      home: "返回首页",
+    },
   },
 };
+
+export type Messages = typeof messages.en;
+
+/* Compile-time guard: `zh` must stay structurally identical to `en` (see CLAUDE.md). */
+const _localeParity: Record<Lang, Messages> = messages;
+void _localeParity;

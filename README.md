@@ -1,12 +1,12 @@
-# KCS Group — Official Website
+# CS Group — Official Website
 
-A premium, investor-grade corporate website for **KCS Group**, the founder-led
+A premium, investor-grade corporate website for **CS Group**, the founder-led
 group of companies established by **Kam Chin Seng**. Monochrome black/white/beige,
 minimal, investor-grade aesthetic.
 
 **The ecosystem**
 - **Nexxatech Global Sdn. Bhd.** — *TRIMO*, a one-to-one social technology platform
-- **Nexflo Sdn Bhd** — *Jarvis AI*, an enterprise intelligence platform
+- **Nexflo Sdn Bhd** — *NEXJARVIS*, an enterprise intelligence platform
 - **Gemas Golf Resort Sdn Bhd** — hospitality & golf resort
 - **National 6A Investment Co., Ltd.** — property development
 
@@ -20,7 +20,7 @@ Next.js 15 (App Router) · TypeScript · TailwindCSS v4 · Framer Motion
 ## Getting started
 ```bash
 npm install     # first time / after pulling changes
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:5000
 ```
 | Command         | What it does                         |
 | --------------- | ------------------------------------ |
@@ -52,8 +52,7 @@ src/
 
 ## Before going live
 - Set the real domain in `src/lib/site.ts` (`url`).
-- Replace **illustrative** years/metrics in `data.ts` with verified figures, and
-  confirm the holding brand name (placeholder: *KCS Group*).
+- Replace **illustrative** years/metrics in `data.ts` with verified figures.
 - Add real imagery (founder portrait, logo) via `next/image`.
 - Connect the contact form (replace `YOUR_FORM_ID` in `src/components/sections/Contact.tsx`).
 - Add a `public/og-image.png` (1200×630) for social sharing.

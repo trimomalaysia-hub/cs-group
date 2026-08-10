@@ -23,7 +23,7 @@ export default function FounderView() {
           <Reveal>
             <Link
               href="/#founder"
-              className="label inline-flex items-center gap-2 text-faint transition-colors hover:text-accent"
+              className="label inline-flex items-center gap-2 text-faint transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
             >
               ← {t.founder.back}
             </Link>

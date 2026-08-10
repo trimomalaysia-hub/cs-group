@@ -45,8 +45,8 @@ export default function Portfolio() {
       <Stagger className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {sectors.map((s) => (
           <StaggerItem key={s.company}>
-            <div onMouseMove={onSpotlightMove} className="spotlight group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
-              <div className="grid-lines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-100" aria-hidden />
+            <div onMouseMove={onSpotlightMove} className="spotlight hv-card group relative h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7">
+              <div className="grid-lines pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-[var(--hover-dur)] group-hover:opacity-100" aria-hidden />
               <div className="relative">
                 <p className="label text-accent/80">{s.company}</p>
                 <h3 className="mt-4 text-lg leading-snug text-fg">{s.name[lang]}</h3>

@@ -100,89 +100,113 @@ const companiesRaw: Company[] = [
     index: "01",
     legalName: "Nexxatech Global Sdn. Bhd.",
     brand: "TRIMO",
-    category: { en: "Social Technology Platform", zh: "社交科技平台" },
-    sector: { en: "Technology · Social Entertainment", zh: "科技 · 社交娱乐" },
+    category: { en: "One-to-One Companionship Platform", zh: "一对一情感陪伴平台" },
+    sector: { en: "Technology · Social", zh: "科技 · 社交" },
     summary: {
-      en: "A one-to-one social platform building meaningful digital human connection.",
-      zh: "一个一对一社交平台，缔造有温度的数字人际连接。",
+      en: "A one-to-one platform built around real emotional companionship — chat, voice and video that make people feel heard.",
+      zh: "一个以「一对一情感陪伴」为核心的平台 —— 让聊天、语音与视频，都被倾听、被回应。",
     },
     description: {
-      en: "Nexxatech Global is a digital entertainment and social technology company and the creator of TRIMO — a next-generation one-to-one platform uniting real-time communication, entertainment and a virtual economy in one seamless ecosystem.",
-      zh: "Nexxatech Global 是一家数字娱乐与社交科技公司，也是 TRIMO 的缔造者 —— 一个将实时沟通、娱乐与虚拟经济融为一体的新一代一对一社交平台。",
+      en: "Nexxatech Global is the creator of TRIMO — a one-to-one social platform built around genuine emotional companionship, connecting people through real-time chat, voice and video.",
+      zh: "Nexxatech Global 是 TRIMO 的缔造者 —— 一个以「一对一情感陪伴」为核心的社交平台，通过实时聊天、语音与视频连接人与人。",
     },
     highlights: {
-      en: ["One-to-one connection", "Messaging & video", "Virtual economy"],
-      zh: ["一对一连接", "即时通讯与视频", "虚拟经济"],
+      en: ["One-to-one companionship", "Chat · Voice · Video", "Real, meaningful connection"],
+      zh: ["一对一情感陪伴", "聊天 · 语音 · 视频", "真实而有意义的连接"],
     },
     status: { en: "Scaling", zh: "高速成长" },
-    year: "2022",
+    year: "2023",
     detail: {
       tagline: {
-        en: "Building the Future of Digital Human Connection",
-        zh: "构建数字人际连接的未来",
+        en: "Every conversation, heard.",
+        zh: "每一次沟通，都被听见。",
       },
       intro: {
-        en: "Nexxatech Global Sdn. Bhd. is a digital entertainment and social technology company focused on creating meaningful one-to-one connections through immersive online experiences.",
-        zh: "Nexxatech Global Sdn. Bhd. 是一家数字娱乐与社交科技公司，专注于通过沉浸式的线上体验，缔造有意义的一对一连接。",
+        en: "TRIMO is the group's first core product — a one-to-one social platform built around genuine emotional companionship, launched in September 2023.",
+        zh: "TRIMO 是集团推出的首个核心产品 —— 一个以「一对一情感陪伴」为核心的社交平台，于 2023 年 9 月正式上线。",
       },
       positioning: {
-        en: "As the creator of TRIMO, Nexxatech is redefining social interaction in the digital era — combining communication, entertainment and virtual engagement within a seamless ecosystem.",
-        zh: "作为 TRIMO 的缔造者，Nexxatech 正在重新定义数字时代的社交 —— 将沟通、娱乐与虚拟互动融汇于一个无缝的生态之中。",
+        en: "In a world with more ways to talk and less real connection, TRIMO brings interaction back to its most human form — being heard, being answered, being understood.",
+        zh: "在一个沟通工具越来越多、真实连接却越来越少的时代，TRIMO 让互动回归最本质的样子 —— 被倾听、被回应、被理解。",
       },
       overview: {
         en: [
-          "Nexxatech Global Sdn. Bhd. is a digital entertainment and social technology company built on a single mission — to make human connection in the digital era feel genuine again. As the creator of TRIMO, it is reimagining how people meet, talk and build relationships online.",
-          "TRIMO is a next-generation one-to-one social interaction platform designed to foster authentic relationships through real-time communication and genuinely engaging digital experiences.",
-          "At its heart, the platform brings together instant messaging, face-to-face video communication and a dynamic virtual economy — letting users connect, interact and express themselves in more personal and meaningful ways.",
-          "Virtual gifting and a built-in Diamond economy turn everyday interactions into moments worth sharing, while powering premium, personalized experiences across the community.",
-          "By weaving social networking, entertainment and digital monetization into one seamless ecosystem, TRIMO creates an immersive environment where people build real connections and belong to a vibrant, growing community — the foundation of the group's long-term ambition in social technology.",
+          "TRIMO is the group's first core product, launched in September 2023. It is built around a single idea — one-to-one emotional companionship — creating more genuine, human connection in a digital world.",
+          "In today's fast-paced, hyper-digital society, the tools to communicate keep multiplying, yet real connection and companionship keep thinning. TRIMO was created for exactly this moment: a space where people can be listened to, be answered, and be understood — so every interaction means something.",
+          "The platform connects people in real time through instant chat, voice and video. Unlike traditional social platforms built for broad reach and content exposure, TRIMO focuses on deep one-to-one interaction — returning to the most essential human need to communicate.",
+          "Its model is built on genuine interaction. By delivering a high-quality communication experience, TRIMO turns real needs into stable usage and lasting habits — companionship that people return to.",
+          "Core experiences span text chat, voice and video, enriched by virtual gifts that deepen engagement and emotional connection — giving the platform a foundation built to last.",
+          "Since launch, TRIMO has continuously refined its experience and interaction mechanics, balancing efficiency with warmth. Its direction stays constant: to deepen emotional companionship into a long-term, sustainable platform, grounded entirely in the real needs of the people who use it.",
         ],
         zh: [
-          "Nexxatech Global Sdn. Bhd. 是一家数字娱乐与社交科技公司，怀着一个单纯的使命 —— 让数字时代的人际连接重新变得真实。作为 TRIMO 的缔造者，它正在重新想象人们在线上相遇、交流与建立关系的方式。",
-          "TRIMO 是新一代的一对一社交互动平台，通过实时沟通与真正引人入胜的数字体验，培育真实的人际关系。",
-          "平台的核心，融合了即时通讯、面对面的视频沟通与充满活力的虚拟经济 —— 让用户以更私人、更有意义的方式连接、互动并表达自我。",
-          "虚拟礼物与内置的钻石经济，把日常的互动化为值得分享的时刻，同时为社区中的高级、个性化体验提供动力。",
-          "通过将社交、娱乐与数字变现交织成一个无缝的生态，TRIMO 打造出沉浸式的环境，让人们建立真实的连接、归属于一个充满活力、不断成长的社区 —— 这也是集团在社交科技领域长期抱负的基石。",
+          "TRIMO 是集团推出的首个核心产品，于 2023 年 9 月正式上线。它以一个单纯的理念为核心 —— 一对一情感陪伴 —— 在数字世界中，建立更真实、有温度的人际连接。",
+          "在当今快节奏、高度数字化的社会，沟通工具不断增加，人与人之间真实的交流与陪伴却逐渐减少。TRIMO 正是为此而生：一个可以被倾听、被回应、被理解的空间，让每一次沟通都更有意义。",
+          "平台通过即时聊天、语音及视频，实现用户之间的实时连接。不同于以广泛连接或内容曝光为导向的传统社交平台，TRIMO 更专注于深度的一对一交流，让互动回归人与人之间最本质的沟通需求。",
+          "在商业模式上，TRIMO 围绕用户真实的互动需求而建。通过提供高质量的沟通体验，平台将真实需求转化为稳定的使用场景与持续的参与，逐步形成长期的使用习惯。",
+          "核心使用场景涵盖文字聊天、语音交流与视频互动，并结合虚拟礼物等形式，提升参与感与情感连接 —— 让平台的整体运作具备长期发展的基础。",
+          "自上线以来，TRIMO 持续优化产品体验与互动机制，在「效率」与「温度」之间取得平衡。未来，平台将继续围绕「情感陪伴」的核心，深化功能与服务，打造一个长期可持续、以用户真实需求为基础的互动平台。",
         ],
       },
       quickFacts: {
-        en: ["Creator of TRIMO", "Social Technology", "Est. 2022"],
-        zh: ["TRIMO 缔造者", "社交科技", "成立于 2022"],
+        en: ["Launched Sept 2023", "One-to-one companionship", "Chat · Voice · Video"],
+        zh: ["2023 年 9 月上线", "一对一情感陪伴", "聊天 · 语音 · 视频"],
       },
       facts: [
-        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2022", zh: "2022" } },
+        { label: { en: "Launched", zh: "上线时间" }, value: { en: "September 2023", zh: "2023 年 9 月" } },
+        { label: { en: "Focus", zh: "定位" }, value: { en: "One-to-one companionship", zh: "一对一情感陪伴" } },
+        { label: { en: "Formats", zh: "互动形式" }, value: { en: "Chat · Voice · Video", zh: "聊天 · 语音 · 视频" } },
         { label: { en: "Headquarters", zh: "总部" }, value: { en: "Malaysia", zh: "马来西亚" } },
-        {
-          label: { en: "Industry", zh: "行业" },
-          value: { en: "Social Technology & Digital Entertainment", zh: "社交科技与数字娱乐" },
-        },
-        { label: { en: "Product", zh: "产品" }, value: { en: "TRIMO", zh: "TRIMO" } },
         { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
       ],
+      compare: {
+        eyebrow: { en: "What makes it different", zh: "不同之处" },
+        title: { en: "Not another social network.", zh: "不是又一个社交网络。" },
+        intro: {
+          en: "Where traditional platforms optimize for reach, TRIMO optimizes for connection.",
+          zh: "传统平台追求广度，TRIMO 追求的是连接的深度。",
+        },
+        beforeLabel: { en: "Traditional social", zh: "传统社交" },
+        afterLabel: { en: "TRIMO", zh: "TRIMO" },
+        rows: [
+          {
+            before: { en: "Built for broad connection and content exposure.", zh: "以广泛连接与内容曝光为导向。" },
+            after: { en: "Built for deep, one-to-one interaction.", zh: "专注深度的一对一交流。" },
+          },
+          {
+            before: { en: "Measured in reach and followers.", zh: "以触达与粉丝数衡量。" },
+            after: { en: "Measured in being heard and understood.", zh: "以「被倾听、被理解」衡量。" },
+          },
+          {
+            before: { en: "More tools, less real connection.", zh: "工具越来越多，真实连接却越来越少。" },
+            after: { en: "Fewer distractions, more genuine companionship.", zh: "更少干扰，更多真实的陪伴。" },
+          },
+        ],
+      },
       businessAreas: [
         {
-          title: { en: "Instant Messaging", zh: "即时通讯" },
-          text: { en: "Real-time one-to-one conversations.", zh: "实时的一对一对话。" },
+          title: { en: "Text Chat", zh: "文字聊天" },
+          text: { en: "Real-time one-to-one conversation.", zh: "实时的一对一对话。" },
         },
         {
-          title: { en: "Video Communication", zh: "视频沟通" },
-          text: { en: "Interactive, face-to-face experiences.", zh: "面对面的互动体验。" },
+          title: { en: "Voice", zh: "语音交流" },
+          text: { en: "Warmer, more present connection through the voice.", zh: "以声音传递更有温度、更临场的连接。" },
         },
         {
-          title: { en: "Virtual Gifting", zh: "虚拟礼物" },
-          text: { en: "Digital expressions that enrich social engagement.", zh: "丰富社交互动的数字表达。" },
+          title: { en: "Video", zh: "视频互动" },
+          text: { en: "Face-to-face interaction that feels genuinely human.", zh: "面对面的互动，真实而有温度。" },
         },
         {
-          title: { en: "Diamond Economy", zh: "钻石经济" },
-          text: {
-            en: "A virtual-currency system powering premium interactions and personalized experiences.",
-            zh: "驱动高级互动与个性化体验的虚拟货币系统。",
-          },
+          title: { en: "Virtual Gifts", zh: "虚拟礼物" },
+          text: { en: "Expressive moments that deepen engagement and emotional connection.", zh: "富有表达力的互动，深化参与感与情感连接。" },
         },
       ],
       vision: {
-        en: "To become a leading global social entertainment platform that empowers meaningful digital relationships through innovation, engagement and technology-driven experiences.",
-        zh: "成为全球领先的社交娱乐平台，以创新、互动与技术驱动的体验，赋能有意义的数字关系。",
+        en: "To deepen one-to-one emotional companionship into a lasting, sustainable platform — built entirely around people's real need to connect, be heard and belong.",
+        zh: "持续深化「一对一情感陪伴」，打造一个长期可持续、完全以用户真实连接需求为基础的互动平台 —— 让每个人都能被倾听、被理解、有归属。",
+      },
+      mission: {
+        en: "To balance efficiency with warmth — making every interaction not just fast, but truly felt.",
+        zh: "在「效率」与「温度」之间取得平衡 —— 让每一次互动不只是高效，更有温度。",
       },
     },
   },
@@ -477,63 +501,63 @@ const companiesRaw: Company[] = [
     category: { en: "Hospitality & Golf Resort", zh: "酒店与高尔夫度假村" },
     sector: { en: "Hospitality · Leisure", zh: "酒店 · 休闲" },
     summary: {
-      en: "A destination resort pairing championship golf with refined hospitality.",
-      zh: "将锦标级高尔夫与精致酒店服务融为一体的目的地度假村。",
+      en: "A golf and hospitality destination with over three decades of legacy — golf, resort, events and lifestyle in one place.",
+      zh: "拥有三十余年传承的高尔夫与酒店目的地 —— 高尔夫、度假、活动与生活方式，汇聚于一处。",
     },
     description: {
-      en: "Gemas Golf Resort is the group's hospitality flagship — a considered leisure destination where landscape, sport and service meet. It anchors the group's long-term presence in premium experiential hospitality.",
-      zh: "Gemas 高尔夫度假村是集团的酒店旗舰 —— 一处将自然景观、运动与服务融为一体的精心打造的休闲胜地，奠定集团在高端体验式酒店领域的长期布局。",
+      en: "Established in 1991 and now led by second-generation entrepreneur Kam Chin Seng, Gemas Golf Resort is the group's hospitality flagship — a golf and lifestyle destination where landscape, sport and service meet, anchoring the group's presence in premium experiential hospitality.",
+      zh: "Gemas 高尔夫度假村成立于 1991 年，如今由第二代企业家 Kam Chin Seng 领导，是集团的酒店旗舰 —— 一处将自然景观、运动与服务融为一体的高尔夫与生活方式目的地，奠定集团在高端体验式酒店领域的布局。",
     },
     highlights: {
       en: ["Championship course", "Resort & events", "Premium guest experience"],
       zh: ["锦标级球场", "度假与活动", "高端宾客体验"],
     },
     status: { en: "Operating", zh: "运营中" },
-    year: "2021",
+    year: "1991",
     detail: {
       tagline: {
-        en: "Where Leisure Meets Hospitality Excellence",
-        zh: "让休闲，遇见卓越款待",
+        en: "Where heritage meets hospitality.",
+        zh: "让传承，遇见卓越款待。",
       },
       intro: {
-        en: "Gemas Golf Resort is a lifestyle and hospitality destination dedicated to delivering premium golf, resort and recreational experiences.",
-        zh: "Gemas 高尔夫度假村是一处生活方式与酒店款待目的地，专注于呈现高端的高尔夫、度假与休闲体验。",
+        en: "Established in 1991, Gemas Golf Resort is a lifestyle and hospitality destination with over three decades of experience delivering premium golf, resort and recreational experiences.",
+        zh: "Gemas 高尔夫度假村成立于 1991 年，是一处拥有三十余年经验的生活方式与酒店款待目的地，专注于呈现高端的高尔夫、度假与休闲体验。",
       },
       positioning: {
-        en: "Creating destinations beyond golf.",
-        zh: "打造超越高尔夫的目的地。",
+        en: "A legacy built across generations, delivering experiences beyond golf.",
+        zh: "跨越两代人的传承，缔造超越高尔夫的体验。",
       },
       overview: {
         en: [
+          "Established in 1991, Gemas Golf Resort is a lifestyle and hospitality destination with over three decades of experience delivering premium golf, resort and recreational experiences. Founded by the first generation of the family and now led by second-generation entrepreneur Kam Chin Seng, the resort reflects a legacy of vision, continuity and long-term value creation.",
           "Combining leisure, accommodation, corporate activities and nature-inspired environments, Gemas serves as a destination for both personal retreats and business gatherings.",
-          "From championship golf to weekend escapes, corporate retreats and family recreation, the resort brings golf, hospitality and lifestyle together in one place.",
-          "Set within nature-inspired surroundings, Gemas brings together a golf and country club, resort accommodation, dining and wellness, and versatile spaces for corporate and private events — all within a single destination.",
-          "Whether for a weekend escape, a corporate retreat or a family day out, the resort is designed around memorable experiences that blend recreation, hospitality and lifestyle — creating a destination that reaches well beyond the fairway.",
+          "Set within nature-inspired surroundings, the resort brings together a golf and country club, resort accommodation, dining and wellness, and versatile spaces for corporate and private events — all within a single destination.",
+          "Whether for a weekend escape, a corporate retreat or a family day out, Gemas is designed around memorable experiences that blend recreation, hospitality and lifestyle — creating a destination that reaches well beyond the fairway.",
         ],
         zh: [
+          "Gemas 高尔夫度假村成立于 1991 年，是一处拥有三十余年经验的生活方式与酒店款待目的地，专注于呈现高端的高尔夫、度假与休闲体验。度假村由家族第一代创立，如今由第二代企业家 Kam Chin Seng 领导，承载着远见、传承与长期价值创造的家族传统。",
           "将休闲、住宿、企业活动与自然环境融为一体，Gemas 既是个人度假的去处，也是商务聚会的目的地。",
-          "从锦标级高尔夫到周末度假、企业静修与家庭休闲，度假村将高尔夫、款待与生活方式汇聚于一处。",
-          "置身于自然环境之中，Gemas 将高尔夫与乡村俱乐部、度假住宿、餐饮与健康设施，以及适用于企业与私人活动的多功能空间汇聚一处，集于同一个目的地。",
-          "无论是周末度假、企业静修，还是家庭出游，度假村都围绕难忘的体验而设计，将休闲、款待与生活方式融为一体 —— 打造一处远不止于球场的目的地。",
+          "置身于自然环境之中，度假村将高尔夫与乡村俱乐部、度假住宿、餐饮与健康设施，以及适用于企业与私人活动的多功能空间汇聚一处，集于同一个目的地。",
+          "无论是周末度假、企业静修，还是家庭出游，Gemas 都围绕难忘的体验而设计，将休闲、款待与生活方式融为一体 —— 打造一处远不止于球场的目的地。",
         ],
       },
       quickFacts: {
-        en: ["Golf & Country Club", "Resort & Hospitality", "Corporate Retreats"],
-        zh: ["高尔夫与乡村俱乐部", "度假与酒店", "企业静修"],
+        en: ["Established 1991", "30+ years of legacy", "Golf · Resort · Events"],
+        zh: ["成立于 1991", "三十余年传承", "高尔夫 · 度假 · 活动"],
       },
       facts: [
-        { label: { en: "Founded", zh: "成立年份" }, value: { en: "2021", zh: "2021" } },
+        { label: { en: "Established", zh: "成立年份" }, value: { en: "1991", zh: "1991" } },
         { label: { en: "Location", zh: "所在地" }, value: { en: "Gemas, Malaysia", zh: "马来西亚 · 金马士" } },
         { label: { en: "Industry", zh: "行业" }, value: { en: "Hospitality & Leisure", zh: "酒店与休闲" } },
         { label: { en: "Offering", zh: "主营" }, value: { en: "Golf · Resort · Events", zh: "高尔夫 · 度假 · 活动" } },
-        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
+        { label: { en: "Leadership", zh: "领导者" }, value: { en: "Kam Chin Seng (2nd generation)", zh: "Kam Chin Seng（第二代）" } },
       ],
       businessAreas: [
         {
           title: { en: "Golf & Country Club", zh: "高尔夫与乡村俱乐部" },
           text: {
-            en: "Golf course operations and management, membership programmes, corporate golf events and tournaments, and recreational and social activities.",
-            zh: "高尔夫球场运营与管理、会籍计划与打球体验、企业高尔夫活动与赛事，以及休闲与社交活动。",
+            en: "An 18-hole course for both leisure and competitive play, with course operations and management, membership programmes, corporate golf events and tournaments, and recreational and social activities.",
+            zh: "18 洞球场，兼顾休闲与竞技；涵盖球场运营与管理、会籍计划与打球体验、企业高尔夫活动与赛事，以及休闲与社交活动。",
           },
         },
         {
@@ -572,12 +596,12 @@ const companiesRaw: Company[] = [
     category: { en: "Property Development", zh: "房地产开发" },
     sector: { en: "Real Estate · Development", zh: "房地产 · 开发" },
     summary: {
-      en: "Sustainable urban communities and real-estate development in Cambodia.",
-      zh: "在柬埔寨打造可持续的城市社区与房地产开发。",
+      en: "A Malaysian-backed property developer building high-quality projects across Cambodia's fast-growing market.",
+      zh: "马来西亚背景的柬埔寨房地产开发商，在快速发展的柬埔寨市场打造高品质项目。",
     },
     description: {
-      en: "National 6A is a Phnom Penh–based, Malaysian-founded developer creating sustainable urban communities across Cambodia — spanning development, investment management and long-term property management.",
-      zh: "National 6A 是一家总部位于金边、由马来西亚人创立的开发商，在柬埔寨打造可持续的城市社区 —— 业务涵盖开发、投资管理与长期物业管理。",
+      en: "National 6A is a Phnom Penh–based, Malaysian-founded property developer — an integrated platform spanning development, investment management, sales and property management across Cambodia's fast-growing real-estate market.",
+      zh: "National 6A 是一家总部位于金边、由马来西亚人创立的房地产开发商 —— 在快速发展的柬埔寨房地产市场中，构建涵盖开发、投资管理、销售与物业管理的一体化平台。",
     },
     highlights: {
       en: ["Phnom Penh market", "Residential & mixed-use", "End-to-end development"],
@@ -587,73 +611,68 @@ const companiesRaw: Company[] = [
     year: "2012",
     detail: {
       tagline: {
-        en: "Creating Sustainable Urban Communities in Cambodia",
-        zh: "在柬埔寨缔造可持续的城市社区",
+        en: "International standards, local expertise.",
+        zh: "国际标准，本地专长。",
       },
       intro: {
-        en: "A Cambodian urban-development and real-estate investment platform, focused on residential, mixed-use and resort property projects.",
-        zh: "一个柬埔寨城市开发与房地产投资平台，专注于住宅、综合体及度假地产项目的开发。",
+        en: "National 6A Investment Co., Ltd. is a Malaysian real-estate developer based in Phnom Penh, Cambodia, led by Kam Chin Seng — pairing international standards with deep local expertise.",
+        zh: "National 6A Investment Co., Ltd. 是一家总部位于柬埔寨金边的马来西亚房地产开发商，由 Kam Chin Seng 领导 —— 将国际标准与深厚的本地专长相结合。",
       },
       positioning: {
-        en: "A Malaysian-founded property developer rooted in Cambodia, with a deep focus on the Phnom Penh market.",
-        zh: "一家由马来西亚人创立、扎根柬埔寨的房地产开发商，深耕金边市场。",
+        en: "Strongly settled in Cambodia's real-estate landscape — an inter-cultural team and exclusive local partnerships, delivering strategic locations, aesthetic design and quality service.",
+        zh: "深深扎根于柬埔寨房地产版图 —— 以跨文化团队与独家本地合作，交付战略选址、美学设计与优质服务。",
       },
       overview: {
         en: [
-          "National 6A Investment Co., Ltd. is a Phnom Penh–based property developer founded and led by Malaysian entrepreneur Kam Chin Seng. Since 2012, the company has established itself as a Malaysian-background developer with deep roots in the Cambodian capital.",
-          "Its work spans the full development lifecycle — from property development and project investment to sales, marketing and long-term property management — creating tangible, long-horizon assets for residents, partners and investors.",
-          "The company pairs Malaysian standards of design and delivery with a deep understanding of the Cambodian market, building places that are made to last — and to appreciate — across market cycles.",
-          "From landmark residences such as Galaxy Residence and The Peninsula to integrated urban communities, National 6A focuses on developments that raise the standard of city living while creating durable, long-horizon value for residents, partners and investors alike.",
+          "National 6A Investment Co., Ltd. is a Malaysian real-estate developer based in Phnom Penh, Cambodia, led by Mr. Kam Chin Seng. Strongly settled in the local landscape, it brings together an inter-cultural mix of Western and Asian management and exclusive leading partnerships across Cambodia — pairing international standards with local expertise.",
+          "Cambodia's positive economic outlook, political stability and investor-friendly policies — reinforced by ASEAN Economic Community (AEC) integration — continue to open one of the region's most compelling investment landscapes, with high returns for those who move early.",
+          "National 6A develops projects defined by strategic locations, aesthetic design and quality service. Each is built to appeal to both the investor and owner-occupier markets while generating a profitable return on investment. Across its portfolio, the company's projects carry a combined Gross Development Value (GDV) of US$110 million.",
         ],
         zh: [
-          "National 6A Investment Co., Ltd. 是一家总部位于柬埔寨金边的房地产开发公司，由马来西亚企业家 Kam Chin Seng 创立及领导。自 2012 年以来，公司以「马来西亚背景的柬埔寨地产开发商」立足，深耕金边市场。",
-          "其业务覆盖完整的开发周期 —— 从房地产开发、项目投资，到销售、营销与长期物业管理 —— 为住户、合作伙伴与投资者创造可见、可长期持有的资产。",
-          "公司将马来西亚的设计与交付标准，与对柬埔寨市场的深刻理解相结合，打造经得起时间考验、并能跨越市场周期持续增值的作品。",
-          "从 Galaxy Residence、The Peninsula 等地标住宅，到一体化的城市社区，National 6A 专注于既能提升城市生活标准、又能为住户、合作伙伴与投资者创造持久长期价值的开发项目。",
+          "National 6A Investment Co., Ltd. 是一家总部位于柬埔寨金边的马来西亚房地产开发商，由 Kam Chin Seng 先生领导。公司深深扎根于当地房地产版图，汇聚西方与亚洲相融的跨文化管理团队，并在柬埔寨各地建立独家领先的合作关系 —— 将国际标准与本地专长融为一体。",
+          "柬埔寨积极的经济前景、稳定的政局与友好的投资政策，加之东盟经济共同体（AEC）一体化的推动，持续开启区域内最具吸引力的投资版图之一，为先行者带来可观回报。",
+          "National 6A 以战略选址、美学设计与优质服务打造每一个项目，兼顾投资者与自住业主两个市场，同时创造可观的投资回报。纵观其项目组合，公司各项目的开发总值（GDV）合计达 1.1 亿美元。",
         ],
       },
       quickFacts: {
-        en: ["Phnom Penh, Cambodia", "Est. 2012", "11–50 employees"],
-        zh: ["柬埔寨金边", "成立于 2012", "11–50 人"],
+        en: ["Est. 2012", "Phnom Penh, Cambodia", "US$110M combined GDV"],
+        zh: ["成立于 2012", "柬埔寨金边", "开发总值 1.1 亿美元"],
       },
       facts: [
         { label: { en: "Founded", zh: "成立年份" }, value: { en: "2012", zh: "2012" } },
         { label: { en: "Headquarters", zh: "总部" }, value: { en: "Phnom Penh, Cambodia", zh: "柬埔寨金边" } },
-        { label: { en: "Industry", zh: "行业" }, value: { en: "Property Development", zh: "房地产开发" } },
-        { label: { en: "Team", zh: "员工规模" }, value: { en: "11–50 employees", zh: "11–50 人" } },
-        { label: { en: "Founder", zh: "创始人" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
-        {
-          label: { en: "Core business", zh: "核心业务" },
-          value: { en: "Development · Asset & property management", zh: "开发 · 资产与物业管理" },
-        },
+        { label: { en: "Employees", zh: "员工规模" }, value: { en: "11–50", zh: "11–50 人" } },
+        { label: { en: "Combined GDV", zh: "开发总值" }, value: { en: "US$110 million+", zh: "1.1 亿美元以上" } },
+        { label: { en: "Services", zh: "主营服务" }, value: { en: "Development management & property development", zh: "开发管理与房地产开发" } },
+        { label: { en: "Managing Director", zh: "董事总经理" }, value: { en: "Kam Chin Seng", zh: "Kam Chin Seng" } },
       ],
       businessAreas: [
         {
           title: { en: "Property Development", zh: "房地产开发" },
           text: {
-            en: "Conceiving and delivering residential, mixed-use and resort developments from land to handover.",
-            zh: "从土地到交付，构思并交付住宅、综合体与度假项目。",
+            en: "Developing residential, apartment and integrated projects that hold both living and investment value.",
+            zh: "专注住宅、公寓及综合项目开发，打造兼具居住与投资价值的地产产品。",
           },
         },
         {
           title: { en: "Investment & Development Management", zh: "投资与开发管理" },
           text: {
-            en: "Structuring capital and managing project execution across the full development lifecycle.",
-            zh: "在完整的开发周期中统筹资金结构与项目执行。",
+            en: "Project screening, development planning and full-lifecycle management that maximizes value for partners.",
+            zh: "为合作伙伴提供项目筛选、开发策划及全周期管理服务，实现项目价值最大化。",
           },
         },
         {
           title: { en: "Sales & Marketing", zh: "销售与营销" },
           text: {
-            en: "Positioning and selling projects to local and international buyers and investors.",
-            zh: "面向本地与国际买家及投资者，进行项目定位与销售。",
+            en: "Systematic marketing strategy and local market insight that drive sales performance and brand influence.",
+            zh: "通过系统化营销策略与本地市场洞察，推动项目销售表现与品牌影响力。",
           },
         },
         {
           title: { en: "Property Management", zh: "物业管理" },
           text: {
-            en: "Operating and maintaining completed communities to a lasting, professional standard.",
-            zh: "以持久、专业的标准运营和维护建成社区。",
+            en: "Complete operations and management — security, maintenance and leasing support — that grow long-term asset value.",
+            zh: "提供完善的运营与管理服务，包括安全、维护及租赁支持，提升资产的长期价值。",
           },
         },
       ],
@@ -665,35 +684,70 @@ const companiesRaw: Company[] = [
         en: "To develop and manage real estate that pairs Malaysian standards of quality with deep local insight, creating lasting value for residents, partners and investors across Phnom Penh and beyond.",
         zh: "以马来西亚的品质标准结合对本地的深刻洞察，开发并管理房地产，为金边乃至更广区域的住户、合作伙伴与投资者创造持久价值。",
       },
-      goals: {
-        en: [
-          "Deliver landmark residential and mixed-use developments that raise the standard of city living in Cambodia.",
-          "Build long-term value through disciplined investment and end-to-end development management.",
-          "Partner with leading regional and international groups to bring world-class projects to market.",
-          "Steward every community we create with professional, long-term property management.",
-          "Grow responsibly — balancing commercial returns with sustainable, people-centred urban design.",
-        ],
-        zh: [
-          "打造地标级的住宅与综合体项目，提升柬埔寨的城市生活标准。",
-          "以纪律化的投资与全周期开发管理，构建长期价值。",
-          "携手区域与国际领先机构，将世界级项目推向市场。",
-          "以专业、长期的物业管理，悉心守护我们打造的每一个社区。",
-          "负责任地成长 —— 在商业回报与可持续、以人为本的城市设计之间取得平衡。",
-        ],
-      },
+      sections: [
+        {
+          eyebrow: { en: "Why National 6A", zh: "公司优势" },
+          title: { en: "Competitive advantages.", zh: "公司优势。" },
+          cols: 2,
+          items: [
+            {
+              name: { en: "A cross-border team", zh: "跨国背景团队" },
+              text: {
+                en: "Malaysian management experience combined with deep, on-the-ground Cambodian resources.",
+                zh: "结合马来西亚的管理经验与柬埔寨的本地资源。",
+              },
+            },
+            {
+              name: { en: "Full value-chain capability", zh: "全产业链能力" },
+              text: {
+                en: "Development, investment, sales and operations — delivered end to end, in-house.",
+                zh: "覆盖开发、投资、销售与运营，全流程一体化交付。",
+              },
+            },
+            {
+              name: { en: "A strategic partner network", zh: "战略合作网络" },
+              text: {
+                en: "Long-term relationships with leading local and international developers and investment institutions.",
+                zh: "与本地及国际领先的开发商、投资机构建立长期合作关系。",
+              },
+            },
+            {
+              name: { en: "Deep market focus", zh: "市场深耕能力" },
+              text: {
+                en: "Concentrated on Phnom Penh's core districts, continually uncovering high-potential projects.",
+                zh: "专注金边核心区域，持续挖掘高潜力项目。",
+              },
+            },
+          ],
+        },
+      ],
       projects: [
         {
           name: "Galaxy Residence",
           text: {
-            en: "A residential development in Phnom Penh, reflecting the company's focus on quality city living.",
-            zh: "位于金边的住宅项目，体现公司对高品质城市生活的专注。",
+            en: "A contemporary riverside condominium — 9 storeys plus a rooftop, with 40 condominiums, 4 penthouses and 9 shophouses. River-view units, freehold title deed and a 2-year rental guarantee. GDV: US$10 million.",
+            zh: "一座现代化的滨河公寓 —— 9 层加顶层，含 40 套公寓、4 套顶层豪宅与 9 间商铺。河景单位、永久产权地契，并提供 2 年租金保证。开发总值：1,000 万美元。",
+          },
+        },
+        {
+          name: "240 Phnom Penh",
+          text: {
+            en: "A high-end condominium of 7 storeys and 42 apartments, built to United States safety guidelines. Amenities include 2 bars, a restaurant, boutiques, a rooftop sports centre and a swimming pool. GDV: US$20 million.",
+            zh: "一座高端公寓，7 层、42 套单位，按美国安全标准建造。配套包括 2 间酒吧、餐厅、精品店、顶层运动中心与游泳池。开发总值：2,000 万美元。",
           },
         },
         {
           name: "The Peninsula Private Residences",
           text: {
-            en: "A high-end residential project co-developed with Cambodia's Sun & Moon Group and Chinese investment partners.",
-            zh: "与柬埔寨 Sun & Moon Group 及中国投资方共同开发的高端住宅项目。",
+            en: "A 25-floor landmark of 158 condominium and retail units (commenced 2018, completed 2020). Developed through a joint venture with Cambodia's Sun & Moon Group and Chinese investment partners, it blends residence with hotel service in a “Homespitality” concept. GDV: US$40 million.",
+            zh: "一座 25 层的地标建筑，含 158 套公寓与商业单位（2018 年动工，2020 年落成）。由 National 6A 联合柬埔寨 Sun & Moon Group 及中国投资伙伴共同开发，融合住宅与酒店服务，打造「Homespitality」概念。开发总值：4,000 万美元。",
+          },
+        },
+        {
+          name: "Angkor Grace",
+          text: {
+            en: "A contemporary resort development in Siem Reap — 320 units with pool and garden views and a social clubhouse, set across a 2.5-hectare site. GDV: US$40 million.",
+            zh: "位于暹粒的现代化度假项目 —— 320 套单位，配泳池与花园景观及社交会所，坐落于 2.5 公顷的地块之上。开发总值：4,000 万美元。",
           },
         },
       ],
@@ -780,6 +834,41 @@ export const portfolioStats: PortfolioPillar[] = [
   },
 ];
 
+/* --- Group scale, as counted figures -------------------------------------
+   Rendered by <Stats> with a count-up on scroll. `value` must stay a plain
+   number so it can animate; put any unit in `suffix`.
+   NOTE: verify these against the owner's real figures before launch. */
+export interface GroupStat {
+  value: number;
+  suffix?: string;
+  label: Loc;
+  detail: Loc;
+}
+
+export const groupStats: GroupStat[] = [
+  {
+    value: 4,
+    label: { en: "Operating companies", zh: "运营中的企业" },
+    detail: { en: "Technology, AI, hospitality and real estate", zh: "科技、AI、酒店与地产" },
+  },
+  {
+    value: 34,
+    suffix: "+",
+    label: { en: "Years of operating history", zh: "年运营积淀" },
+    detail: { en: "The earliest business dates to 1991", zh: "最早的业务可追溯至 1991 年" },
+  },
+  {
+    value: 4,
+    label: { en: "Core sectors", zh: "核心领域" },
+    detail: { en: "Deliberately spread across different cycles", zh: "刻意分散于不同周期的行业" },
+  },
+  {
+    value: 2,
+    label: { en: "Markets", zh: "运营市场" },
+    detail: { en: "Malaysia and Cambodia, with a global outlook", zh: "马来西亚与柬埔寨，怀抱全球视野" },
+  },
+];
+
 export interface Sector {
   name: Loc;
   text: Loc;
@@ -833,16 +922,16 @@ export const timeline: Milestone[] = [
     year: "2021",
     title: { en: "Hospitality foundation", zh: "酒店基石" },
     text: {
-      en: "Gemas Golf Resort establishes the group's presence in premium experiential hospitality.",
-      zh: "Gemas 高尔夫度假村奠定集团在高端体验式酒店领域的存在。",
+      en: "Gemas Golf Resort — a golf and hospitality destination established in 1991 — anchors the group's presence in premium experiential hospitality.",
+      zh: "成立于 1991 年的高尔夫与酒店目的地 Gemas，奠定集团在高端体验式酒店领域的存在。",
     },
   },
   {
-    year: "2022",
+    year: "2023",
     title: { en: "Social technology", zh: "社交科技" },
     text: {
-      en: "Nexxatech Global launches TRIMO, its flagship one-to-one social platform.",
-      zh: "Nexxatech Global 推出 TRIMO，旗舰级的一对一社交平台。",
+      en: "Nexxatech Global launches TRIMO — a one-to-one platform built around genuine emotional companionship.",
+      zh: "Nexxatech Global 推出 TRIMO —— 一个以「一对一情感陪伴」为核心的平台。",
     },
   },
   {
@@ -857,8 +946,8 @@ export const timeline: Milestone[] = [
     year: "2024",
     title: { en: "Real assets", zh: "实体资产" },
     text: {
-      en: "National 6A Investment formalises the group's long-horizon property development arm.",
-      zh: "National 6A Investment 正式确立集团在长周期房地产开发的板块。",
+      en: "National 6A — a Phnom Penh developer established in 2012 — is formalised as the group's long-horizon property arm.",
+      zh: "成立于 2012 年的金边开发商 National 6A，正式确立为集团的长周期房地产板块。",
     },
   },
   {
@@ -901,8 +990,8 @@ export const insights: Insight[] = [
       zh: "从平台到生态：影响力的下一个十年",
     },
     excerpt: {
-      en: "When green technology, enterprise AI and real assets share a vision, the whole becomes greater than its parts.",
-      zh: "当绿色科技、企业 AI 与实体资产共享同一愿景，整体便大于部分之和。",
+      en: "When social technology, enterprise AI and real assets share a vision, the whole becomes greater than its parts.",
+      zh: "当社交科技、企业 AI 与实体资产共享同一愿景，整体便大于部分之和。",
     },
     date: { en: "May 2025", zh: "2025年5月" },
     readingTime: { en: "8 min", zh: "8 分钟" },

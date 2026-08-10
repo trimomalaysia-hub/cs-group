@@ -1,17 +1,38 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bodoni_Moda, Inter, Playfair_Display } from "next/font/google";
 import { site } from "@/lib/site";
 import { LanguageProvider } from "@/lib/i18n";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import Intro from "@/components/layout/Intro";
+import SkipLink from "@/components/layout/SkipLink";
 import TechBackdrop from "@/components/ui/TechBackdrop";
 import "./globals.css";
 
-/* Clean grotesque for headlines + body (modern corporate) */
+/* Clean grotesque for body copy and UI chrome */
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
+});
+
+/* Elegant serif for headlines — the luxury half of the brand.
+   Latin only; Chinese headings fall back to a CJK serif (see globals.css). */
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+/* Didone for the logo lockup only. Playfair's stroke contrast is too moderate
+   to match the brand mark — Bodoni Moda has the hairline serifs and extreme
+   thick/thin the reference logo is drawn with. Regular weight on purpose: the
+   contrast does the work, not the mass. */
+const bodoni = Bodoni_Moda({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-bodoni",
   display: "swap",
 });
 
@@ -55,14 +76,23 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html
+      lang="en"
+      className={`${inter.variable} ${playfair.variable} ${bodoni.variable}`}
+    >
       <body className="min-h-screen bg-bg text-fg antialiased">
-        <Intro />
         <TechBackdrop />
         <LanguageProvider>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          {/* The home page's <LogoIntro /> marks this `inert` while its overlay
+              is up, so Tab cannot reach controls hidden behind it. */}
+          <div id="site-shell">
+            <SkipLink />
+            <Header />
+            <main id="main-content" tabIndex={-1}>
+              {children}
+            </main>
+            <Footer />
+          </div>
         </LanguageProvider>
       </body>
     </html>

@@ -1,23 +1,27 @@
 ---
 name: ui-ux-pro-max
 description: >-
-  Senior product-designer playbook for the KCS Group website (Next.js 15 +
+  Senior product-designer playbook for the CS Group website (Next.js 15 +
   TypeScript + TailwindCSS v4 + Framer Motion). USE THIS WHENEVER building or
   editing anything visual or structural — pages, sections, components, layout,
   typography, colour, spacing, motion/animation, responsiveness, forms, or
-  accessibility. It enforces the monochrome (black/white/beige), investor-grade design system
-  (Lux Capital × McKinsey) so every change stays premium and consistent.
+  accessibility. It enforces the black-and-gold (#0B0B0B / #C6A96B), serif-headline,
+  investor-grade design system so every change stays premium and consistent.
   Trigger on requests like "add a section/page", "change the look", "make it
   feel more premium", "add an animation", "fix the spacing/typography", or any
   design/layout/styling work.
 ---
 
-# UI/UX Pro Max — KCS Group Design System & Playbook
+# UI/UX Pro Max — CS Group Design System & Playbook
 
-Act as a **senior product designer + front-end engineer** for the **KCS Group**
+Act as a **senior product designer + front-end engineer** for the **CS Group**
 corporate site — a founder-led holding group. The bar is **investor-grade**:
-monochrome (black · white · beige), minimal, elegant, timeless. A near-black
-canvas, warm cream text, beige accents, clean sans-serif headlines, generous whitespace.
+**black & gold**, minimal, elegant, timeless. A deep matte black canvas (#0B0B0B),
+near-white text (#F5F5F5), a soft metallic gold accent (#C6A96B) used sparingly,
+**elegant serif headlines** over clean sans body copy, generous whitespace.
+The target feel is a hybrid of a luxury brand (minimal, cinematic), a consulting
+firm (structured, credible) and a future-focused AI company (modern, visionary):
+premium, calm, powerful — never flashy.
 Restraint is the aesthetic. When unsure, do less, with more space.
 
 ## 0. Before you touch anything
@@ -45,21 +49,30 @@ src/
   client motion wrappers (`Reveal`, `Stagger`) freely.
 
 ## 2. The design system (use these tokens — defined in `globals.css @theme`)
-**Colour** (monochrome — black · white · beige, on a black canvas):
-- Surfaces: `bg-bg` (near-black page), `bg-surface` (dark cards), `bg-elevated` (hover/raised).
-- Text: `text-fg` (warm cream), `text-muted` (secondary), `text-faint` (meta).
+**Colour** (black & gold):
+- Surfaces: `bg-bg` (#0B0B0B deep matte black), `bg-surface` (#1A1A1A cards),
+  `bg-elevated` (#232323 hover/raised).
+- Text: `text-fg` (#F5F5F5), `text-muted` (#A0A0A0 secondary), `text-faint` (#6B6B6B meta).
 - Lines: `border-line` (hairlines), `border-line-strong`.
-- Accent: `text-accent` / `bg-accent` (warm beige). **Use sparingly** —
-  eyebrows, one keyword, hairline highlights, hover states. No other colour anywhere.
+- Accent: `text-accent` / `bg-accent` (#C6A96B soft metallic gold). **Use sparingly** —
+  eyebrows, one headline keyword, hairlines, borders, hover states. Never a large gold
+  fill, never gold body copy. No other colour anywhere.
 - **Never** use raw hex or default Tailwind colours in markup. Tune tokens instead.
 
-**Typography:**
-- All type is **Inter** (`font-display` = `font-sans` = Inter). Headings are
-  heavier (600) with tight tracking for a clean, confident corporate feel.
-- Scale is **large and structured**: hero `text-6xl`→`text-7xl`; section titles
-  `text-4xl`→`text-6xl`; keep `leading` tight on headlines, relaxed on body.
-- A coloured/italic accent keyword in a headline (`text-accent`) is the signature
-  flourish — at most one per headline.
+**Typography (two faces):**
+- **Headings are serif.** A global rule in `globals.css` applies `--font-display`
+  (**Playfair Display**) to `h1`–`h4`, so you **never** need `font-display` on a heading.
+  Weight 500, tracking `-0.012em`. Use `font-display` explicitly only to set the serif on
+  a *non-heading* element (a pull quote in a `<p>`/`<blockquote>`).
+- **Body and UI are Inter** (`font-sans`), inherited from `body`.
+- **Chinese**: Playfair has no Han glyphs, so `--font-display` falls back to a CJK serif
+  and a `:lang(zh)` rule drops headings to weight 400 with slightly looser tracking.
+  Don't fight this; don't hard-code weights on headings.
+- Scale is **large and structured**: hero `text-5xl`→`sm:text-7xl`→`lg:text-8xl`; section
+  titles `text-4xl`→`text-6xl`; keep `leading` tight on headlines, relaxed on body.
+- An **italic gold keyword** in a headline (`className="italic text-accent"`) is the
+  signature flourish — at most one per headline. Never split a localized string on a
+  separator to achieve it; the copy must supply the fragments (see `hero.line2accent`).
 
 **Layout & spacing:**
 - Wrap content in `<Container>` (max-w-7xl, consistent gutters).
@@ -76,7 +89,19 @@ hairline borders, no heavy shadows (the depth comes from layered dark surfaces).
 - Reveal content on scroll with `<Reveal>` (single) or `<Stagger>` + `<StaggerItem>`
   (lists). Default easing is `[0.16, 1, 0.3, 1]`; durations ~0.6–0.9s.
 - Motion is **felt, not noticed**: short fades + small lifts (y ≈ 20–28px). No
-  bounce, no spin, no parallax-heavy gimmicks. Hover transitions are slow (300–500ms).
+  bounce, no spin, no parallax-heavy gimmicks.
+
+**Hover is a system, not a per-component decision.** Four classes in `globals.css`
+cover every interactive surface; do not invent a fifth or hand-roll `hover:` colour
+changes. All run at `--hover-dur` (0.4s) on `--ease-out-soft`, and all also fire on
+`:focus-visible` so keyboard users get the same affordance:
+- `.hv-nav` — nav items: muted → gold + underline sweeping in from the left
+- `.hv-link` — text links: brighten + underline fades in; add `.to-gold` to land on gold
+- `.hv-card` — the single card hover: `translateY(-4px)`, gold edge, deeper shadow
+- `.hv-mark` — headings and the logo: brightness only, **never** transform or scale
+Buttons carry their hover inside `Button.tsx`. For a genuine one-off, still use
+`duration-[var(--hover-dur)]` so it moves in step with everything else.
+Never: strong glows, neon, bounce, or two different card hovers on one page.
 - Always respect `prefers-reduced-motion` (the Reveal primitives already do via
   `useReducedMotion` — keep it that way; don't hard-code large offsets).
 - `whileInView` with `viewport={{ once: true }}` so things animate once.

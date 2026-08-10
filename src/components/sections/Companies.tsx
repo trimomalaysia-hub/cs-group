@@ -6,14 +6,16 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import { Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { companies } from "@/lib/data";
 import { useLanguage } from "@/lib/i18n";
+import { onSpotlightMove } from "@/lib/spotlight";
 
+/* Companies — the group at a glance: a clean four-up card grid.
+   One name, one line each; depth lives on the detail page, not here. */
 export default function Companies() {
   const { lang, t } = useLanguage();
 
   return (
     <Section id="companies">
       <SectionHeading
-        index="02"
         eyebrow={t.companies.eyebrow}
         title={
           <>
@@ -25,56 +27,32 @@ export default function Companies() {
         lead={t.companies.lead}
       />
 
-      <Stagger className="mt-16 sm:mt-20">
+      <Stagger className="mt-16 grid grid-cols-1 gap-4 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5">
         {companies.map((c) => (
-          <StaggerItem key={c.id}>
+          <StaggerItem key={c.id} className="h-full">
             <Link
               href={`/companies/${c.id}`}
-              className="group grid grid-cols-1 gap-6 border-t border-line py-10 transition-colors duration-500 hover:bg-elevated/40 lg:grid-cols-12 lg:gap-8 lg:px-4"
+              onMouseMove={onSpotlightMove}
+              className="spotlight hv-card group flex h-full min-h-[16rem] flex-col rounded-2xl border border-line bg-surface/40 p-7"
             >
-              {/* Identity */}
-              <div className="lg:col-span-4">
-                <div className="flex items-baseline gap-4">
-                  <span className="label text-faint">{c.index}</span>
-                  <h3 className="font-display text-3xl tracking-tight text-fg transition-colors duration-500 group-hover:text-accent sm:text-4xl">
-                    {c.brand}
-                  </h3>
-                </div>
-                <p className="mt-3 pl-10 text-sm text-muted">{c.legalName}</p>
-              </div>
+              <span className="label text-faint">{c.index}</span>
 
-              {/* Description */}
-              <div className="lg:col-span-6">
-                <p className="label text-accent/80">{c.category[lang]}</p>
-                <p className="mt-3 text-lg leading-relaxed text-muted">{c.summary[lang]}</p>
-                <ul className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
-                  {c.highlights[lang].map((h) => (
-                    <li key={h} className="flex items-center gap-2 text-sm text-faint">
-                      <span className="h-1 w-1 rounded-full bg-accent/70" aria-hidden />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <h3 className="mt-6 font-display text-2xl leading-tight text-fg transition-colors duration-[var(--hover-dur)] group-hover:text-accent group-focus-visible:text-accent">
+                {c.brand}
+              </h3>
 
-              {/* Meta */}
-              <div className="flex items-start justify-between lg:col-span-2 lg:flex-col lg:items-end lg:justify-between lg:text-right">
-                <div>
-                  <p className="text-sm text-fg">{c.status[lang]}</p>
-                  <p className="mt-1 text-sm text-faint">{t.companies.since} {c.year}</p>
-                </div>
-                <span
-                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-faint transition-colors duration-500 group-hover:text-accent"
-                  aria-hidden
-                >
-                  {t.companies.view}
-                  <span className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                </span>
-              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{c.category[lang]}</p>
+
+              <span
+                className="mt-auto inline-flex items-center gap-1.5 pt-8 text-sm text-accent opacity-0 transition-opacity duration-[var(--hover-dur)] group-hover:opacity-100 group-focus-visible:opacity-100"
+                aria-hidden
+              >
+                {t.companies.view}
+                <span className="transition-transform duration-[var(--hover-dur)] group-hover:translate-x-1">→</span>
+              </span>
             </Link>
           </StaggerItem>
         ))}
-        <div className="border-t border-line" />
       </Stagger>
     </Section>
   );

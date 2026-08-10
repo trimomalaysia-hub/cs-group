@@ -41,7 +41,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY) as Lang | null;
-      if (saved === "en" || saved === "zh") setLangState(saved);
+      if (saved === "en" || saved === "zh") {
+        setLangState(saved);
+        if (typeof document !== "undefined") {
+          document.documentElement.lang = saved === "zh" ? "zh-Hans" : "en";
+        }
+      }
     } catch {
       /* ignore */
     }

@@ -12,8 +12,8 @@ export const site = {
   description:
     "CS Group is a diversified, founder-led ecosystem established by Kam Chin Seng — spanning social technology, enterprise AI, hospitality and property development, built on a long-term, investor-grade vision.",
 
-  /* Public URL (used for SEO + social previews). Set your real domain here. */
-  url: "https://www.csgroup.com",
+  /* Public URL (used for SEO + social previews, sitemap.xml and robots.txt). */
+  url: "https://cs-group.international",
 
   /* Contact */
   email: "office@csgroup.com",
@@ -24,17 +24,17 @@ export const site = {
 
   /* Primary navigation — maps to section IDs on the home page. */
   nav: [
-    { label: "Founder", href: "/#founder" },
+    { label: "About", href: "/#about" },
     { label: "Companies", href: "/#companies" },
+    { label: "Talent", href: "/#talent" },
+    { label: "Founder", href: "/#founder" },
     { label: "Vision", href: "/#vision" },
-    { label: "Portfolio", href: "/#portfolio" },
-    { label: "Timeline", href: "/#timeline" },
-    { label: "Insights", href: "/#insights" },
     { label: "Contact", href: "/#contact" },
   ],
 
   /* Standalone pages (routes, not homepage anchors). */
   careersHref: "/careers",
+  investHref: "/invest",
 
   social: {
     linkedin: "https://www.linkedin.com/company/csgroup",

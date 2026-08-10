@@ -1,32 +1,44 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   DESIGN TOKENS — monochrome: black · white · beige. Minimal, elegant, timeless
-   (design-studio / architectural). Beige paper canvas, near-black ink, no colour.
+   DESIGN TOKENS — black & gold. Deep matte black canvas, soft metallic gold
+   accent used sparingly, elegant serif headings over a clean sans body.
    Tailwind v4 @theme:  --color-accent -> text-accent bg-accent border-accent
    ========================================================================== */
 @theme {
-  /* Surfaces — warm near-black, layered */
-  --color-bg: #0c0b08;        /* page background — black */
-  --color-surface: #16140e;   /* cards / panels */
-  --color-elevated: #211d15;  /* hover / raised surfaces */
+  /* Surfaces — deep matte black, layered */
+  --color-bg: #0b0b0b;        /* page background — deep matte black */
+  --color-surface: #1a1a1a;   /* cards / panels — dark grey */
+  --color-elevated: #232323;  /* hover / raised surfaces */
 
-  /* Text — warm cream on black */
-  --color-fg: #f2ede1;        /* primary text */
-  --color-muted: #a89f8c;     /* secondary text */
-  --color-faint: #6f685a;     /* tertiary / meta */
+  /* Text — near-white on black */
+  --color-fg: #f5f5f5;        /* primary text */
+  --color-muted: #a0a0a0;     /* secondary text */
+  --color-faint: #6b6b6b;     /* tertiary / meta */
 
-  /* Lines & accent (black · white · beige — accent is a warm beige) */
-  --color-line: rgba(245, 240, 225, 0.11);     /* hairline rules */
-  --color-line-strong: rgba(245, 240, 225, 0.20);
-  --color-accent: #c8b48c;        /* warm beige — the accent */
-  --color-accent-soft: #d9c9a6;
+  /* Lines & accent (the gold — use sparingly) */
+  --color-line: rgba(245, 245, 245, 0.10);     /* hairline rules */
+  --color-line-strong: rgba(245, 245, 245, 0.20);
+  --color-accent: #c6a96b;        /* soft metallic gold */
+  --color-accent-soft: #d9c48a;
 
-  /* Fonts (CSS vars set by next/font in layout.tsx) — clean sans throughout */
+  /* Fonts (CSS vars set by next/font in layout.tsx).
+     Display = elegant serif; the CJK serifs keep Chinese headings on-tone,
+     since Playfair carries no Han glyphs. Body = clean grotesque. */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-playfair), "Noto Serif SC", "Source Han Serif SC",
+    "Songti SC", "SimSun", ui-serif, Georgia, serif;
+
+  /* Didone, for the logo lockup only — gives `font-logo`. Kept separate from
+     --font-display so the brand mark can carry more stroke contrast than the
+     site's section headings. */
+  --font-logo: var(--font-bodoni), "Didot", "Bodoni MT", ui-serif, Georgia, serif;
 
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* One duration for every hover on the site. Anything faster reads as a tech
+     UI; anything slower reads as laggy. */
+  --hover-dur: 0.4s;
 }
 
 /* ============================================================================
@@ -48,12 +60,30 @@
     text-rendering: optimizeLegibility;
   }
 
+  /* Serif display face. Serifs need looser tracking than a grotesque and a
+     lighter weight at display sizes, or they read heavy and cramped. */
   h1, h2, h3, h4 {
     font-family: var(--font-display);
-    font-weight: 600;
-    letter-spacing: -0.022em;
-    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -0.012em;
+    line-height: 1.1;
     text-wrap: balance;
+  }
+
+  /* Chinese serif faces have no true medium; 400 keeps CJK headings elegant
+     rather than faux-bolded by the browser. */
+  :lang(zh) h1, :lang(zh) h2, :lang(zh) h3, :lang(zh) h4 {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* Chinese HERO headline only (#top = homepage hero): a modern gothic
+     (方正兰亭黑) in place of the serif display face — a more confident,
+     corporate/AI tone. Only affects typography; layout/size/colour untouched. */
+  :lang(zh) #top h1 {
+    font-family: "FZLanTingHei", "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-weight: 500;
+    letter-spacing: 0.02em;
   }
 
   p { text-wrap: pretty; }
@@ -69,6 +99,25 @@
     border-radius: 2px;
   }
 
+  /* Skip-to-content — hidden until focused via keyboard */
+  .skip-link {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    transform: translateY(-120%);
+    padding: 0.75rem 1.25rem;
+    background: var(--color-fg);
+    color: var(--color-bg);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 0 0 0.5rem 0;
+    transition: transform 0.18s ease;
+  }
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
   ::-webkit-scrollbar { width: 11px; height: 11px; }
   ::-webkit-scrollbar-track { background: var(--color-bg); }
   ::-webkit-scrollbar-thumb {
@@ -81,6 +130,11 @@
     html { scroll-behavior: auto; }
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
+      /* Without this, an `infinite` animation keeps cycling ~1600x per frame at
+         the clamped duration — the compositor samples an arbitrary phase each
+         frame, so it jitters instead of freezing. Every ambient animation here
+         (GoldOrb, ParticleField, .scroll-cue, .pulse-dot) is infinite. */
+      animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
@@ -96,6 +150,18 @@
     letter-spacing: 0.2em;
     font-size: 0.7rem;
     font-weight: 600;
+  }
+
+  /* Frosted glass — translucent surface + blur, for premium depth. The gold
+     flow background reads softly through it. */
+  .glass {
+    background: color-mix(in srgb, var(--color-surface) 62%, transparent);
+    -webkit-backdrop-filter: blur(18px) saturate(115%);
+    backdrop-filter: blur(18px) saturate(115%);
+    border: 1px solid color-mix(in srgb, var(--color-fg) 8%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--color-fg) 7%, transparent),
+      0 24px 60px -24px rgba(0, 0, 0, 0.75);
   }
 
   /* Subtle paper vignette */
@@ -114,31 +180,224 @@
     mask-image: radial-gradient(70% 70% at 50% 30%, black, transparent 80%);
   }
 
-  /* --- Tech atmosphere: fixed grid + soft drifting light pools ----------- */
-  .tech-backdrop { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none; }
-  .tech-backdrop .grid {
-    position: absolute; inset: 0;
+  /* ==========================================================================
+     STONE — a dark matte mineral surface for the opening screens.
+     Built from gradients only (no image): a base slab, one soft directional key
+     light from the upper left, cool fill from the right, irregular mottling,
+     and a heavy foot shadow. This is what gives the hero weight instead of the
+     flat-UI look. Opaque, so it also masks the site-wide gold flow backdrop.
+     ========================================================================= */
+  .stone {
+    background-color: var(--color-bg);
     background-image:
-      linear-gradient(to right, var(--color-line) 1px, transparent 1px),
-      linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
-    background-size: 62px 62px;
-    opacity: 0.55;
-    -webkit-mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
-    mask-image: radial-gradient(125% 90% at 50% -10%, #000 26%, transparent 72%);
+      /* directional key light, upper left */
+      radial-gradient(115% 80% at 20% -12%, rgba(245, 245, 245, 0.058), transparent 62%),
+      /* cool fill, right edge */
+      radial-gradient(85% 70% at 104% 34%, rgba(245, 245, 245, 0.022), transparent 66%),
+      /* mineral mottling — deliberately off-grid so it never reads as a pattern */
+      radial-gradient(42% 32% at 16% 30%, rgba(245, 245, 245, 0.020), transparent 72%),
+      radial-gradient(34% 27% at 74% 58%, rgba(245, 245, 245, 0.015), transparent 72%),
+      radial-gradient(28% 24% at 44% 14%, rgba(245, 245, 245, 0.012), transparent 74%),
+      /* weight at the foot of the slab */
+      radial-gradient(70% 45% at 50% 108%, rgba(0, 0, 0, 0.55), transparent 70%),
+      /* base slab, lit top to bottom */
+      linear-gradient(178deg, #111111 0%, var(--color-bg) 52%, #060606 100%);
   }
-  .aurora {
-    position: absolute; border-radius: 9999px; filter: blur(60px);
-    opacity: 0.4; will-change: transform;
+
+  /* Mineral tooth. Coarser and stronger than the site-wide film grain — this is
+     the surface texture you feel, not just banding removal. */
+  .stone-tooth {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='t'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23t)'/%3E%3C/svg%3E");
+    background-size: 220px 220px;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
   }
-  .aurora-1 {
-    width: 44rem; height: 44rem; top: -16rem; left: -9rem;
-    background: radial-gradient(closest-side, color-mix(in srgb, #fffdf7 72%, transparent), transparent);
-    animation: aurora-1 24s var(--ease-out-soft) infinite alternate;
+
+  /* Two broad, soft gold reflections raked across the slab. Blurred and very
+     low contrast — a sheen on stone, not a laser. Drifts over 40s+. */
+  .gold-streaks {
+    background-image:
+      linear-gradient(
+        104deg,
+        transparent 34%,
+        color-mix(in srgb, var(--color-accent) 13%, transparent) 44%,
+        transparent 53%
+      ),
+      linear-gradient(
+        97deg,
+        transparent 60%,
+        color-mix(in srgb, var(--color-accent) 7%, transparent) 69%,
+        transparent 78%
+      );
+    filter: blur(3px);
+    animation: streak-drift 46s ease-in-out infinite;
   }
-  .aurora-2 {
-    width: 38rem; height: 38rem; top: -10rem; right: -11rem;
-    background: radial-gradient(closest-side, color-mix(in srgb, #fffdf7 60%, transparent), transparent);
-    animation: aurora-2 31s var(--ease-out-soft) infinite alternate;
+
+  /* A broad, heavily blurred light raking slowly across the slab — architectural
+     lighting moving over stone, not a scanner. 16s, and it rests off-surface for
+     the last 40% so the screen is not in constant motion. */
+  .light-pass {
+    background-image: linear-gradient(
+      100deg,
+      transparent 30%,
+      color-mix(in srgb, var(--color-accent) 10%, transparent) 44%,
+      color-mix(in srgb, #ffffff 5%, transparent) 50%,
+      color-mix(in srgb, var(--color-accent) 10%, transparent) 56%,
+      transparent 70%
+    );
+    background-size: 220% 100%;
+    background-repeat: no-repeat;
+    background-position: -60% 0;
+    filter: blur(30px);
+    animation: light-pass 16s ease-in-out infinite;
+  }
+
+  /* ==========================================================================
+     METALLIC GOLD TYPE — alternating light and shadow bands across the glyphs
+     so the letterforms read as brushed metal rather than flat gold.
+     The ramp is derived from --color-accent, so retuning the token retunes this.
+     ========================================================================= */
+  .metal-gold {
+    /* Fallback for anything without background-clip: text — never invisible. */
+    color: var(--color-accent);
+  }
+
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .metal-gold {
+      --m-deep: color-mix(in srgb, var(--color-accent) 50%, #000000);
+      --m-mid: var(--color-accent);
+      --m-lite: color-mix(in srgb, var(--color-accent) 40%, #ffffff);
+      /* The first and last stops MUST be the same colour. background-size is
+         200% and background-repeat defaults to repeat, so the image tiles; any
+         mismatch between 0% and 100% becomes a hard vertical seam that
+         .metal-sheen then drags across the glyphs. (Setting no-repeat instead
+         would be worse — the glyphs past the image edge render transparent.)
+         Two full light bands per tile, opening and closing on --m-deep. */
+      background-image: linear-gradient(
+        100deg,
+        var(--m-deep) 0%,
+        var(--m-mid) 12%,
+        var(--m-lite) 24%,
+        var(--m-mid) 36%,
+        var(--m-deep) 50%,
+        var(--m-mid) 62%,
+        var(--m-lite) 76%,
+        var(--m-mid) 88%,
+        var(--m-deep) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  /* Very slow sheen travelling across the metal. 18s — felt, not watched. */
+  .metal-sheen { animation: metal-sheen 18s linear infinite; }
+
+  /* ==========================================================================
+     METALLIC EMBLEM — the CS monogram. Heavier than .metal-gold: this is the
+     focal mark, so it gets struck-metal depth rather than a flat gold ramp.
+
+     Two clipped background layers:
+       1. a specular glint that sweeps across (animated, no-repeat)
+       2. a static brushed ramp lit from above-left (full coverage, no-repeat)
+     Layer 2 always covers the glyphs, so it is what shows wherever the glint
+     is not — which is why layer 1 can safely be no-repeat and travel off the
+     edge without leaving parts of the letters transparent. (A single repeating
+     layer is what put a hard tile seam through .metal-gold.)
+
+     text-shadow supplies the bevel. With a clipped, opaque background as the
+     fill, each shadow is visible only where it is offset past the glyph edge —
+     giving a lit rim along the top and a dark rim plus cast shadow below.
+     ========================================================================= */
+  .metal-emblem { color: var(--color-accent); }
+
+  @supports (background-clip: text) or (-webkit-background-clip: text) {
+    .metal-emblem {
+      --e-deep: color-mix(in srgb, var(--color-accent) 36%, #000000);
+      --e-mid: var(--color-accent);
+      --e-lite: color-mix(in srgb, var(--color-accent) 32%, #ffffff);
+      --e-rim: color-mix(in srgb, var(--color-accent) 50%, #ffffff);
+
+      background-image:
+        /* 1 — specular glint, animated. Kept well off pure white: the mark
+              should catch light, never look glossy or lit from within. */
+        linear-gradient(
+          112deg,
+          transparent 41%,
+          color-mix(in srgb, var(--e-rim) 42%, transparent) 47%,
+          color-mix(in srgb, #ffffff 44%, transparent) 50%,
+          color-mix(in srgb, var(--e-rim) 42%, transparent) 53%,
+          transparent 59%
+        ),
+        /* 2 — brush grain. Fine VERTICAL striations, as on milled brass; this
+              is what separates brushed metal from a plain gradient. Very low
+              contrast — it should be felt at size, not counted. */
+        repeating-linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.05) 0px,
+          rgba(255, 255, 255, 0) 1px,
+          rgba(0, 0, 0, 0.045) 2px,
+          rgba(0, 0, 0, 0) 3.5px
+        ),
+        /* 3 — body, lit from the top-left: brightest high-left, deepest
+              low-right, with mid bands between so it reads as metal
+              reflecting an environment rather than a single ramp. */
+        linear-gradient(
+          155deg,
+          var(--e-lite) 0%,
+          var(--e-mid) 13%,
+          var(--e-deep) 29%,
+          var(--e-mid) 42%,
+          var(--e-lite) 51%,
+          var(--e-mid) 63%,
+          var(--e-deep) 79%,
+          var(--e-mid) 92%,
+          var(--e-deep) 100%
+        );
+      background-size: 240% 100%, 100% 100%, 100% 100%;
+      /* Glint parked off the left edge — also the resting state under
+         prefers-reduced-motion, so the frozen mark is clean metal. */
+      background-position: -70% 0, 0 0, 0 0;
+      background-repeat: no-repeat, repeat, no-repeat;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+
+      /* Soft cast shadow only. The hard light/dark rims a heavier mark can
+         carry would clog this face's hairlines — at these stroke widths the
+         bevel has to come from the ramp, not from offset silhouettes.
+         em units so it scales with the mark across breakpoints. */
+      text-shadow: 0 0.016em 0.022em rgba(0, 0, 0, 0.55);
+    }
+
+    .metal-emblem.glint { animation: emblem-sweep 4.5s linear infinite; }
+  }
+
+  /* --- Ambient background: cinematic gold flow image + fine film grain ----- */
+  .tech-backdrop { position: fixed; inset: 0; z-index: -10; overflow: hidden; pointer-events: none; }
+
+  /* Cinematic flowing gold lines (generated image), fixed behind all content. */
+  .tech-backdrop .flow {
+    position: absolute; inset: 0;
+    background-image: url("/brand/bg-flow.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Restrained on the pure-black canvas — the hero and vision bands now carry
+       their own particle motion, so the site-wide texture stays a whisper. */
+    opacity: 0.22;
+  }
+
+  /* Fine film grain — removes gradient banding, adds a tactile matte finish. */
+  .tech-backdrop .grain {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+    opacity: 0.04;
   }
 
   /* --- Animated grayscale sheen for a hero keyword ---------------------- */
@@ -163,6 +422,114 @@
   }
   .spotlight:hover::before { opacity: 1; }
 
+  /* --- Carousel track: scrollable but chrome-free ----------------------- */
+  .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  /* ==========================================================================
+     HOVER SYSTEM — one vocabulary for the whole site.
+     Every interactive surface uses one of these four classes. All run at
+     --hover-dur on the same ease-out curve; nothing scales, bounces or glows
+     hard. Each also answers to :focus-visible, so keyboard users get the same
+     affordance a mouse gets.
+     ========================================================================= */
+
+  /* NAV — muted warms to gold, with a hairline drawing in from the left. */
+  .hv-nav {
+    position: relative;
+    transition: color var(--hover-dur) var(--ease-out-soft);
+  }
+  .hv-nav::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.4em;
+    width: 100%;
+    height: 1px;
+    background: var(--color-accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--hover-dur) var(--ease-out-soft);
+  }
+  .hv-nav:hover,
+  .hv-nav:focus-visible { color: var(--color-accent); }
+  .hv-nav:hover::after,
+  .hv-nav:focus-visible::after { transform: scaleX(1); }
+
+  /* TEXT LINK — brightens, and its underline fades in rather than snapping. */
+  .hv-link {
+    text-decoration-line: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.3em;
+    transition:
+      color var(--hover-dur) var(--ease-out-soft),
+      text-decoration-color var(--hover-dur) var(--ease-out-soft);
+  }
+  .hv-link:hover,
+  .hv-link:focus-visible {
+    color: var(--color-fg);
+    text-decoration-color: color-mix(in srgb, var(--color-accent) 65%, transparent);
+  }
+  /* Variant for links that should land on gold rather than near-white. */
+  .hv-link.to-gold:hover,
+  .hv-link.to-gold:focus-visible { color: var(--color-accent); }
+
+  /* CARD — the single card hover. A 4px lift, a deeper shadow, and the edge
+     warming to gold. focus-within so tabbing into a card lifts it too. */
+  .hv-card {
+    transition:
+      transform var(--hover-dur) var(--ease-out-soft),
+      border-color var(--hover-dur) var(--ease-out-soft),
+      background-color var(--hover-dur) var(--ease-out-soft),
+      box-shadow var(--hover-dur) var(--ease-out-soft);
+  }
+  .hv-card:hover,
+  .hv-card:focus-visible,
+  .hv-card:focus-within {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-accent) 42%, transparent);
+    background-color: color-mix(in srgb, var(--color-elevated) 45%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, var(--color-accent) 12%, transparent),
+      0 22px 48px -28px rgba(0, 0, 0, 0.9);
+  }
+
+  /* MARK — headings, the wordmark, the logo. Brightens only. Never moves,
+     never scales: a brand mark that shifts under the cursor reads as cheap. */
+  .hv-mark {
+    transition:
+      filter var(--hover-dur) var(--ease-out-soft),
+      color var(--hover-dur) var(--ease-out-soft);
+  }
+  .hv-mark:hover,
+  .hv-mark:focus-visible { filter: brightness(1.15); }
+
+  /* Gold hairline that fades out at both ends — used as a section divider. */
+  .rule-gold {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-accent) 45%, transparent),
+      transparent
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hv-card:hover,
+    .hv-card:focus-visible,
+    .hv-card:focus-within { transform: none; }
+  }
+
+  /* --- Travelling hairline used as the scroll cue ----------------------- */
+  /* Slowed from 2.8s: the opening screens are calm, so the cue must be too. */
+  .scroll-cue { animation: scroll-cue 5s var(--ease-out-soft) infinite; }
+
+  /* Vertical variant for the logo screen — a mote descending a hairline, so the
+     two opening screens don't stack two identical horizontal cues. */
+  .cue-descend { animation: cue-descend 4.5s var(--ease-out-soft) infinite; }
+
   /* --- Breathing status dot -------------------------------------------- */
   .pulse-dot { position: relative; }
   .pulse-dot::after {
@@ -184,6 +551,55 @@
 }
 @keyframes shimmer {
   to { background-position: 220% center; }
+}
+@keyframes scroll-cue {
+  0%        { transform: translateX(-110%); }
+  55%, 100% { transform: translateX(310%); }
+}
+/* Sheen travelling across metallic type — slow enough to read as reflection. */
+@keyframes metal-sheen {
+  to { background-position: 200% center; }
+}
+/* Gold reflections raking very slowly across the stone. Sub-pixel per frame. */
+@keyframes streak-drift {
+  0%, 100% { transform: translate3d(-2%, 0, 0) scale(1.06); opacity: 0.85; }
+  50%      { transform: translate3d(2%, 0, 0) scale(1.10); opacity: 1; }
+}
+/* Specular glint crossing the CS emblem, then resting off-mark for ~2s so it
+   reads as an occasional catch of light rather than continuous motion.
+   Only the first background-position (the glint layer) moves; the second stays
+   pinned so the brushed ramp underneath never shifts. */
+@keyframes emblem-sweep {
+  0%        { background-position: -70% 0, 0 0, 0 0; }
+  55%, 100% { background-position: 165% 0, 0 0, 0 0; }
+}
+/* Broad light raking across the stone slab, then resting off-surface. */
+@keyframes light-pass {
+  0%        { background-position: -60% 0; }
+  60%, 100% { background-position: 160% 0; }
+}
+/* A mote descending the logo screen's vertical scroll cue. */
+@keyframes cue-descend {
+  0%       { transform: translateY(-90%); opacity: 0; }
+  25%, 65% { opacity: 1; }
+  100%     { transform: translateY(300%); opacity: 0; }
+}
+/* Hero orb: slow contra-rotating rings + a gentle vertical drift. */
+@keyframes orb-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes orb-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+@keyframes orb-float {
+  0%, 100% { transform: translateY(-1.2%); }
+  50%      { transform: translateY(1.2%); }
+}
+/* Particle drift — px units, since a 2px dot has no meaningful % height. */
+@keyframes particle-drift {
+  0%   { transform: translate3d(0, 0, 0); }
+  50%  { transform: translate3d(6px, -22px, 0); }
+  100% { transform: translate3d(0, 0, 0); }
 }
 @keyframes pulse-ring {
   0%       { box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-accent) 45%, transparent); }

@@ -67,7 +67,7 @@ export default function CareersView() {
                       alt={shot.caption[lang]}
                       fill
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      className="object-cover transition-transform duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105"
                     />
                   ) : (
                     <>
@@ -105,7 +105,7 @@ export default function CareersView() {
             <StaggerItem key={v.title.en}>
               <div
                 onMouseMove={onSpotlightMove}
-                className="spotlight h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-8 transition-colors duration-500 hover:border-accent/40"
+                className="spotlight hv-card h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-8"
               >
                 <h3 className="font-display text-xl text-fg sm:text-2xl">{v.title[lang]}</h3>
                 <p className="mt-3 text-base leading-relaxed text-muted">{v.text[lang]}</p>
@@ -128,7 +128,7 @@ export default function CareersView() {
               <a
                 href={`/companies/${co.id}`}
                 onMouseMove={onSpotlightMove}
-                className="spotlight group flex h-full items-start justify-between gap-6 overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40"
+                className="spotlight hv-card group flex h-full items-start justify-between gap-6 overflow-hidden rounded-2xl border border-line bg-surface/40 p-7"
               >
                 <div>
                   <span className="label text-faint">{co.index}</span>
@@ -136,7 +136,7 @@ export default function CareersView() {
                   <p className="mt-2 text-sm text-muted">{co.sector[lang]}</p>
                 </div>
                 <span
-                  className="mt-1 text-muted transition-all duration-500 group-hover:translate-x-1 group-hover:text-accent"
+                  className="mt-1 text-muted transition-all duration-[var(--hover-dur)] group-hover:translate-x-1 group-hover:text-accent"
                   aria-hidden
                 >
                   →
@@ -184,7 +184,7 @@ export default function CareersView() {
           </div>
           <p className="mt-6 text-sm text-faint">
             {c.cta.emailLabel[lang]}{" "}
-            <a href={mailto} className="text-muted underline-offset-4 transition-colors hover:text-accent hover:underline">
+            <a href={mailto} className="hv-link to-gold text-muted">
               {site.careersEmail}
             </a>
           </p>

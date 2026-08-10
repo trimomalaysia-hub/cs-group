@@ -54,7 +54,7 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           <Reveal>
             <Link
               href="/#companies"
-              className="label inline-flex items-center gap-2 text-faint transition-colors hover:text-accent"
+              className="label inline-flex items-center gap-2 text-faint transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-accent"
             >
               ← {t.company.allCompanies}
             </Link>
@@ -203,8 +203,8 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           />
           <Reveal>
             <div className="mt-12 overflow-hidden rounded-2xl border border-line">
-              {/* Header row */}
-              <div className="grid sm:grid-cols-2">
+              {/* Header row (desktop only — on mobile each cell is labelled inline) */}
+              <div className="hidden sm:grid sm:grid-cols-2">
                 <div className="border-b border-line bg-surface/40 px-6 py-4">
                   <span className="label text-faint">{compare.beforeLabel[lang]}</span>
                 </div>
@@ -215,9 +215,13 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
               {/* Rows */}
               {compare.rows.map((r, i) => (
                 <div key={i} className={`grid sm:grid-cols-2 ${i > 0 ? "border-t border-line" : ""}`}>
-                  <div className="px-6 py-5 text-base leading-relaxed text-muted">{r.before[lang]}</div>
-                  <div className="bg-surface/20 px-6 py-5 text-base leading-relaxed text-fg sm:border-l sm:border-line">
-                    <span className="mr-2 text-accent/70" aria-hidden>→</span>
+                  <div className="px-6 py-5 text-base leading-relaxed text-muted">
+                    <span className="label mb-2 block text-faint sm:hidden">{compare.beforeLabel[lang]}</span>
+                    {r.before[lang]}
+                  </div>
+                  <div className="border-t border-line bg-surface/20 px-6 py-5 text-base leading-relaxed text-fg sm:border-l sm:border-t-0 sm:border-line">
+                    <span className="label mb-2 block text-accent/80 sm:hidden">{compare.afterLabel[lang]}</span>
+                    <span className="mr-2 text-accent/70 max-sm:hidden" aria-hidden>→</span>
                     {r.after[lang]}
                   </div>
                 </div>
@@ -272,7 +276,7 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           >
             {sec.items.map((it) => (
               <StaggerItem key={it.name.en}>
-                <div onMouseMove={onSpotlightMove} className="spotlight h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
+                <div onMouseMove={onSpotlightMove} className="spotlight hv-card h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7">
                   <h3 className="text-lg text-fg sm:text-xl">{it.name[lang]}</h3>
                   <p className="mt-3 text-base leading-relaxed text-muted">{it.text[lang]}</p>
                 </div>
@@ -356,7 +360,7 @@ export default function CompanyDetailView({ slug }: { slug: string }) {
           <Stagger className="mt-12 grid gap-4 sm:grid-cols-2">
             {businessAreas.map((a) => (
               <StaggerItem key={a.title.en}>
-                <div onMouseMove={onSpotlightMove} className="spotlight h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7 transition-colors duration-500 hover:border-accent/40">
+                <div onMouseMove={onSpotlightMove} className="spotlight hv-card h-full overflow-hidden rounded-2xl border border-line bg-surface/40 p-7">
                   <h3 className="text-lg text-fg sm:text-xl">{a.title[lang]}</h3>
                   <p className="mt-3 text-base leading-relaxed text-muted">{a.text[lang]}</p>
                 </div>
