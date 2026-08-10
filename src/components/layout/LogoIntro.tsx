@@ -8,7 +8,7 @@
    The wordmark is deliberately a <p>, not a heading: this content is transient,
    so the page's <h1> belongs to the Hero underneath it. */
 
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
 import Container from "@/components/ui/Container";
 import StoneSurface from "@/components/ui/StoneSurface";
@@ -16,9 +16,17 @@ import { useLanguage } from "@/lib/i18n";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* Fallback only. The intended action is pressing Enter — this just guarantees
-   nobody is gated forever if they never click. */
-const AUTO_ADVANCE_MS = 10000;
+/* Once per browser session. Clicking the header wordmark, or coming back to the
+   home page from /careers, must not replay the opener. */
+const SEEN_KEY = "cs-group-intro-seen";
+
+/* Runs before paint on the client so a skipped intro never flashes; falls back
+   to useEffect during SSR, where layout effects don't run anyway. */
+const useIsoLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
+/* Fallback only. The intended action is to click / tap / press a key — this just
+   guarantees nobody is gated if they never interact. */
+const AUTO_ADVANCE_MS = 4500;
 
 /* Corner brackets. Each draws its two hairlines outward from the corner it
    sits in, so the frame appears to be struck rather than fading up. */
@@ -33,16 +41,71 @@ export default function LogoIntro() {
   const { t } = useLanguage();
   const reduce = useReducedMotion();
   const [done, setDone] = useState(false);
+  /* Dismissed without an exit animation — used when the opener is skipped
+     outright, so there is nothing to animate away. */
+  const [instant, setInstant] = useState(false);
+
+  /* Decide before first paint whether this visit should see the opener at all.
+     Skipped when: motion is reduced, the URL targets a section (a deep link
+     like /#about is a request for content, not an invitation to a splash), or
+     it has already played once this session. */
+  useIsoLayoutEffect(() => {
+    let seen = false;
+    try {
+      seen = window.sessionStorage.getItem(SEEN_KEY) === "1";
+    } catch {
+      /* private mode / storage blocked — just show it */
+    }
+    const deepLink = window.location.hash.length > 1;
+
+    if (reduce || seen || deepLink) {
+      setInstant(true);
+      setDone(true);
+    }
+  }, [reduce]);
 
   useEffect(() => {
-    // Anyone who asked for less motion skips the hold entirely.
-    if (reduce) {
-      setDone(true);
-      return;
-    }
+    if (done) return;
     const timer = setTimeout(() => setDone(true), AUTO_ADVANCE_MS);
     return () => clearTimeout(timer);
-  }, [reduce]);
+  }, [done]);
+
+  /* Remember it played, so returning to the home page goes straight in. */
+  useEffect(() => {
+    if (!done) return;
+    try {
+      window.sessionStorage.setItem(SEEN_KEY, "1");
+    } catch {
+      /* ignore */
+    }
+  }, [done]);
+
+  /* Honour the hash once the overlay is out of the way. The browser's own hash
+     scroll happens while the body is still locked, so it needs redoing. */
+  useEffect(() => {
+    if (!done) return;
+    const id = decodeURIComponent(window.location.hash.slice(1));
+    if (!id) return;
+    const el = document.getElementById(id);
+    if (!el) return;
+    requestAnimationFrame(() =>
+      el.scrollIntoView({ behavior: instant ? "auto" : "smooth", block: "start" }),
+    );
+  }, [done, instant]);
+
+  /* Keyboard: Enter, Space or Escape enters at once — no waiting for the fallback.
+     A global listener, since nothing is focused on first paint. */
+  useEffect(() => {
+    if (done) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (["Enter", " ", "Spacebar", "Escape"].includes(e.key)) {
+        e.preventDefault();
+        setDone(true);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [done]);
 
   useEffect(() => {
     if (done) {
@@ -92,8 +155,8 @@ export default function LogoIntro() {
           initial={{ opacity: 1 }}
           /* Dissolve with a slight push-through rather than a wipe — the mark
              recedes into the site instead of sliding off it. */
-          exit={{ opacity: 0, scale: reduce ? 1 : 1.04 }}
-          transition={{ duration: 0.9, ease: EASE }}
+          exit={{ opacity: 0, scale: reduce || instant ? 1 : 1.04 }}
+          transition={{ duration: instant ? 0 : 0.9, ease: EASE }}
         >
           <StoneSurface />
 
@@ -186,7 +249,7 @@ export default function LogoIntro() {
             <motion.button
               type="button"
               onClick={() => setDone(true)}
-              {...settle(1.15)}
+              {...settle(0.6)}
               className="group mt-16 inline-flex items-center gap-3 sm:mt-20"
             >
               <span className="label text-muted transition-colors duration-[var(--hover-dur)] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:text-accent">
