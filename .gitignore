@@ -26,6 +26,11 @@ pnpm-debug.log*
 .env*.local
 .env.production
 
+# Content saved from /admin (one JSON per key). This is live site data written
+# on the server — it must never be committed, and must never be shipped in a
+# deploy archive, or an edit made through the admin UI gets overwritten.
+/content
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

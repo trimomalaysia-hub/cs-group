@@ -43,12 +43,16 @@ const containerVariants: Variants = {
 export function Stagger({
   children,
   className,
+  id,
 }: {
   children: ReactNode;
   className?: string;
+  /* Optional, so a staggered grid can also be an in-page anchor target. */
+  id?: string;
 }) {
   return (
     <motion.div
+      id={id}
       className={className}
       variants={containerVariants}
       initial="hidden"

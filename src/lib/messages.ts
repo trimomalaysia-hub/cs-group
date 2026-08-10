@@ -9,8 +9,8 @@ import type { Lang } from "./i18n-types";
 
 export const messages = {
   en: {
-    nav: ["About", "Companies", "Talent", "Founder", "Vision", "Contact"],
-    header: { enquire: "Enquire", team: "Team", careers: "Careers", investors: "Investors" },
+    nav: ["About", "Founder", "Companies", "Vision", "Team"],
+    header: { enquire: "Enquire", careers: "Careers", investors: "Investors" },
 
     /* The logo-lockup opening screen. `monogram` and `wordmark` are the brand
        identity and stay in Latin in both languages; only the pillars localise. */
@@ -54,10 +54,15 @@ export const messages = {
 
     companies: {
       eyebrow: "Companies",
-      titleLine1: "An ecosystem of companies.",
+      /* Split into fragments so one word can carry the gold, the same way the
+         hero headline does. Never split a localized string at render time. */
+      titleLine1pre: "An ecosystem of ",
+      titleLine1accent: "companies",
+      titleLine1post: ".",
       titleLine2: "Designed for scale, built for the future.",
       lead: "Each operates independently — yet all move as one.",
-      view: "View",
+      discover: "Discover our ecosystem",
+      view: "Explore",
       since: "Since",
     },
 
@@ -69,9 +74,16 @@ export const messages = {
         { title: "Growth", text: "Room to stretch beyond your title — early, and often." },
         { title: "Ownership", text: "Real decisions, real consequences, real credit." },
         { title: "Collaboration", text: "One bench across the group — knowledge travels." },
+        {
+          title: "Human first, AI-native",
+          text: "Everyone here works alongside an AI workforce. The technology takes the repetition; the people keep the judgement and the warmth.",
+        },
+        {
+          title: "Built to be handed on",
+          text: "We hire and mentor for the decade ahead, not the quarter — training people to outgrow the role they were hired into.",
+        },
       ],
       cta: "Join Us",
-      meetTeam: "Meet the team",
     },
 
     finalCta: {
@@ -171,7 +183,6 @@ export const messages = {
       closeMenu: "Close menu",
       prev: "Previous",
       next: "Next",
-      scrollCue: "Scroll",
     },
 
     notFound: {
@@ -182,8 +193,8 @@ export const messages = {
   },
 
   zh: {
-    nav: ["关于", "旗下企业", "人才", "创始人", "愿景", "联系"],
-    header: { enquire: "咨询", team: "团队", careers: "招贤纳士", investors: "投资者" },
+    nav: ["关于", "创始人", "旗下企业", "愿景", "团队"],
+    header: { enquire: "咨询", careers: "招贤纳士", investors: "投资者" },
 
     logo: {
       monogram: "CS",
@@ -225,10 +236,13 @@ export const messages = {
 
     companies: {
       eyebrow: "旗下企业",
-      titleLine1: "一个企业生态。",
+      titleLine1pre: "一个",
+      titleLine1accent: "企业生态",
+      titleLine1post: "。",
       titleLine2: "为规模而设计，为未来而建造。",
       lead: "各自独立运营 —— 却如一体般前行。",
-      view: "查看",
+      discover: "探索我们的生态",
+      view: "了解",
       since: "始于",
     },
 
@@ -240,9 +254,16 @@ export const messages = {
         { title: "成长", text: "越过头衔的边界 —— 尽早，也常常。" },
         { title: "主人翁", text: "真实的决策，真实的结果，真实的认可。" },
         { title: "协作", text: "全集团，一支队伍 —— 让经验流动。" },
+        {
+          title: "以人为本，AI 原生",
+          text: "这里的每个人，都与 AI 员工并肩工作。让技术承担重复，让人保有判断力与温度。",
+        },
+        {
+          title: "为传承而建",
+          text: "我们的招聘与培养着眼于未来十年，而非下一个季度 —— 让每个人都能成长，超越当初被聘任的那个岗位。",
+        },
       ],
       cta: "加入我们",
-      meetTeam: "认识团队",
     },
 
     finalCta: {
@@ -342,7 +363,6 @@ export const messages = {
       closeMenu: "关闭菜单",
       prev: "上一个",
       next: "下一个",
-      scrollCue: "向下滚动",
     },
 
     notFound: {
