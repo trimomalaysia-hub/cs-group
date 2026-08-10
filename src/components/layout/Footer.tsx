@@ -13,9 +13,13 @@ export default function Footer() {
   return (
     <footer className="border-t border-line bg-bg">
       <Container className="py-20">
-        <div className="grid gap-12 lg:grid-cols-12">
+        {/* Brand takes a third; the three link columns share the rest as exact
+            equal thirds. Nesting them is what guarantees that — spanning 3/2/2
+            of a 12-column grid made Companies wider than its neighbours, and no
+            whole-number split of 8 columns into 3 is possible. */}
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Brand */}
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-4">
             <div className="hv-mark flex w-fit items-center gap-2.5">
               <Image
                 src="/brand/cs-mark.png"
@@ -32,8 +36,9 @@ export default function Footer() {
             </p>
           </div>
 
+          <div className="grid gap-12 sm:grid-cols-3 sm:gap-8 lg:col-span-8">
           {/* Companies */}
-          <div className="lg:col-span-3">
+          <div>
             <h3 className="label text-faint">{t.footer.companies}</h3>
             <ul className="mt-5 space-y-3">
               {companies.map((c) => (
@@ -47,7 +52,7 @@ export default function Footer() {
           </div>
 
           {/* Navigate */}
-          <div className="lg:col-span-2">
+          <div>
             <h3 className="label text-faint">{t.footer.navigate}</h3>
             <ul className="mt-5 space-y-3">
               {/* The whole nav — Contact is no longer one of its entries; the
@@ -72,25 +77,25 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Contact */}
-          <div className="lg:col-span-2">
+          {/* Contact — a plain stack, not a list: the email, the address block
+              and the social row are three different kinds of thing, and forcing
+              them into one <ul> with a single space-y gave the uneven rhythm. */}
+          <div>
             <h3 className="label text-faint">{t.footer.getInTouch}</h3>
-            <ul className="mt-5 space-y-3 text-sm text-muted">
-              <li>
-                <a href={`mailto:${site.email}`} className="hv-link">
-                  {site.email}
-                </a>
-              </li>
-              <li>
-                <address className="not-italic leading-relaxed">
-                  {site.address.map((line) => (
-                    <span key={line} className="block">
-                      {line}
-                    </span>
-                  ))}
-                </address>
-              </li>
-              <li className="flex gap-4 pt-2">
+            <div className="mt-5 text-sm text-muted">
+              <a href={`mailto:${site.email}`} className="hv-link">
+                {site.email}
+              </a>
+
+              <address className="mt-4 not-italic leading-relaxed">
+                {site.address.map((line) => (
+                  <span key={line} className="block">
+                    {line}
+                  </span>
+                ))}
+              </address>
+
+              <div className="mt-6 flex gap-4">
                 {Object.entries(site.social).map(([name, url]) => (
                   <a
                     key={name}
@@ -102,8 +107,9 @@ export default function Footer() {
                     {name}
                   </a>
                 ))}
-              </li>
-            </ul>
+              </div>
+            </div>
+          </div>
           </div>
         </div>
 
